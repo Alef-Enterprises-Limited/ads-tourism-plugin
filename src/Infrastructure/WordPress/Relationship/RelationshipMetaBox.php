@@ -132,7 +132,7 @@ final readonly class RelationshipMetaBox
 
     private function requestCanSave(int $postId): bool
     {
-        if (defined('DOING_AUTOSAVE') && constant('DOING_AUTOSAVE') === true) {
+        if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
             return false;
         }
 

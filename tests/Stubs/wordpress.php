@@ -9,7 +9,6 @@ declare(strict_types=1);
  */
 
 define('ABSPATH', '/');
-define('DOING_AUTOSAVE', false);
 define('MINUTE_IN_SECONDS', 60);
 
 class WP_Post
