@@ -28,7 +28,11 @@ $versions = [
 ];
 
 $expectedVersion = Plugin::VERSION;
-$tag = $argv[1] ?? getenv('GITHUB_REF_NAME') ?: null;
+$tag = $argv[1] ?? null;
+
+if ($tag === null && getenv('GITHUB_REF_TYPE') === 'tag') {
+    $tag = getenv('GITHUB_REF_NAME') ?: null;
+}
 
 if (is_string($tag) && $tag !== '') {
     $versions['Git tag'] = ltrim($tag, 'v');
