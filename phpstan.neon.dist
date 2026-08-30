@@ -1,0 +1,9 @@
+parameters:
+  level: 8
+  paths:
+    - ads-tourism.php
+    - src
+    - uninstall.php
+  scanFiles:
+    - tests/Stubs/wordpress.php
+  tmpDir: build/phpstan
