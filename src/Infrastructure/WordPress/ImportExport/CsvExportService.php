@@ -78,10 +78,12 @@ final readonly class CsvExportService
     private function findPosts(ExportRequest $request): array
     {
         $arguments = [
-            'post_type' => $request->contentType?->value ?? array_map(
-                static fn(ContentType $contentType): string => $contentType->value,
-                ContentType::cases(),
-            ),
+            'post_type' => $request->contentType === null
+                ? array_map(
+                    static fn(ContentType $contentType): string => $contentType->value,
+                    ContentType::cases(),
+                )
+                : $request->contentType->value,
             'post_status' => $request->postStatus !== '' ? $request->postStatus : 'any',
             'posts_per_page' => -1,
             'orderby' => 'ID',
@@ -212,10 +214,6 @@ final readonly class CsvExportService
             }
 
             foreach ($terms as $term) {
-                if (!$term instanceof WP_Term) {
-                    continue;
-                }
-
                 $parentSlug = '';
 
                 if ($term->parent > 0) {
@@ -337,7 +335,7 @@ final readonly class CsvExportService
             $post->post_type,
             $link->attachmentId === null ? '' : (string) $link->attachmentId,
             $link->mediaUrl ?? '',
-            $link->urlType?->value ?? '',
+            $link->urlType === null ? '' : $link->urlType->value,
             $link->role->value,
             $link->customTitle,
             $link->customAltText,

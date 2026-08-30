@@ -17,7 +17,11 @@ final class TransferSettings
         ]);
     }
 
-    /** @param mixed $value */
+    /**
+     * @param mixed $value
+     *
+     * @return array<string, int|bool>
+     */
     public function sanitize($value): array
     {
         $value = is_array($value) ? $value : [];

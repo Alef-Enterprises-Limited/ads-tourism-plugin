@@ -342,7 +342,7 @@ final readonly class WordPressTourismRecordImporter implements TourismRecordImpo
                     throw new \RuntimeException($created->get_error_message());
                 }
 
-                $termIds[] = (int) ($created['term_id'] ?? 0);
+                $termIds[] = $created['term_id'];
             }
 
             $result = wp_set_object_terms($postId, $termIds, $taxonomy->value, false);

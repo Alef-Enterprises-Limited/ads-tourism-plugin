@@ -35,7 +35,7 @@ final readonly class CsvReader
         arsort($scores);
         $delimiter = array_key_first($scores);
 
-        if (!is_string($delimiter) || ($scores[$delimiter] ?? 0) < 2) {
+        if ($scores[$delimiter] < 2) {
             throw new RuntimeException('A supported CSV delimiter could not be detected.');
         }
 
@@ -59,11 +59,11 @@ final readonly class CsvReader
             $row,
         );
 
-        if ($headers === [] || in_array('', $headers, true) || count($headers) !== count(array_unique($headers))) {
+        if (in_array('', $headers, true) || count($headers) !== count(array_unique($headers))) {
             throw new RuntimeException('CSV headers must be present and unique.');
         }
 
-        return array_values($headers);
+        return $headers;
     }
 
     /**

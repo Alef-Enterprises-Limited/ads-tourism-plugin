@@ -196,9 +196,10 @@ function add_option(string $option, mixed $value = '', string $deprecated = '', 
     return true;
 }
 
-function add_query_arg(string $key, string $value, string $url): string
+/** @param string|array<string, string> $key */
+function add_query_arg(string|array $key, mixed $value = null, ?string $url = null): string
 {
-    return $url;
+    return $url ?? (is_string($value) ? $value : '');
 }
 
 function add_settings_field(
@@ -407,6 +408,8 @@ function load_plugin_textdomain(string $domain, bool $deprecated = false, string
 {
     return true;
 }
+
+function nocache_headers(): void {}
 
 function plugin_basename(string $file): string
 {
