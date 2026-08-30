@@ -19,7 +19,13 @@ final readonly class PermalinkRedirector
         $requestUri = isset($_SERVER['REQUEST_URI'])
             ? sanitize_text_field((string) wp_unslash($_SERVER['REQUEST_URI']))
             : '';
-        $path = (string) wp_parse_url($requestUri, PHP_URL_PATH);
+        $parsedPath = wp_parse_url($requestUri, PHP_URL_PATH);
+
+        if (!is_string($parsedPath)) {
+            return;
+        }
+
+        $path = $parsedPath;
         $segments = array_values(array_filter(explode('/', trim($path, '/'))));
 
         if ($segments === []) {
@@ -55,7 +61,9 @@ final readonly class PermalinkRedirector
             return;
         }
 
-        $permalink = get_permalink((int) $matches[0]);
+        $matchedPost = $matches[0];
+        $matchedPostId = $matchedPost instanceof \WP_Post ? $matchedPost->ID : $matchedPost;
+        $permalink = get_permalink($matchedPostId);
 
         if (is_string($permalink) && $permalink !== '') {
             $this->redirect($permalink);
