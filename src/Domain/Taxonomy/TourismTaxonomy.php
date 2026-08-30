@@ -16,7 +16,7 @@ enum TourismTaxonomy: string
     case TRAVELLER = 'ads_traveller';
     case ACCESSIBILITY = 'ads_accessibility';
     case TOURISM_TAG = 'ads_tourism_tag';
-    case GEOGRAPHIC_AREA = 'ads_geographic_area';
+    case GEOGRAPHIC_AREA = 'ads_geo_area';
 
     public function isHierarchical(): bool
     {

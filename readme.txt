@@ -14,7 +14,9 @@ A WordPress-native tourism content and discovery foundation for places, activiti
 
 ADS Tourism provides connected content types for a tourism website while preserving WordPress templates, taxonomies, media, revisions, REST APIs, and page-builder compatibility.
 
-The current early-development release establishes the core content model and administration foundation. Additional roadmap features are documented in the project repository.
+The current early-development release establishes the core content model, structured fields, connected records, and a verification-first editorial workflow. Additional roadmap features are documented in the project repository.
+
+Editors can use native WordPress screens to maintain tourism details, search for related records, order those relationships, and verify content before publication. Administrators may relax the verification publication gate under ADS Tourism > Settings.
 
 == Installation ==
 
@@ -27,3 +29,5 @@ The current early-development release establishes the core content model and adm
 = 0.1.0 =
 
 * Initial development foundation.
+* Structured tourism fields and REST metadata.
+* Indexed bidirectional relationships and editorial verification workflow.

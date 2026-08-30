@@ -37,7 +37,7 @@ final class AdminMenu
         echo '</p>';
         echo '<p>';
         echo esc_html__(
-            'This foundation release uses native WordPress content screens. Relationship, import, display, and integration tools will be added in later milestones.',
+            'Use the native content screens to add structured details, connect related records, and manage verification before publication.',
             'ads-tourism',
         );
         echo '</p>';

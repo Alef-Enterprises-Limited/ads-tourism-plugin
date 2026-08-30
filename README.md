@@ -2,7 +2,7 @@
 
 ADS Tourism is a WordPress-native foundation for tourism websites. It models destinations as the spine of a connected catalogue of things to do, places to stay, tour operators, and packages while leaving page composition to WordPress, Divi, or another builder.
 
-> **Status:** early foundation development. The current code registers the core content types, shared taxonomies, administration shell, and project quality/release tooling. Relationships, structured fields, CSV transfer, front-end components, maps, and WooCommerce commerce adapters remain planned work.
+> **Status:** early development. The plugin currently provides the core content model, structured record fields, canonical relationships, an editorial verification workflow, and project quality/release tooling. CSV transfer, front-end components, maps, multilingual adapters, and WooCommerce commerce adapters remain planned work.
 
 ## Core content model
 
@@ -15,6 +15,14 @@ ADS Tourism is a WordPress-native foundation for tourism websites. It models des
 | Packages | `ads_package` | `/packages/` | Catalogued offers; commerce remains optional |
 
 Every content type is public, revision-enabled, featured-image enabled, available through the REST API, and exposed to the normal WordPress template hierarchy. That gives Divi Theme Builder and other standards-compliant builders stable post-type conditions to target.
+
+## Structured records and relationships
+
+Each tourism record has a native **Tourism details** panel. Shared fields cover sources, verification, display overrides, external media references, and SEO overrides; type-specific fields cover coordinates, contact details, visitor information, accommodation pricing, and package itineraries.
+
+The **Tourism relationships** panel connects records through one canonical relationship row. Editors can search, order, remove, and—where applicable—choose a primary related record. The same relationship can be queried from either side without duplicating data.
+
+New records begin as unverified. By default, WordPress keeps an unverified record in review if an editor attempts to publish it. Administrators can change this policy under **ADS Tourism → Settings**. See [Record editing and workflow](docs/user/record-workflow.md) and [Relationship architecture](docs/developer/relationships.md).
 
 ## Install for development
 
@@ -36,6 +44,7 @@ Install the repository as `wp-content/plugins/ads-tourism`, activate **ADS Touri
 The runtime deliberately has no Composer dependency. A small PSR-4-compatible loader makes the release ZIP work immediately after installation, while Composer provides developer autoloading and quality tools.
 
 - `src/Domain` contains stable tourism concepts.
+- `src/Application` coordinates relationship and workflow use cases.
 - `src/Infrastructure/WordPress` adapts those concepts to WordPress hooks and APIs.
 - `tests` contains fast unit tests and static-analysis stubs.
 - `docs/decisions` records architectural decisions.

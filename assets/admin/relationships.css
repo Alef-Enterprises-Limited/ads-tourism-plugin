@@ -1,0 +1,28 @@
+.ads-tourism-relation {
+    border-top: 1px solid #dcdcde;
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+}
+
+.ads-tourism-relation__results,
+.ads-tourism-relation__selected {
+    max-width: 52rem;
+}
+
+.ads-tourism-relation__results li,
+.ads-tourism-relation__selected li {
+    background: #f6f7f7;
+    border: 1px solid #dcdcde;
+    margin: 0.35rem 0;
+    padding: 0.65rem;
+}
+
+.ads-tourism-relation__title {
+    display: inline-block;
+    font-weight: 600;
+    margin-right: 1rem;
+}
+
+.ads-tourism-relation__actions {
+    float: right;
+}
