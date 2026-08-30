@@ -14,7 +14,7 @@ final class ContentTypeTest extends TestCase
         self::assertSame(
             ['ads_place', 'ads_activity', 'ads_stay', 'ads_operator', 'ads_package'],
             array_map(
-                static fn (ContentType $contentType): string => $contentType->value,
+                static fn(ContentType $contentType): string => $contentType->value,
                 ContentType::cases(),
             ),
         );
@@ -42,7 +42,7 @@ final class ContentTypeTest extends TestCase
     public function testRewriteBasesAreUnique(): void
     {
         $rewriteBases = array_map(
-            static fn (ContentType $contentType): string => $contentType->rewriteBase(),
+            static fn(ContentType $contentType): string => $contentType->rewriteBase(),
             ContentType::cases(),
         );
 

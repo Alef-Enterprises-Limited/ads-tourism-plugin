@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Plugin Name: ADS Tourism
  * Plugin URI: https://github.com/alefsolutions/ads-tourism-plugin

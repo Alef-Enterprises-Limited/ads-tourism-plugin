@@ -6,9 +6,7 @@ namespace AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress;
 
 final readonly class TranslationLoader
 {
-    public function __construct(private string $pluginFile)
-    {
-    }
+    public function __construct(private string $pluginFile) {}
 
     public function load(): void
     {

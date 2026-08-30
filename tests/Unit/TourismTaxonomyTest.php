@@ -35,7 +35,7 @@ final class TourismTaxonomyTest extends TestCase
     public function testSharedDiscoveryTaxonomiesCoverEveryRecord(): void
     {
         $allRecords = array_map(
-            static fn (ContentType $contentType): string => $contentType->value,
+            static fn(ContentType $contentType): string => $contentType->value,
             ContentType::cases(),
         );
 

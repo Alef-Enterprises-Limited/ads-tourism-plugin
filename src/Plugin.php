@@ -20,8 +20,7 @@ final readonly class Plugin
         private TaxonomyRegistrar $taxonomies,
         private AdminMenu $adminMenu,
         private TranslationLoader $translations,
-    ) {
-    }
+    ) {}
 
     public function register(): void
     {

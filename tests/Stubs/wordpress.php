@@ -13,9 +13,7 @@ function __(string $text, string $domain = 'default'): string
     return $text;
 }
 
-function add_action(string $hookName, callable $callback, int $priority = 10, int $acceptedArgs = 1): void
-{
-}
+function add_action(string $hookName, callable $callback, int $priority = 10, int $acceptedArgs = 1): void {}
 
 function add_menu_page(
     string $pageTitle,
@@ -39,9 +37,7 @@ function esc_html__(string $text, string $domain = 'default'): string
     return $text;
 }
 
-function flush_rewrite_rules(bool $hard = true): void
-{
-}
+function flush_rewrite_rules(bool $hard = true): void {}
 
 function load_plugin_textdomain(string $domain, bool $deprecated = false, string $pluginRelativePath = ''): bool
 {
@@ -70,15 +66,11 @@ function register_taxonomy(string $taxonomy, array $objectTypes, array $argument
     return new stdClass();
 }
 
-function register_activation_hook(string $file, callable $callback): void
-{
-}
+function register_activation_hook(string $file, callable $callback): void {}
 
-function register_deactivation_hook(string $file, callable $callback): void
-{
-}
+function register_deactivation_hook(string $file, callable $callback): void {}
 
-function update_option(string $option, mixed $value, bool|null $autoload = null): bool
+function update_option(string $option, mixed $value, ?bool $autoload = null): bool
 {
     return true;
 }

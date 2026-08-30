@@ -53,7 +53,7 @@ enum TourismTaxonomy: string
             self::ACCESSIBILITY,
             self::TOURISM_TAG,
             self::GEOGRAPHIC_AREA => array_map(
-                static fn (ContentType $contentType): string => $contentType->value,
+                static fn(ContentType $contentType): string => $contentType->value,
                 ContentType::cases(),
             ),
         };
