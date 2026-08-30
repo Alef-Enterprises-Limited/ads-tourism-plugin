@@ -24,6 +24,8 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
+// PHPStan runs on supported PHP versions, but WordPress may load this file on an older server.
+// @phpstan-ignore smaller.alwaysFalse
 if (PHP_VERSION_ID < 80200) {
     add_action(
         'admin_notices',
