@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace AlefDigitalSolutions\ADSTourism;
 
-use AlefDigitalSolutions\ADSTourism\Application\Relationship\RelationshipService;
 use AlefDigitalSolutions\ADSTourism\Application\Fallback\FallbackResolver;
 use AlefDigitalSolutions\ADSTourism\Application\Fallback\MediaFallbackResolver;
 use AlefDigitalSolutions\ADSTourism\Application\Media\MediaLinkService;
+use AlefDigitalSolutions\ADSTourism\Application\Relationship\RelationshipService;
 use AlefDigitalSolutions\ADSTourism\Application\Workflow\VerificationHistoryService;
 use AlefDigitalSolutions\ADSTourism\Domain\Field\RecordFieldSchema;
 use AlefDigitalSolutions\ADSTourism\Domain\Permalink\PermalinkBaseValidator;
 use AlefDigitalSolutions\ADSTourism\Domain\Workflow\PublicationPolicy;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\AdminMenu;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ContentTypeRegistrar;
-use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Database\MigrationRunner;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Database\MediaLinkTableMigration;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Database\MigrationRunner;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Database\RelationshipTableMigration;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Fallback\FallbackHooks;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Fallback\RecordFieldFallbackResolver;

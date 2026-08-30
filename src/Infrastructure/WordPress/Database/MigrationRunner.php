@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Database;
 
-use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Workflow\WorkflowSettings;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Permalink\PermalinkSettings;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Workflow\WorkflowSettings;
 use AlefDigitalSolutions\ADSTourism\Plugin;
 
 final readonly class MigrationRunner
