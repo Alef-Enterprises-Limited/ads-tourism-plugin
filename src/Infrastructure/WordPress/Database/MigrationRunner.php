@@ -17,6 +17,7 @@ final readonly class MigrationRunner
     public function __construct(
         private RelationshipTableMigration $relationships,
         private MediaLinkTableMigration $mediaLinks,
+        private ImportRunTableMigration $importRuns,
     ) {}
 
     public function run(): void
@@ -34,6 +35,7 @@ final readonly class MigrationRunner
         try {
             $this->relationships->up();
             $this->mediaLinks->up();
+            $this->importRuns->up();
             update_option(self::SCHEMA_OPTION, Plugin::SCHEMA_VERSION);
 
             if (get_option(WorkflowSettings::OPTION_REQUIRE_VERIFICATION, null) === null) {

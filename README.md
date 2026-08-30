@@ -2,13 +2,13 @@
 
 ADS Tourism is a WordPress-native foundation for tourism websites. It models destinations as the spine of a connected catalogue of things to do, places to stay, tour operators, and packages while leaving page composition to WordPress, Divi, or another builder.
 
-> **Status:** early development. The plugin currently provides the core content model, structured record fields, canonical relationships, an editorial verification workflow, linked galleries, fallback resolution, configurable permalinks, and project quality/release tooling. CSV transfer, front-end components, maps, multilingual adapters, and WooCommerce commerce adapters remain planned work.
+> **Status:** early development. The plugin currently provides the core content model, structured record fields, canonical relationships, an editorial verification workflow, linked galleries, fallback resolution, configurable permalinks, secure CSV import/export, and project quality/release tooling. Front-end components, maps, multilingual adapters, and WooCommerce commerce adapters remain planned work.
 
 ## Core content model
 
 | Record | WordPress key | Default URL base | Notes |
 | --- | --- | --- | --- |
-| Places to Go | `ads_place` | `/places/` | Hierarchical destination spine |
+| Places to Go | `ads_place` | `/places-to-go/` | Hierarchical destination spine |
 | Things to Do | `ads_activity` | `/things-to-do/` | Activities and experiences |
 | Places to Stay | `ads_stay` | `/places-to-stay/` | Accommodation listings |
 | Tour Operators | `ads_operator` | `/tour-operators/` | Provider profiles |
@@ -31,6 +31,12 @@ WordPress continues to own uploaded files and featured images. The **Tourism gal
 Featured-media resolution follows a safe chain: the record's featured image, its external image reference, the record-type default, the global tourism default, and finally no image. Empty field values similarly resolve through record overrides, record-type defaults, and global defaults before returning `null` so future templates can omit empty markup.
 
 Administrators can configure fallback images and all tourism post-type/taxonomy URL bases under **ADS Tourism → Settings**. Bases are checked for duplicates and reserved WordPress paths. Changed bases and record slugs retain redirect history. See [Media and permalink administration](docs/user/media-and-permalinks.md) and [Media and fallback architecture](docs/developer/media-and-fallbacks.md).
+
+## CSV transfer
+
+**ADS Tourism → CSV Import/Export** provides a template-led spreadsheet workflow. Imports use stable external IDs, explicit column mapping, a dry-run preview, duplicate policies, controlled taxonomy slugs, and bounded AJAX batches. Invalid rows are isolated in a downloadable rejected-row report; valid rows continue safely. New records always begin as Draft and Unverified.
+
+Exports may be filtered by record type, workflow state, modified date, or selected IDs. A full ZIP contains record files, taxonomy definitions, relationships, media associations, and a checksummed JSON manifest. See the [CSV import/export guide](docs/user/csv-import-export.md) and [CSV transfer architecture](docs/developer/csv-transfer.md).
 
 ## Install for development
 

@@ -9,7 +9,9 @@ declare(strict_types=1);
  */
 
 define('ABSPATH', '/');
+define('HOUR_IN_SECONDS', 3600);
 define('MINUTE_IN_SECONDS', 60);
+define('PCLZIP_OPT_REMOVE_PATH', 77001);
 
 class WP_Post
 {
@@ -20,6 +22,45 @@ class WP_Post
     public string $post_status = '';
 
     public string $post_name = '';
+
+    public string $post_title = '';
+
+    public string $post_content = '';
+
+    public string $post_excerpt = '';
+
+    public int $post_parent = 0;
+}
+
+class WP_Error
+{
+    public function get_error_message(string $code = ''): string
+    {
+        return '';
+    }
+}
+
+class WP_Term
+{
+    public int $term_id = 0;
+
+    public int $parent = 0;
+
+    public string $slug = '';
+
+    public string $name = '';
+
+    public string $description = '';
+}
+
+class PclZip
+{
+    public function __construct(string $filename) {}
+
+    public function create(array $files, mixed ...$options): int|array
+    {
+        return 1;
+    }
 }
 
 class WP_Query
@@ -86,6 +127,20 @@ class wpdb
     public function get_results(string $query): ?array
     {
         return [];
+    }
+
+    public function get_row(string $query): ?object
+    {
+        return null;
+    }
+
+    /**
+     * @param array<string, mixed> $data
+     * @param array<string, mixed> $where
+     */
+    public function update(string $table, array $data, array $where): int|false
+    {
+        return 1;
     }
 }
 
@@ -173,6 +228,11 @@ function check_ajax_referer(string $action = '-1', string|false $queryArgument =
     return 1;
 }
 
+function check_admin_referer(int|string $action = -1, string $queryArgument = '_wpnonce'): int|false
+{
+    return 1;
+}
+
 function checked(mixed $checked, mixed $current = true, bool $display = true): string
 {
     return $checked === $current ? 'checked="checked"' : '';
@@ -190,6 +250,11 @@ function dbDelta(string $queries = '', bool $execute = true): array
 }
 
 function delete_post_meta(int $postId, string $metaKey, mixed $metaValue = ''): bool
+{
+    return true;
+}
+
+function delete_post_thumbnail(int|WP_Post $post): bool
 {
     return true;
 }
@@ -283,6 +348,26 @@ function get_post_thumbnail_id(int|WP_Post|null $post = null): int|false
     return 0;
 }
 
+function get_term(int $termId, string $taxonomy = '', string $output = 'OBJECT', string $filter = 'raw'): WP_Term|WP_Error|null
+{
+    return null;
+}
+
+function get_term_by(string $field, string|int $value, string $taxonomy = '', string $output = 'OBJECT', string $filter = 'raw'): WP_Term|array|false
+{
+    return false;
+}
+
+/**
+ * @param array<string, mixed> $arguments
+ *
+ * @return list<WP_Term>|WP_Error
+ */
+function get_terms(array $arguments = []): array|WP_Error
+{
+    return [];
+}
+
 /**
  * @param array<string, mixed> $arguments
  *
@@ -313,6 +398,11 @@ function home_url(string $path = '', ?string $scheme = null): string
     return 'https://example.com' . $path;
 }
 
+function is_wp_error(mixed $thing): bool
+{
+    return $thing instanceof WP_Error;
+}
+
 function load_plugin_textdomain(string $domain, bool $deprecated = false, string $pluginRelativePath = ''): bool
 {
     return true;
@@ -326,6 +416,11 @@ function plugin_basename(string $file): string
 function plugin_dir_url(string $file): string
 {
     return '';
+}
+
+function plugins_url(string $path = '', string $plugin = ''): string
+{
+    return $path;
 }
 
 /** @param array<string, mixed> $arguments */
@@ -366,6 +461,11 @@ function sanitize_email(string $email): string
     return $email;
 }
 
+function sanitize_file_name(string $filename): string
+{
+    return $filename;
+}
+
 function sanitize_key(string $key): string
 {
     return $key;
@@ -396,6 +496,11 @@ function set_transient(string $transient, mixed $value, int $expiration = 0): bo
     return true;
 }
 
+function set_post_thumbnail(int|WP_Post $post, int $thumbnailId): int|bool
+{
+    return true;
+}
+
 function settings_fields(string $optionGroup): void {}
 
 function submit_button(
@@ -415,6 +520,16 @@ function update_post_meta(int $postId, string $metaKey, mixed $metaValue, mixed 
     return true;
 }
 
+function wp_attachment_is_image(int|WP_Post $post = 0): bool
+{
+    return true;
+}
+
+function wp_clear_scheduled_hook(string $hook, mixed ...$args): int|false
+{
+    return 0;
+}
+
 function wp_create_nonce(string|int $action = -1): string
 {
     return '';
@@ -423,6 +538,16 @@ function wp_create_nonce(string|int $action = -1): string
 function wp_die(string $message = ''): never
 {
     throw new RuntimeException($message);
+}
+
+function wp_generate_password(int $length = 12, bool $specialChars = true, bool $extraSpecialChars = false): string
+{
+    return str_repeat('a', $length);
+}
+
+function wp_generate_uuid4(): string
+{
+    return '00000000-0000-4000-8000-000000000000';
 }
 
 function wp_enqueue_script(
@@ -465,6 +590,24 @@ function wp_http_validate_url(string $url): string|false
     return $url;
 }
 
+/**
+ * @param array<string, mixed> $postarr
+ */
+function wp_insert_post(array $postarr, bool $wpError = false, bool $fireAfterHooks = true): int|WP_Error
+{
+    return 1;
+}
+
+/**
+ * @param array<string, mixed> $arguments
+ *
+ * @return array{term_id: int, term_taxonomy_id: int}|WP_Error
+ */
+function wp_insert_term(string $term, string $taxonomy, array $arguments = []): array|WP_Error
+{
+    return ['term_id' => 1, 'term_taxonomy_id' => 1];
+}
+
 function wp_json_encode(mixed $value, int $flags = 0, int $depth = 512): string|false
 {
     return json_encode($value, $flags, $depth);
@@ -477,6 +620,21 @@ function wp_nonce_field(
     bool $display = true,
 ): string {
     return '';
+}
+
+function wp_nonce_url(string $actionUrl, int|string $action = -1, string $name = '_wpnonce'): string
+{
+    return $actionUrl;
+}
+
+function wp_next_scheduled(string $hook, mixed ...$args): int|false
+{
+    return false;
+}
+
+function wp_schedule_event(int $timestamp, string $recurrence, string $hook, array $args = [], bool $wpError = false): bool|WP_Error
+{
+    return true;
 }
 
 /** @param array<string, mixed> $data */
@@ -502,6 +660,37 @@ function wp_parse_url(string $url, int $component = -1): array|string|int|false|
 }
 
 function wp_safe_redirect(string $location, int $status = 302, string $xRedirectBy = 'WordPress'): bool
+{
+    return true;
+}
+
+/**
+ * @param array<string, mixed> $arguments
+ *
+ * @return list<string>|WP_Error
+ */
+function wp_get_object_terms(int|array $objectIds, string|array $taxonomies, array $arguments = []): array|WP_Error
+{
+    return [];
+}
+
+/**
+ * @param list<int|string>|int|string $terms
+ *
+ * @return list<int>|WP_Error
+ */
+function wp_set_object_terms(int $objectId, array|int|string $terms, string $taxonomy, bool $append = false): array|WP_Error
+{
+    return [];
+}
+
+/** @return array<string, mixed> */
+function wp_upload_dir(?string $time = null, bool $createDir = true, bool $refreshCache = false): array
+{
+    return ['basedir' => '/tmp'];
+}
+
+function wp_mkdir_p(string $target): bool
 {
     return true;
 }

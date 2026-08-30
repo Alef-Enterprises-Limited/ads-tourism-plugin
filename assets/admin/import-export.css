@@ -1,0 +1,51 @@
+.ads-tourism-transfer {
+  max-width: 1180px;
+}
+
+.ads-tourism-transfer__panel {
+  margin: 20px 0;
+  padding: 20px;
+  border: 1px solid #c3c4c7;
+  background: #fff;
+}
+
+.ads-tourism-transfer__panel h2 {
+  margin-top: 0;
+}
+
+.ads-tourism-transfer__templates,
+.ads-tourism-transfer__options,
+#ads-tourism-import-upload {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: end;
+  margin: 16px 0;
+}
+
+.ads-tourism-transfer label span {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 600;
+}
+
+.ads-tourism-transfer__checkbox {
+  align-self: center;
+}
+
+.ads-tourism-transfer__checkbox span {
+  display: inline;
+}
+
+.ads-tourism-transfer__table-wrap {
+  overflow-x: auto;
+}
+
+#ads-tourism-preview-results,
+#ads-tourism-import-progress {
+  margin-top: 16px;
+}
+
+#ads-tourism-preview-results table {
+  margin-top: 8px;
+}

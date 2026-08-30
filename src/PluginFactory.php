@@ -6,19 +6,35 @@ namespace AlefDigitalSolutions\ADSTourism;
 
 use AlefDigitalSolutions\ADSTourism\Application\Fallback\FallbackResolver;
 use AlefDigitalSolutions\ADSTourism\Application\Fallback\MediaFallbackResolver;
+use AlefDigitalSolutions\ADSTourism\Application\ImportExport\CsvImportService;
 use AlefDigitalSolutions\ADSTourism\Application\Media\MediaLinkService;
 use AlefDigitalSolutions\ADSTourism\Application\Relationship\RelationshipService;
 use AlefDigitalSolutions\ADSTourism\Application\Workflow\VerificationHistoryService;
 use AlefDigitalSolutions\ADSTourism\Domain\Field\RecordFieldSchema;
+use AlefDigitalSolutions\ADSTourism\Domain\ImportExport\CsvReader;
+use AlefDigitalSolutions\ADSTourism\Domain\ImportExport\CsvRowValidator;
+use AlefDigitalSolutions\ADSTourism\Domain\ImportExport\CsvSchema;
+use AlefDigitalSolutions\ADSTourism\Domain\ImportExport\CsvSecurity;
 use AlefDigitalSolutions\ADSTourism\Domain\Permalink\PermalinkBaseValidator;
 use AlefDigitalSolutions\ADSTourism\Domain\Workflow\PublicationPolicy;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\AdminMenu;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ContentTypeRegistrar;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Database\MediaLinkTableMigration;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Database\ImportRunTableMigration;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Database\MigrationRunner;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Database\RelationshipTableMigration;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Fallback\FallbackHooks;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Fallback\RecordFieldFallbackResolver;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\CsvDownloadController;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\CsvExportService;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\CsvImportController;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\CsvRejectedRowWriter;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\ImportExportAdminPage;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\TransferFileManager;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\TransferMaintenance;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\TransferSettings;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\WordPressTourismRecordImporter;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\WpdbImportRunRepository;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\FeaturedMediaResolver;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\MediaCleanup;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\MediaLinkMetaBox;
@@ -65,6 +81,26 @@ final class PluginFactory
         $permalinkSettings = new PermalinkSettings(new PermalinkBaseValidator());
         $mediaSettings = new MediaSettings($pluginFile);
         $fallbackResolver = new FallbackResolver();
+        $csvSecurity = new CsvSecurity();
+        $csvSchema = new CsvSchema($fieldSchema);
+        $csvReader = new CsvReader($csvSecurity);
+        $transferSettings = new TransferSettings();
+        $transferFiles = new TransferFileManager($transferSettings);
+        $importRuns = new WpdbImportRunRepository($wpdb);
+        $recordImporter = new WordPressTourismRecordImporter(
+            $wpdb,
+            $csvSchema,
+            $fieldSchema,
+            $metaSanitizer,
+            $mediaService,
+        );
+        $csvImports = new CsvImportService(
+            $csvReader,
+            new CsvRowValidator($csvSchema),
+            $recordImporter,
+            new CsvRejectedRowWriter($csvSecurity),
+        );
+        $csvExports = new CsvExportService($wpdb, $csvSchema, $csvSecurity, $mediaRepository);
 
         return new Plugin(
             new ContentTypeRegistrar($permalinkSettings),
@@ -75,6 +111,7 @@ final class PluginFactory
             new MigrationRunner(
                 new RelationshipTableMigration($wpdb),
                 new MediaLinkTableMigration($wpdb),
+                new ImportRunTableMigration($wpdb),
             ),
             new RecordDetailsMetaBox($fieldSchema, $metaSanitizer),
             new RelationshipMetaBox($relationshipService, $pluginFile),
@@ -95,6 +132,24 @@ final class PluginFactory
                 new RecordFieldFallbackResolver($fallbackResolver),
                 new FeaturedMediaResolver(new MediaFallbackResolver(), $mediaSettings),
             ),
+            new ImportExportAdminPage($importRuns, $transferSettings, $pluginFile),
+            new CsvImportController(
+                $csvSchema,
+                $csvReader,
+                $csvImports,
+                $importRuns,
+                $transferFiles,
+                $transferSettings,
+            ),
+            new CsvDownloadController(
+                $csvSchema,
+                $csvSecurity,
+                $csvExports,
+                $importRuns,
+                $transferFiles,
+            ),
+            $transferSettings,
+            new TransferMaintenance($transferFiles, $transferSettings, $importRuns),
         );
     }
 }
