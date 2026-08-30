@@ -5,9 +5,12 @@ declare(strict_types=1);
 namespace AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress;
 
 use AlefDigitalSolutions\ADSTourism\Domain\Content\ContentType;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Permalink\PermalinkSettings;
 
-final class ContentTypeRegistrar
+final readonly class ContentTypeRegistrar
 {
+    public function __construct(private PermalinkSettings $permalinks) {}
+
     public function register(): void
     {
         foreach (ContentType::cases() as $contentType) {
@@ -36,8 +39,10 @@ final class ContentTypeRegistrar
             'supports' => $contentType->supportedEditorFeatures(),
             'has_archive' => true,
             'rewrite' => [
-                'slug' => $contentType->rewriteBase(),
+                'slug' => $this->permalinks->contentTypeBase($contentType),
                 'with_front' => false,
+                'hierarchical' => $contentType === ContentType::PLACE
+                    && $this->permalinks->hierarchicalPlaces(),
             ],
             'query_var' => true,
             'can_export' => true,

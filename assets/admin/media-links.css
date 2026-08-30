@@ -1,0 +1,56 @@
+.ads-tourism-media__external {
+    margin-bottom: 1rem;
+}
+
+.ads-tourism-media__url-error {
+    color: #b32d2e;
+    display: block;
+    margin-top: 0.35rem;
+}
+
+.ads-tourism-media__list {
+    display: grid;
+    gap: 0.75rem;
+    margin: 0;
+}
+
+.ads-tourism-media__item {
+    align-items: start;
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 120px minmax(0, 1fr) auto;
+    margin: 0;
+    padding: 0.75rem;
+}
+
+.ads-tourism-media__preview img {
+    display: block;
+    height: 90px;
+    object-fit: cover;
+    width: 120px;
+}
+
+.ads-tourism-media__fields {
+    display: grid;
+    gap: 0.5rem;
+    grid-template-columns: repeat(2, minmax(180px, 1fr));
+}
+
+.ads-tourism-media__fields label,
+.ads-tourism-media__fields input,
+.ads-tourism-media__fields select {
+    max-width: 100%;
+}
+
+.ads-tourism-media__actions {
+    white-space: nowrap;
+}
+
+@media (max-width: 782px) {
+    .ads-tourism-media__item,
+    .ads-tourism-media__fields {
+        grid-template-columns: 1fr;
+    }
+}

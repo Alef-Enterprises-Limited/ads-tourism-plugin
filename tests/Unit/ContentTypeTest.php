@@ -47,5 +47,6 @@ final class ContentTypeTest extends TestCase
         );
 
         self::assertSame($rewriteBases, array_values(array_unique($rewriteBases)));
+        self::assertSame('places-to-go', ContentType::PLACE->rewriteBase());
     }
 }

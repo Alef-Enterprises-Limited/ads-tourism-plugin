@@ -10,9 +10,9 @@ final class WorkflowSettings
 {
     public const OPTION_REQUIRE_VERIFICATION = 'ads_tourism_require_verification_before_publish';
 
-    private const PAGE_SLUG = 'ads-tourism-settings';
+    public const PAGE_SLUG = 'ads-tourism-settings';
 
-    private const SETTINGS_GROUP = 'ads_tourism_workflow';
+    public const SETTINGS_GROUP = 'ads_tourism_workflow';
 
     public function registerMenu(): void
     {

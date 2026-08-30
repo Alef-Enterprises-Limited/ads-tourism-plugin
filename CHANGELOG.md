@@ -18,3 +18,8 @@ The project follows [Semantic Versioning](https://semver.org/) and the structure
 - Draft, review, verified, and published workflow stages with append-only verification history.
 - A configurable publication gate that requires verification by default.
 - Tourism list-table workflow columns and verification-status filtering.
+- An indexed media-association table with Media Library and safe linked-image sources.
+- Gallery roles, manual ordering, primary selection, metadata overrides, credits, rights notices, and display defaults.
+- Content-type and global fallback images that never overwrite native featured images.
+- Central field and featured-media fallback resolvers for future templates, shortcodes, REST presentation, and builder modules.
+- Configurable post-type and taxonomy permalink bases with validation, explicit rewrite flushing, slug history, and permanent redirects.

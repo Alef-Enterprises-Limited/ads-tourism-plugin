@@ -2,7 +2,7 @@
 
 ADS Tourism is a WordPress-native foundation for tourism websites. It models destinations as the spine of a connected catalogue of things to do, places to stay, tour operators, and packages while leaving page composition to WordPress, Divi, or another builder.
 
-> **Status:** early development. The plugin currently provides the core content model, structured record fields, canonical relationships, an editorial verification workflow, and project quality/release tooling. CSV transfer, front-end components, maps, multilingual adapters, and WooCommerce commerce adapters remain planned work.
+> **Status:** early development. The plugin currently provides the core content model, structured record fields, canonical relationships, an editorial verification workflow, linked galleries, fallback resolution, configurable permalinks, and project quality/release tooling. CSV transfer, front-end components, maps, multilingual adapters, and WooCommerce commerce adapters remain planned work.
 
 ## Core content model
 
@@ -23,6 +23,14 @@ Each tourism record has a native **Tourism details** panel. Shared fields cover 
 The **Tourism relationships** panel connects records through one canonical relationship row. Editors can search, order, remove, and—where applicable—choose a primary related record. The same relationship can be queried from either side without duplicating data.
 
 New records begin as unverified. By default, WordPress keeps an unverified record in review if an editor attempts to publish it. Administrators can change this policy under **ADS Tourism → Settings**. See [Record editing and workflow](docs/user/record-workflow.md) and [Relationship architecture](docs/developer/relationships.md).
+
+## Media, fallbacks, and URLs
+
+WordPress continues to own uploaded files and featured images. The **Tourism gallery** panel associates reusable Media Library images—or safe HTTPS/site-relative links—with a record without copying or deleting files. Editors can order images and maintain roles, overrides, captions, credits, rights notices, and gallery display defaults.
+
+Featured-media resolution follows a safe chain: the record's featured image, its external image reference, the record-type default, the global tourism default, and finally no image. Empty field values similarly resolve through record overrides, record-type defaults, and global defaults before returning `null` so future templates can omit empty markup.
+
+Administrators can configure fallback images and all tourism post-type/taxonomy URL bases under **ADS Tourism → Settings**. Bases are checked for duplicates and reserved WordPress paths. Changed bases and record slugs retain redirect history. See [Media and permalink administration](docs/user/media-and-permalinks.md) and [Media and fallback architecture](docs/developer/media-and-fallbacks.md).
 
 ## Install for development
 
