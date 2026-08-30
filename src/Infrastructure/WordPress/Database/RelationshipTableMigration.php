@@ -13,6 +13,7 @@ final readonly class RelationshipTableMigration
     public function up(): void
     {
         if (!function_exists('dbDelta')) {
+            // @phpstan-ignore-next-line WordPress supplies this file at runtime.
             require_once ABSPATH . 'wp-admin/includes/upgrade.php';
         }
 

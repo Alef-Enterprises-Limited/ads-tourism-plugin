@@ -95,7 +95,7 @@ final readonly class RecordDetailsMetaBox
 
     private function requestCanSave(int $postId): bool
     {
-        if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        if (defined('DOING_AUTOSAVE') && constant('DOING_AUTOSAVE') === true) {
             return false;
         }
 

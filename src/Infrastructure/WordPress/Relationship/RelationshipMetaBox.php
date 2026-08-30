@@ -117,7 +117,7 @@ final readonly class RelationshipMetaBox
 
         foreach (RelationType::forContentType($contentType) as $relationType) {
             $rawIds = $submitted[$relationType->value] ?? [];
-            $relatedIds = is_array($rawIds) ? array_map('absint', $rawIds) : [];
+            $relatedIds = is_array($rawIds) ? array_values(array_map('absint', $rawIds)) : [];
             $primaryId = isset($primary[$relationType->value])
                 ? absint($primary[$relationType->value])
                 : null;
@@ -132,7 +132,7 @@ final readonly class RelationshipMetaBox
 
     private function requestCanSave(int $postId): bool
     {
-        if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        if (defined('DOING_AUTOSAVE') && constant('DOING_AUTOSAVE') === true) {
             return false;
         }
 
