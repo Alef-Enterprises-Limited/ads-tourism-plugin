@@ -8,7 +8,7 @@ if (!isset($postId, $renderer) || !is_int($postId) || !$renderer instanceof Fron
     return;
 }
 
-$url = get_permalink($postId);
+$url = apply_filters('ads_tourism_record_url', get_permalink($postId), $postId);
 $summary = apply_filters('ads_tourism_resolved_field', null, $postId, 'ads_tourism_summary');
 ob_start();
 $renderer->renderFeaturedMedia($postId, 'medium_large', 'ads-tourism-card__media');

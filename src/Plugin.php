@@ -15,6 +15,7 @@ use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\Import
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\TransferMaintenance;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\TransferSettings;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Integration\Divi\DiviCompatibility;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Integration\WooCommerce\WooCommerceIntegration;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Map\MapSettings;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Map\MapShortcodes;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\MediaCleanup;
@@ -100,6 +101,7 @@ final readonly class Plugin
         private SeoSettings $seoSettings,
         private SeoIntegration $seo,
         private MultilingualSettings $multilingualSettings,
+        private WooCommerceIntegration $woocommerce,
     ) {}
 
     public function register(): void
@@ -174,6 +176,7 @@ final readonly class Plugin
         $this->recordShortcodes->register();
         $this->mapShortcodes->register();
         $this->seo->register();
+        $this->woocommerce->register();
     }
 
     public function registerContentModel(): void

@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace AlefDigitalSolutions\ADSTourism;
 
+use AlefDigitalSolutions\ADSTourism\Application\Commerce\CommerceModeResolver;
+use AlefDigitalSolutions\ADSTourism\Application\Commerce\PackageProductService;
 use AlefDigitalSolutions\ADSTourism\Application\Fallback\FallbackResolver;
 use AlefDigitalSolutions\ADSTourism\Application\Fallback\MediaFallbackResolver;
 use AlefDigitalSolutions\ADSTourism\Application\ImportExport\CsvImportService;
@@ -42,6 +44,20 @@ use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\Transf
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\WordPressTourismRecordImporter;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\WpdbImportRunRepository;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Integration\Divi\DiviCompatibility;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Integration\WooCommerce\CommerceActionController;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Integration\WooCommerce\CommerceSettings;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Integration\WooCommerce\CommerceShortcodes;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Integration\WooCommerce\HposCompatibility;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Integration\WooCommerce\PackageCommerceMetaBox;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Integration\WooCommerce\PackageCommerceResolver;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Integration\WooCommerce\PackageProductCleanup;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Integration\WooCommerce\PackageProductDataFactory;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Integration\WooCommerce\PackageRecordUrlFilter;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Integration\WooCommerce\ProductPageTourismContext;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Integration\WooCommerce\WooCommerceCompatibility;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Integration\WooCommerce\WooCommerceIntegration;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Integration\WooCommerce\WooCommerceProductGateway;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Integration\WooCommerce\WordPressPackageProductLinkStore;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Map\GoogleMapsProvider;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Map\MapAssets;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Map\MapMarkerFactory;
@@ -169,6 +185,21 @@ final class PluginFactory
         $seoPlugins = new SeoPluginCompatibility();
         $seoData = new SeoDataResolver($relationshipRepository, $translations);
         $schemaMapper = new TourismSchemaMapper(new SchemaTypeMapper(), $seoData);
+        $woocommerceCompatibility = new WooCommerceCompatibility();
+        $woocommerceProducts = new WooCommerceProductGateway($woocommerceCompatibility);
+        $packageProducts = new PackageProductService(
+            new WordPressPackageProductLinkStore(),
+            $woocommerceProducts,
+        );
+        $commerceSettings = new CommerceSettings($woocommerceCompatibility);
+        $commerceResolver = new PackageCommerceResolver(
+            new CommerceModeResolver(),
+            $packageProducts,
+            $woocommerceCompatibility,
+            $commerceSettings,
+        );
+        $packageProductData = new PackageProductDataFactory();
+        $commerceActions = new CommerceActionController($packageProducts, $packageProductData);
 
         return new Plugin(
             new ContentTypeRegistrar($permalinkSettings),
@@ -224,7 +255,14 @@ final class PluginFactory
             $presentationSettings,
             new BuilderMetaRegistry($fieldSchema),
             $divi,
-            new SystemStatusPage($divi, $mapSettings, $mapProviders, $seoPlugins, $translations),
+            new SystemStatusPage(
+                $divi,
+                $mapSettings,
+                $mapProviders,
+                $seoPlugins,
+                $translations,
+                $woocommerceCompatibility,
+            ),
             new PublicQueryController(
                 $queryFactory,
                 $queryService,
@@ -270,6 +308,22 @@ final class PluginFactory
                 new SchemaGraphMerger(),
             ),
             $multilingualSettings,
+            new WooCommerceIntegration(
+                new HposCompatibility($pluginFile),
+                $commerceSettings,
+                new PackageCommerceMetaBox($packageProducts, $woocommerceCompatibility, $commerceActions),
+                $commerceActions,
+                new PackageProductCleanup($packageProducts),
+                new CommerceShortcodes(
+                    $commerceResolver,
+                    $woocommerceProducts,
+                    $commerceSettings,
+                    $shortcodeAssets,
+                    $shortcodeDiagnostics,
+                ),
+                new ProductPageTourismContext($woocommerceProducts),
+                new PackageRecordUrlFilter($commerceSettings, $commerceResolver, $woocommerceProducts),
+            ),
         );
     }
 }
