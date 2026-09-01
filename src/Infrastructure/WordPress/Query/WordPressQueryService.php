@@ -48,9 +48,11 @@ final readonly class WordPressQueryService
         }
 
         $wordpressQuery = new WP_Query($arguments);
+        /** @var list<int|WP_Post> $posts */
+        $posts = $wordpressQuery->posts;
         $postIds = array_values(array_filter(array_map(
             static fn(mixed $post): int => $post instanceof WP_Post ? $post->ID : absint($post),
-            $wordpressQuery->posts,
+            $posts,
         ), static fn(int $postId): bool => $postId > 0));
         /** @var list<positive-int> $postIds */
 
@@ -203,6 +205,6 @@ final readonly class WordPressQueryService
             $intersection = $intersection === null ? $matching : array_values(array_intersect($intersection, $matching));
         }
 
-        return $intersection ?? [];
+        return $intersection;
     }
 }

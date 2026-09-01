@@ -103,7 +103,7 @@ class PclZip
 
 class WP_Query
 {
-    /** @var list<WP_Post|int> */
+    /** @var list<WP_Post> */
     public array $posts = [];
 
     public int $max_num_pages = 0;

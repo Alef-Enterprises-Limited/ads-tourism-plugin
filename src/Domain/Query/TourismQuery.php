@@ -12,9 +12,9 @@ final readonly class TourismQuery
     public const MAX_PER_PAGE = 24;
 
     /**
-     * @param non-empty-list<ContentType>    $contentTypes
-     * @param array<string, list<string>>    $taxonomyFilters
-     * @param array<string, positive-int>    $relationshipFilters
+     * @param list<ContentType>           $contentTypes
+     * @param array<string, list<string>> $taxonomyFilters
+     * @param array<string, positive-int> $relationshipFilters
      */
     public function __construct(
         public ContextName $context,

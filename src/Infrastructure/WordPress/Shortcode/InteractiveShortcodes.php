@@ -15,7 +15,6 @@ use AlefDigitalSolutions\ADSTourism\Domain\Taxonomy\TourismTaxonomy;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Query\WordPressQueryService;
 use InvalidArgumentException;
 use WP_Post;
-use WP_Term;
 
 final class InteractiveShortcodes
 {
@@ -393,11 +392,9 @@ final class InteractiveShortcodes
             . esc_html__('All', 'ads-tourism') . '</option>';
 
         foreach ($terms as $term) {
-            if ($term instanceof WP_Term) {
-                $html .= '<option value="' . esc_attr($term->slug) . '" '
-                    . selected(in_array($term->slug, $selectedTerms, true), true, false) . '>'
-                    . esc_html($term->name) . '</option>';
-            }
+            $html .= '<option value="' . esc_attr($term->slug) . '" '
+                . selected(in_array($term->slug, $selectedTerms, true), true, false) . '>'
+                . esc_html($term->name) . '</option>';
         }
 
         return '<div class="ads-tourism-filters__field">' . $html . '</select></div>';
