@@ -23,3 +23,7 @@ The project follows [Semantic Versioning](https://semver.org/) and the structure
 - Content-type and global fallback images that never overwrite native featured images.
 - Central field and featured-media fallback resolvers for future templates, shortcodes, REST presentation, and builder modules.
 - Configurable post-type and taxonomy permalink bases with validation, explicit rewrite flushing, slug history, and permanent redirects.
+- Versioned CSV templates, automatic or manual column mapping, dry-run previews, and row validation.
+- AJAX-batched record imports with external-ID duplicate policies, explicit clearing, and controlled taxonomy terms.
+- Per-row transactional writes, rejected-row reports, import history, protected temporary files, and automatic expiry cleanup.
+- Filtered ZIP exports containing record files, taxonomy definitions, relationships, media associations, and a checksummed manifest.
