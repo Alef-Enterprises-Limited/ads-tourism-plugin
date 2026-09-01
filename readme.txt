@@ -4,7 +4,7 @@ Tags: tourism, destinations, accommodation, activities, tour packages
 Requires at least: 6.6
 Tested up to: 6.8
 Requires PHP: 8.2
-Stable tag: 1.0.0
+Stable tag: 1.1.0
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -17,6 +17,8 @@ ADS Tourism provides connected content types for a tourism website while preserv
 Version 1.0 provides the core content model, structured fields, connected records, a verification-first editorial workflow, reusable media galleries, fallback resolution, configurable tourism permalinks, secure CSV transfer, interactive discovery shortcodes, tourism SEO/schema integration, optional Google Maps, multilingual readiness, and optional WooCommerce Package commerce.
 
 Editors can use native WordPress screens to maintain tourism details, search for related records, order those relationships, and verify content before publication. Administrators may relax the verification publication gate under ADS Tourism > Settings.
+
+The ADS Tourism > Help screen provides shortcode recipes, syntax, supported attributes, usage rules, and administration references. ADS Tourism > Tags & Categories provides the management screens for all tourism taxonomies, including an optional RGB hex color for each term; blank colors remain unstyled.
 
 The plugin leaves uploads in the WordPress Media Library. Gallery associations can be detached without deleting attachments. Administrators can also choose fallback images and edit tourism URL bases under ADS Tourism > Settings.
 

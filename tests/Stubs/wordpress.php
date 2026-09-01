@@ -12,6 +12,13 @@ define('ABSPATH', '/');
 define('HOUR_IN_SECONDS', 3600);
 define('MINUTE_IN_SECONDS', 60);
 define('PCLZIP_OPT_REMOVE_PATH', 77001);
+
+/** @var list<array<string, mixed>> */
+$GLOBALS['ads_tourism_test_menu_pages'] = [];
+/** @var array<int, array<string, string>> */
+$GLOBALS['ads_tourism_test_term_meta'] = [];
+/** @var list<array{taxonomy: string, meta_key: string, arguments: array<string, mixed>}> */
+$GLOBALS['ads_tourism_test_registered_term_meta'] = [];
 define('WC_VERSION', '10.0.0');
 
 class WooCommerce {}
@@ -301,7 +308,16 @@ function add_menu_page(
     string $iconUrl = '',
     int|float|null $position = null,
 ): string {
-    return '';
+    $GLOBALS['ads_tourism_test_menu_pages'][] = [
+        'type' => 'top_level',
+        'parent' => null,
+        'page_title' => $pageTitle,
+        'menu_title' => $menuTitle,
+        'capability' => $capability,
+        'slug' => $menuSlug,
+    ];
+
+    return $menuSlug;
 }
 
 function add_submenu_page(
@@ -313,7 +329,16 @@ function add_submenu_page(
     ?callable $callback = null,
     int|float|null $position = null,
 ): string|false {
-    return '';
+    $GLOBALS['ads_tourism_test_menu_pages'][] = [
+        'type' => 'submenu',
+        'parent' => $parentSlug,
+        'page_title' => $pageTitle,
+        'menu_title' => $menuTitle,
+        'capability' => $capability,
+        'slug' => $menuSlug,
+    ];
+
+    return $menuSlug;
 }
 
 function add_meta_box(
@@ -386,6 +411,17 @@ function dbDelta(string $queries = '', bool $execute = true): array
 
 function delete_post_meta(int $postId, string $metaKey, mixed $metaValue = ''): bool
 {
+    return true;
+}
+
+function delete_term_meta(int $termId, string $metaKey, mixed $metaValue = ''): bool
+{
+    unset($GLOBALS['ads_tourism_test_term_meta'][$termId][$metaKey]);
+
+    if (isset($GLOBALS['ads_tourism_test_term_meta'][$termId]) && $GLOBALS['ads_tourism_test_term_meta'][$termId] === []) {
+        unset($GLOBALS['ads_tourism_test_term_meta'][$termId]);
+    }
+
     return true;
 }
 
@@ -538,6 +574,13 @@ function get_post_meta(int $postId, string $key = '', bool $single = false): mix
     return '';
 }
 
+function get_term_meta(int $termId, string $key = '', bool $single = false): mixed
+{
+    $value = $GLOBALS['ads_tourism_test_term_meta'][$termId][$key] ?? '';
+
+    return $single ? $value : [$value];
+}
+
 function get_post_status(int|WP_Post $post = 0): string|false
 {
     return 'draft';
@@ -681,6 +724,18 @@ function register_post_meta(string $postType, string $metaKey, array $arguments)
 }
 
 /** @param array<string, mixed> $arguments */
+function register_term_meta(string $taxonomy, string $metaKey, array $arguments): bool
+{
+    $GLOBALS['ads_tourism_test_registered_term_meta'][] = [
+        'taxonomy' => $taxonomy,
+        'meta_key' => $metaKey,
+        'arguments' => $arguments,
+    ];
+
+    return true;
+}
+
+/** @param array<string, mixed> $arguments */
 function register_post_type(string $postType, array $arguments = []): object
 {
     return new stdClass();
@@ -731,6 +786,13 @@ function sanitize_email(string $email): string
 function sanitize_file_name(string $filename): string
 {
     return $filename;
+}
+
+function sanitize_hex_color(string $color): ?string
+{
+    $color = trim($color);
+
+    return preg_match('/^#[0-9a-f]{3}(?:[0-9a-f]{3})?$/i', $color) === 1 ? $color : null;
 }
 
 function sanitize_key(string $key): string
@@ -803,12 +865,24 @@ function update_post_meta(int $postId, string $metaKey, mixed $metaValue, mixed 
     return true;
 }
 
+function update_term_meta(int $termId, string $metaKey, mixed $metaValue, mixed $previousValue = ''): int|bool
+{
+    $GLOBALS['ads_tourism_test_term_meta'][$termId][$metaKey] = (string) $metaValue;
+
+    return true;
+}
+
 function wp_attachment_is_image(int|WP_Post $post = 0): bool
 {
     return true;
 }
 
 function wp_add_inline_style(string $handle, string $data): bool
+{
+    return true;
+}
+
+function wp_add_inline_script(string $handle, string $data, string $position = 'after'): bool
 {
     return true;
 }

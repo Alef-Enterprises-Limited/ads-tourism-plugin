@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: ADS Tourism 1.0.0\n"
+"Project-Id-Version: ADS Tourism 1.1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/Alef-Enterprises-Limited/ads-tourism-plugin/issues\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -50,7 +50,7 @@ msgstr ""
 msgid "Accessibility Feature"
 msgstr ""
 
-#: src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+#: src/Infrastructure/WordPress/AdminMenu.php:1 src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
 msgid "Accessibility Features"
 msgstr ""
 
@@ -66,6 +66,10 @@ msgstr ""
 msgid "Accommodation and other places where visitors can stay."
 msgstr ""
 
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "A complete listing recipe"
+msgstr ""
+
 #: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1
 msgid "Activities, attractions, and experiences for visitors."
 msgstr ""
@@ -78,7 +82,7 @@ msgstr ""
 msgid "Activity Type"
 msgstr ""
 
-#: src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+#: src/Infrastructure/WordPress/AdminMenu.php:1 src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
 msgid "Activity Types"
 msgstr ""
 
@@ -114,6 +118,10 @@ msgstr ""
 msgid "Add to Cart and Buy Now"
 msgstr ""
 
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Administration references"
+msgstr ""
+
 #: src/Infrastructure/WordPress/AdminMenu.php:1 src/Infrastructure/WordPress/Maintenance/PrivacyPolicyGuide.php:1
 msgid "ADS Tourism"
 msgstr ""
@@ -128,6 +136,10 @@ msgstr ""
 
 #: src/Infrastructure/WordPress/Database/MigrationRunner.php:1
 msgid "ADS Tourism database update is incomplete."
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "ADS Tourism Help"
 msgstr ""
 
 #: src/Infrastructure/WordPress/Workflow/PublishingGate.php:1
@@ -218,7 +230,7 @@ msgstr ""
 msgid "Always use ADS Tourism schema"
 msgstr ""
 
-#: src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+#: src/Infrastructure/WordPress/AdminMenu.php:1 src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
 msgid "Amenities"
 msgstr ""
 
@@ -402,6 +414,10 @@ msgstr ""
 msgid "Clear"
 msgstr ""
 
+#: src/Infrastructure/WordPress/TaxonomyColorManager.php:1
+msgid "Color (RGB hex)"
+msgstr ""
+
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
 msgid "Column mapping"
 msgstr ""
@@ -412,6 +428,10 @@ msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
 msgid "Commerce mode"
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Composable controls"
 msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
@@ -434,8 +454,16 @@ msgstr ""
 msgid "Control how tourism records move from draft through review and verification to publication."
 msgstr ""
 
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Controls and results that belong together must use the same context. A context may contain only one primary results grid or all-in-one listing."
+msgstr ""
+
 #: src/Domain/Relationship/RelationType.php:1
 msgid "Covered places"
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Create and verify tourism records from the native Places to Go, Things to Do, Places to Stay, Tour Operators, and Packages screens."
 msgstr ""
 
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
@@ -462,12 +490,16 @@ msgstr ""
 msgid "CSV column"
 msgstr ""
 
-#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1 src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
 msgid "CSV Import/Export"
 msgstr ""
 
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
 msgid "CSV Import and Export"
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "CSV taxonomy columns use term slugs, such as history. The filters shortcode exposes a Tourism Tags selector with fields=\"tag\"."
 msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
@@ -658,6 +690,14 @@ msgstr ""
 msgid "Equipment required"
 msgstr ""
 
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Every shortcode below uses the ads_tourism_ prefix. Attributes not listed for a shortcode are ignored. Use quoted values for text and comma-separated values where shown."
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Example syntax"
+msgstr ""
+
 #: src/Domain/Field/RecordFieldSchema.php:1
 msgid "Exclusions"
 msgstr ""
@@ -782,12 +822,16 @@ msgstr ""
 msgid "Geographic Area"
 msgstr ""
 
-#: src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+#: src/Infrastructure/WordPress/AdminMenu.php:1 src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
 msgid "Geographic Areas"
 msgstr ""
 
 #: src/Infrastructure/WordPress/Map/MapShortcodes.php:1
 msgid "Get directions"
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Getting started"
 msgstr ""
 
 #: src/Infrastructure/WordPress/Media/MediaSettings.php:1
@@ -806,12 +850,20 @@ msgstr ""
 msgid "Group price"
 msgstr ""
 
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Help"
+msgstr ""
+
 #: src/Domain/Field/RecordFieldSchema.php:1 src/Domain:1
 msgid "Hero"
 msgstr ""
 
 #: src/Infrastructure/WordPress/SEO/SeoIntegration.php:1
 msgid "Home"
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Important:"
 msgstr ""
 
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
@@ -918,6 +970,10 @@ msgstr ""
 msgid "Linked product tourism details synchronized."
 msgstr ""
 
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Listings"
+msgstr ""
+
 #: src/Domain/Field/RecordFieldSchema.php:1 src/Infrastructure/WordPress/Shortcode/PaginationRenderer.php:1
 msgid "Load more"
 msgstr ""
@@ -954,6 +1010,10 @@ msgstr ""
 msgid "Managed stays"
 msgstr ""
 
+#: src/Infrastructure/WordPress/AdminMenu.php:1
+msgid "Manage the taxonomy terms used to classify places, activities, accommodation, operators, and packages."
+msgstr ""
+
 #: src/Domain/Field/RecordFieldSchema.php:1
 msgid "Manual"
 msgstr ""
@@ -978,12 +1038,16 @@ msgstr ""
 msgid "Map provider available"
 msgstr ""
 
-#: src/Infrastructure/WordPress/Map/MapSettings.php:1
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1 src/Infrastructure/WordPress/Map/MapSettings.php:1
 msgid "Maps"
 msgstr ""
 
 #: src/Infrastructure/WordPress/Map/MapSettings.php:1
 msgid "Maps are optional. Coordinates remain stored when maps are disabled or a provider is unavailable."
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Maps require a configured map provider and records with valid coordinates. Commerce controls are available only when the optional WooCommerce integration is active and the Package is configured for commerce."
 msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
@@ -1206,6 +1270,18 @@ msgstr ""
 msgid "Optional administrator CSS, limited to 50 KB. Unsafe style and script constructs are removed."
 msgstr ""
 
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Optional commerce"
+msgstr ""
+
+#: src/Infrastructure/WordPress/TaxonomyColorManager.php:1
+msgid "Optional RGB hex color for this term. Clear the field for no color."
+msgstr ""
+
+#: src/Infrastructure/WordPress/TaxonomyColorManager.php:1
+msgid "Optional RGB hex color for this term. Leave blank for no color."
+msgstr ""
+
 #: src/Infrastructure/WordPress/Maintenance/MaintenancePage.php:1
 msgid "Orphaned relationships"
 msgstr ""
@@ -1230,7 +1306,7 @@ msgstr ""
 msgid "Package page controls"
 msgstr ""
 
-#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1 src/Infrastructure/WordPress/Media/MediaSettings.php:1 src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/HelpAdminPage.php:1 src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1 src/Infrastructure/WordPress/Media/MediaSettings.php:1 src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1
 msgid "Packages"
 msgstr ""
 
@@ -1258,7 +1334,7 @@ msgstr ""
 msgid "Package Type"
 msgstr ""
 
-#: src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+#: src/Infrastructure/WordPress/AdminMenu.php:1 src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
 msgid "Package Types"
 msgstr ""
 
@@ -1310,11 +1386,15 @@ msgstr ""
 msgid "Place"
 msgstr ""
 
-#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1 src/Infrastructure/WordPress/Media/MediaSettings.php:1 src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Place shortcodes in a Shortcode block, the classic editor, a Divi Code or Text module, or another builder that executes WordPress shortcodes."
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/HelpAdminPage.php:1 src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1 src/Infrastructure/WordPress/Media/MediaSettings.php:1 src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1
 msgid "Places to Go"
 msgstr ""
 
-#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1 src/Infrastructure/WordPress/Media/MediaSettings.php:1 src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/HelpAdminPage.php:1 src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1 src/Infrastructure/WordPress/Media/MediaSettings.php:1 src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1
 msgid "Places to Stay"
 msgstr ""
 
@@ -1330,7 +1410,7 @@ msgstr ""
 msgid "Place Type"
 msgstr ""
 
-#: src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+#: src/Infrastructure/WordPress/AdminMenu.php:1 src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
 msgid "Place Types"
 msgstr ""
 
@@ -1414,6 +1494,10 @@ msgstr ""
 msgid "Published"
 msgstr ""
 
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Purpose"
+msgstr ""
+
 #: src/Domain/Field/RecordFieldSchema.php:1 src/Domain:1
 msgid "Random"
 msgstr ""
@@ -1428,6 +1512,10 @@ msgstr ""
 
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
 msgid "Recent imports"
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Record components"
 msgstr ""
 
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
@@ -1456,6 +1544,70 @@ msgstr ""
 
 #: src/Infrastructure/WordPress/Map/MapSettings.php:1
 msgid "Remove the stored Google Maps key"
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Render a keyword search control."
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Render an allowlisted sorting control."
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Render a Package itinerary."
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Render catalogue, enquiry, cart, or purchase controls for a Package."
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Render one or more tourism map markers."
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Render one public scalar field from the current or selected record."
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Render pagination for a context."
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Render related Packages."
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Render related Places to Go."
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Render related Places to Stay."
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Render related Things to Do."
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Render related Tour Operators."
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Render taxonomy, relationship, price, and duration filters."
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Render the primary results grid for a context."
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Render the providers related to a Package."
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Render the record gallery."
 msgstr ""
 
 #: src/Infrastructure/WordPress/Maintenance/MaintenancePage.php:1
@@ -1566,12 +1718,48 @@ msgstr ""
 msgid "Set featured image"
 msgstr ""
 
-#: src/Infrastructure/WordPress/Workflow/WorkflowSettings.php:1
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1 src/Infrastructure/WordPress/Workflow/WorkflowSettings.php:1
 msgid "Settings"
 msgstr ""
 
 #: src/Infrastructure/WordPress/Maintenance/MaintenanceSettings.php:1
 msgid "Shared Media Library attachments and WooCommerce Products are never deleted. This action cannot be undone."
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Shortcode"
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Shortcode reference"
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Shortcode rules and field names"
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Show a mixed catalogue listing."
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Show a Packages listing."
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Show a Places to Go listing."
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Show a Places to Stay listing."
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Show a Things to Do listing."
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Show a Tour Operators listing."
 msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
@@ -1642,7 +1830,7 @@ msgstr ""
 msgid "Stay Type"
 msgstr ""
 
-#: src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+#: src/Infrastructure/WordPress/AdminMenu.php:1 src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
 msgid "Stay Types"
 msgstr ""
 
@@ -1658,12 +1846,20 @@ msgstr ""
 msgid "Summary"
 msgstr ""
 
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Supported attributes"
+msgstr ""
+
 #: src/Infrastructure/WordPress/Integration/WooCommerce/PackageCommerceMetaBox.php:1
 msgid "Sync tourism details"
 msgstr ""
 
 #: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
 msgid "System Status"
+msgstr ""
+
+#: src/Infrastructure/WordPress/AdminMenu.php:1 src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Tags & Categories"
 msgstr ""
 
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
@@ -1688,6 +1884,14 @@ msgstr ""
 
 #: src/Infrastructure/WordPress/ImportExport/CsvDownloadController.php:1
 msgid "The CSV template could not be generated."
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "The field shortcode accepts public scalar tourism field keys, with or without the ads_tourism_ prefix. Structured arrays and administrator-only fields are not rendered by it."
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "The filters fields attribute accepts area, place_type, activity_type, stay_type, package_type, amenity, traveller, accessibility, tag, place, activity, stay, operator, package, provider, price, and duration."
 msgstr ""
 
 #: src/Infrastructure/WordPress/Map/MapSettings.php:1
@@ -1730,7 +1934,7 @@ msgstr ""
 msgid "The ZIP contains record CSV files, taxonomy definitions, relationships, media links, and a checksummed manifest."
 msgstr ""
 
-#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1 src/Infrastructure/WordPress/Media/MediaSettings.php:1 src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/HelpAdminPage.php:1 src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1 src/Infrastructure/WordPress/Media/MediaSettings.php:1 src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1
 msgid "Things to Do"
 msgstr ""
 
@@ -1810,7 +2014,7 @@ msgstr ""
 msgid "Tourism Tag"
 msgstr ""
 
-#: src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+#: src/Infrastructure/WordPress/AdminMenu.php:1 src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
 msgid "Tourism Tags"
 msgstr ""
 
@@ -1822,7 +2026,7 @@ msgstr ""
 msgid "Tour Operator"
 msgstr ""
 
-#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1 src/Infrastructure/WordPress/Media/MediaSettings.php:1 src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/HelpAdminPage.php:1 src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1 src/Infrastructure/WordPress/Media/MediaSettings.php:1 src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1
 msgid "Tour Operators"
 msgstr ""
 
@@ -1838,7 +2042,7 @@ msgstr ""
 msgid "Traveller Type"
 msgstr ""
 
-#: src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+#: src/Infrastructure/WordPress/AdminMenu.php:1 src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
 msgid "Traveller Types"
 msgstr ""
 
@@ -1894,6 +2098,10 @@ msgstr ""
 msgid "User ID"
 msgstr ""
 
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Use Tags & Categories to create reusable taxonomy terms, then assign them while editing records."
+msgstr ""
+
 #: src/Infrastructure/WordPress/AdminMenu.php:1
 msgid "Use the native content screens to add structured details, connect related records, and manage verification before publication."
 msgstr ""
@@ -1902,8 +2110,16 @@ msgstr ""
 msgid "Use the original-language record when no translated equivalent exists."
 msgstr ""
 
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Use the Tourism relationships panel to connect records such as a place, activity, stay, operator, or package."
+msgstr ""
+
 #: src/Infrastructure/WordPress/Media/MediaSettings.php:1
 msgid "Use this image"
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Use this reference to build tourism pages with records, taxonomies, relationships, and shortcodes."
 msgstr ""
 
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
@@ -2042,6 +2258,10 @@ msgstr ""
 msgid "You do not have permission to manage ADS Tourism settings."
 msgstr ""
 
+#: src/Infrastructure/WordPress/AdminMenu.php:1
+msgid "You do not have permission to manage tourism taxonomies."
+msgstr ""
+
 #: src/Infrastructure/WordPress/Integration/WooCommerce/CommerceSettings.php:1
 msgid "You do not have permission to manage WooCommerce integration settings."
 msgstr ""
@@ -2056,6 +2276,10 @@ msgstr ""
 
 #: src/Infrastructure/WordPress/Database/MigrationRunner.php:1
 msgid "You do not have permission to update ADS Tourism."
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "You do not have permission to view ADS Tourism help."
 msgstr ""
 
 #: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1

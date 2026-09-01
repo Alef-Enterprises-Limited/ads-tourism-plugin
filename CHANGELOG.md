@@ -6,6 +6,15 @@ The project follows [Semantic Versioning](https://semver.org/) and the structure
 
 ## [Unreleased]
 
+No unreleased changes.
+
+## [1.1.0] - 2026-09-02
+
+### Added
+
+- An ADS Tourism Help submenu with shortcode recipes, complete shortcode attributes, usage rules, and administration references.
+- Optional RGB hex color metadata and native WordPress color pickers for terms in all nine tourism taxonomies, with no color as the default.
+
 ## [1.0.0] - 2026-09-01
 
 ### Added

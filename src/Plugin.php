@@ -9,6 +9,7 @@ use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\AdminMenu;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ContentTypeRegistrar;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Database\MigrationRunner;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Fallback\FallbackHooks;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\HelpAdminPage;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\CsvDownloadController;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\CsvImportController;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\ImportExportAdminPage;
@@ -46,6 +47,7 @@ use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\SEO\SeoSettings;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Shortcode\InteractiveShortcodes;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Shortcode\RecordComponentShortcodes;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Shortcode\ShortcodeAssets;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\TaxonomyColorManager;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\TaxonomyRegistrar;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\TranslationLoader;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Workflow\PublishingGate;
@@ -57,13 +59,15 @@ final readonly class Plugin
 {
     public const SCHEMA_VERSION = 4;
 
-    public const VERSION = '1.0.0';
+    public const VERSION = '1.1.0';
 
     public function __construct(
         private ContentTypeRegistrar $contentTypes,
         private TaxonomyRegistrar $taxonomies,
+        private TaxonomyColorManager $taxonomyColors,
         private MetadataRegistrar $metadata,
         private AdminMenu $adminMenu,
+        private HelpAdminPage $helpPage,
         private TranslationLoader $translations,
         private MigrationRunner $migrations,
         private RecordDetailsMetaBox $recordDetails,
@@ -116,6 +120,7 @@ final readonly class Plugin
         add_action('plugins_loaded', [$this->translations, 'load'], 10);
         add_action('init', [$this, 'registerContentModel']);
         add_action('admin_menu', [$this->adminMenu, 'register']);
+        add_action('admin_menu', [$this->helpPage, 'registerMenu']);
         add_action('admin_menu', [$this->workflowSettings, 'registerMenu']);
         add_action('admin_menu', [$this->importExportPage, 'registerMenu']);
         add_action('admin_menu', [$this->systemStatus, 'registerMenu']);
@@ -138,6 +143,7 @@ final readonly class Plugin
         add_action('admin_enqueue_scripts', [$this->mediaEditor, 'enqueueAssets']);
         add_action('admin_enqueue_scripts', [$this->mediaSettings, 'enqueueAssets']);
         add_action('admin_enqueue_scripts', [$this->importExportPage, 'enqueueAssets']);
+        add_action('admin_enqueue_scripts', [$this->taxonomyColors, 'enqueueAssets']);
         add_action('save_post', [$this->recordDetails, 'save'], 10);
         add_action('save_post', [$this->relationshipEditor, 'save'], 20);
         add_action('save_post', [$this->mediaEditor, 'save'], 25);
@@ -177,6 +183,7 @@ final readonly class Plugin
         add_action('admin_notices', [$this->migrations, 'renderFailureNotice']);
         add_action('restrict_manage_posts', [$this->workflowColumns, 'renderFilter']);
         add_action('pre_get_posts', [$this->workflowColumns, 'applyFilter']);
+        $this->taxonomyColors->register();
         $this->workflowColumns->register();
         $this->fallbacks->register();
         $this->templates->register();
@@ -195,6 +202,7 @@ final readonly class Plugin
     {
         $this->contentTypes->register();
         $this->taxonomies->register();
+        $this->taxonomyColors->registerMeta();
         $this->metadata->register();
     }
 

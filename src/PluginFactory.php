@@ -33,6 +33,7 @@ use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Database\MigrationR
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Database\RelationshipTableMigration;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Fallback\FallbackHooks;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Fallback\RecordFieldFallbackResolver;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\HelpAdminPage;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\CsvDownloadController;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\CsvExportService;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\CsvImportController;
@@ -109,6 +110,7 @@ use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Shortcode\Paginatio
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Shortcode\RecordComponentShortcodes;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Shortcode\ShortcodeAssets;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Shortcode\ShortcodeDiagnostic;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\TaxonomyColorManager;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\TaxonomyRegistrar;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\TranslationLoader;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Workflow\PublishingGate;
@@ -214,8 +216,10 @@ final class PluginFactory
         return new Plugin(
             new ContentTypeRegistrar($permalinkSettings),
             new TaxonomyRegistrar($permalinkSettings),
+            new TaxonomyColorManager(),
             new MetadataRegistrar($fieldSchema, $metaSanitizer),
             new AdminMenu(),
+            new HelpAdminPage(),
             new TranslationLoader($pluginFile),
             $migrations,
             new RecordDetailsMetaBox($fieldSchema, $metaSanitizer),

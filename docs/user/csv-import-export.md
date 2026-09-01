@@ -29,6 +29,10 @@ Blank cells mean “leave the existing value unchanged” when updating a record
 
 Advanced taxonomy cells contain stable slugs separated by `|`, for example `diving|history`. Unknown terms are rejected by default. An administrator may enable controlled term creation in Transfer settings; the dry-run then shows the name that will be created from each unknown slug.
 
+Terms can also be created manually from **ADS Tourism → Tags & Categories**. Open the relevant taxonomy management link, add the display name and exact CSV slug, then return to the import preview. Place Types, Activity Types, Stay Types, Package Types, Amenities, Traveller Types, Accessibility Features, Tourism Tags, and Geographic Areas each have their own management screen.
+
+Every ADS Tourism taxonomy term also has an optional **Color (RGB hex)** field with a color picker. Leave it blank to keep the default no-color state; clear an existing value to remove its color.
+
 Invalid rows do not stop valid rows. Download the rejected-row report from Recent Imports, fix the errors, and import those rows again. Relationship import is intentionally deferred; connect records in their native Tourism relationships panels.
 
 ## Images and media

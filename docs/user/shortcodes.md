@@ -2,6 +2,8 @@
 
 ADS Tourism shortcodes work in the WordPress Shortcode block, classic editor, Divi Code or Text modules, and standards-compliant builders that execute WordPress shortcodes.
 
+Administrators can open **ADS Tourism → Help** for an in-dashboard quick-start recipe, shortcode syntax, supported attributes, usage rules, and links to the main administration screens. This page includes optional WooCommerce commerce controls when that integration is available.
+
 ## All-in-one listings
 
 Use a type-specific shortcode when one results grid is enough:

@@ -4,7 +4,7 @@
  * Plugin Name: ADS Tourism
  * Plugin URI: https://github.com/Alef-Enterprises-Limited/ads-tourism-plugin
  * Description: WordPress-native tourism content for destinations, activities, accommodation, operators, and packages.
- * Version: 1.0.0
+ * Version: 1.1.0
  * Requires at least: 6.6
  * Requires PHP: 8.2
  * Author: Alef Digital Solutions
