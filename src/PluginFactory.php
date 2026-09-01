@@ -4,17 +4,33 @@ declare(strict_types=1);
 
 namespace AlefDigitalSolutions\ADSTourism;
 
+use AlefDigitalSolutions\ADSTourism\Application\Fallback\FallbackResolver;
+use AlefDigitalSolutions\ADSTourism\Application\Fallback\MediaFallbackResolver;
+use AlefDigitalSolutions\ADSTourism\Application\Media\MediaLinkService;
 use AlefDigitalSolutions\ADSTourism\Application\Relationship\RelationshipService;
 use AlefDigitalSolutions\ADSTourism\Application\Workflow\VerificationHistoryService;
 use AlefDigitalSolutions\ADSTourism\Domain\Field\RecordFieldSchema;
+use AlefDigitalSolutions\ADSTourism\Domain\Permalink\PermalinkBaseValidator;
 use AlefDigitalSolutions\ADSTourism\Domain\Workflow\PublicationPolicy;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\AdminMenu;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ContentTypeRegistrar;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Database\MediaLinkTableMigration;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Database\MigrationRunner;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Database\RelationshipTableMigration;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Fallback\FallbackHooks;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Fallback\RecordFieldFallbackResolver;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\FeaturedMediaResolver;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\MediaCleanup;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\MediaLinkMetaBox;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\MediaSettings;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\WordPressMediaAttachmentResolver;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\WpdbMediaLinkRepository;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Metadata\MetadataRegistrar;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Metadata\MetaValueSanitizer;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Metadata\RecordDetailsMetaBox;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Permalink\PermalinkRedirector;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Permalink\PermalinkSettings;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Permalink\SlugHistory;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Relationship\RelationshipCleanup;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Relationship\RelationshipMetaBox;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Relationship\RelationshipSearchController;
@@ -40,14 +56,26 @@ final class PluginFactory
         $recordTypes = new WordPressRecordTypeResolver();
         $relationshipRepository = new WpdbRelationshipRepository($wpdb);
         $relationshipService = new RelationshipService($relationshipRepository, $recordTypes);
+        $mediaRepository = new WpdbMediaLinkRepository($wpdb);
+        $mediaService = new MediaLinkService(
+            $mediaRepository,
+            $recordTypes,
+            new WordPressMediaAttachmentResolver(),
+        );
+        $permalinkSettings = new PermalinkSettings(new PermalinkBaseValidator());
+        $mediaSettings = new MediaSettings($pluginFile);
+        $fallbackResolver = new FallbackResolver();
 
         return new Plugin(
-            new ContentTypeRegistrar(),
-            new TaxonomyRegistrar(),
+            new ContentTypeRegistrar($permalinkSettings),
+            new TaxonomyRegistrar($permalinkSettings),
             new MetadataRegistrar($fieldSchema, $metaSanitizer),
             new AdminMenu(),
             new TranslationLoader($pluginFile),
-            new MigrationRunner(new RelationshipTableMigration($wpdb)),
+            new MigrationRunner(
+                new RelationshipTableMigration($wpdb),
+                new MediaLinkTableMigration($wpdb),
+            ),
             new RecordDetailsMetaBox($fieldSchema, $metaSanitizer),
             new RelationshipMetaBox($relationshipService, $pluginFile),
             new RelationshipSearchController($recordTypes),
@@ -57,6 +85,16 @@ final class PluginFactory
             new WorkflowColumns(),
             new WorkflowSettings(),
             new VerificationHistoryMetaBox(),
+            new MediaLinkMetaBox($mediaService, $pluginFile),
+            new MediaCleanup($mediaRepository),
+            $mediaSettings,
+            $permalinkSettings,
+            new PermalinkRedirector($permalinkSettings),
+            new SlugHistory(),
+            new FallbackHooks(
+                new RecordFieldFallbackResolver($fallbackResolver),
+                new FeaturedMediaResolver(new MediaFallbackResolver(), $mediaSettings),
+            ),
         );
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Database;
 
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Permalink\PermalinkSettings;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Workflow\WorkflowSettings;
 use AlefDigitalSolutions\ADSTourism\Plugin;
 
@@ -13,7 +14,10 @@ final readonly class MigrationRunner
 
     private const SCHEMA_OPTION = 'ads_tourism_schema_version';
 
-    public function __construct(private RelationshipTableMigration $relationships) {}
+    public function __construct(
+        private RelationshipTableMigration $relationships,
+        private MediaLinkTableMigration $mediaLinks,
+    ) {}
 
     public function run(): void
     {
@@ -29,10 +33,15 @@ final readonly class MigrationRunner
 
         try {
             $this->relationships->up();
+            $this->mediaLinks->up();
             update_option(self::SCHEMA_OPTION, Plugin::SCHEMA_VERSION);
 
             if (get_option(WorkflowSettings::OPTION_REQUIRE_VERIFICATION, null) === null) {
                 add_option(WorkflowSettings::OPTION_REQUIRE_VERIFICATION, true);
+            }
+
+            if (get_option(PermalinkSettings::OPTION_REDIRECTS, null) === null) {
+                add_option(PermalinkSettings::OPTION_REDIRECTS, ['places' => 'places-to-go'], '', false);
             }
         } finally {
             delete_transient(self::LOCK_KEY);

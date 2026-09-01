@@ -20,7 +20,7 @@ enum ContentType: string
     public function rewriteBase(): string
     {
         return match ($this) {
-            self::PLACE => 'places',
+            self::PLACE => 'places-to-go',
             self::ACTIVITY => 'things-to-do',
             self::STAY => 'places-to-stay',
             self::OPERATOR => 'tour-operators',
