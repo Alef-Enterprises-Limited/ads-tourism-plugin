@@ -6,6 +6,8 @@ The project follows [Semantic Versioning](https://semver.org/) and the structure
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-09-01
+
 ### Added
 
 - Initial plugin bootstrap and dependency-free runtime autoloader.
@@ -48,3 +50,8 @@ The project follows [Semantic Versioning](https://semver.org/) and the structure
 - Catalogue, Enquiry, and WooCommerce mode resolution with safe non-transactional fallbacks.
 - Builder-agnostic Add to Cart and Buy Now controls, configurable listing destinations, and linked Product-page tourism components.
 - WooCommerce CRUD integration, Product/Package deletion cleanup, and HPOS compatibility declaration.
+- Migration locking, failure recovery, and database-schema status reporting.
+- Administrator integrity scans and safe repair actions for orphaned rows and stale commerce mappings.
+- WordPress privacy-policy guidance and explicit preservation-first uninstall controls.
+- A 1,000-record performance budget, accessibility regression coverage, and release acceptance checklists.
+- Deterministic installable ZIP builds with SHA-256 checksums and file manifests.

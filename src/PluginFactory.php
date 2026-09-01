@@ -64,6 +64,10 @@ use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Map\MapMarkerFactor
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Map\MapProviderRegistry;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Map\MapSettings;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Map\MapShortcodes;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Maintenance\IntegrityScanner;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Maintenance\MaintenancePage;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Maintenance\MaintenanceSettings;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Maintenance\PrivacyPolicyGuide;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\FeaturedMediaResolver;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\MediaCleanup;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\MediaLinkMetaBox;
@@ -200,6 +204,12 @@ final class PluginFactory
         );
         $packageProductData = new PackageProductDataFactory();
         $commerceActions = new CommerceActionController($packageProducts, $packageProductData);
+        $migrations = new MigrationRunner(
+            new RelationshipTableMigration($wpdb),
+            new MediaLinkTableMigration($wpdb),
+            new ImportRunTableMigration($wpdb),
+        );
+        $integrity = new IntegrityScanner($wpdb, $relationshipRepository, $mediaRepository);
 
         return new Plugin(
             new ContentTypeRegistrar($permalinkSettings),
@@ -207,11 +217,7 @@ final class PluginFactory
             new MetadataRegistrar($fieldSchema, $metaSanitizer),
             new AdminMenu(),
             new TranslationLoader($pluginFile),
-            new MigrationRunner(
-                new RelationshipTableMigration($wpdb),
-                new MediaLinkTableMigration($wpdb),
-                new ImportRunTableMigration($wpdb),
-            ),
+            $migrations,
             new RecordDetailsMetaBox($fieldSchema, $metaSanitizer),
             new RelationshipMetaBox($relationshipService, $pluginFile),
             new RelationshipSearchController($recordTypes),
@@ -220,6 +226,9 @@ final class PluginFactory
             new PublishingGate(new PublicationPolicy()),
             new WorkflowColumns(),
             new WorkflowSettings(),
+            new MaintenanceSettings(),
+            new MaintenancePage($integrity),
+            new PrivacyPolicyGuide(),
             new VerificationHistoryMetaBox(),
             new MediaLinkMetaBox($mediaService, $pluginFile),
             new MediaCleanup($mediaRepository),
@@ -262,6 +271,7 @@ final class PluginFactory
                 $seoPlugins,
                 $translations,
                 $woocommerceCompatibility,
+                $migrations,
             ),
             new PublicQueryController(
                 $queryFactory,

@@ -9,6 +9,7 @@ use AlefDigitalSolutions\ADSTourism\Domain\Content\ContentType;
 use AlefDigitalSolutions\ADSTourism\Domain\Relationship\Relationship;
 use AlefDigitalSolutions\ADSTourism\Domain\Relationship\RelationshipSide;
 use AlefDigitalSolutions\ADSTourism\Domain\Relationship\RelationType;
+use AlefDigitalSolutions\ADSTourism\Plugin;
 use InvalidArgumentException;
 use WP_Post;
 
@@ -54,13 +55,13 @@ final readonly class RelationshipMetaBox
             'ads-tourism-relationships',
             $baseUrl . 'assets/admin/relationships.css',
             [],
-            '0.1.0',
+            Plugin::VERSION,
         );
         wp_enqueue_script(
             'ads-tourism-relationships',
             $baseUrl . 'assets/admin/relationships.js',
             [],
-            '0.1.0',
+            Plugin::VERSION,
             true,
         );
         wp_localize_script('ads-tourism-relationships', 'adsTourismRelationships', [

@@ -2,13 +2,13 @@
 
 /**
  * Plugin Name: ADS Tourism
- * Plugin URI: https://github.com/alefsolutions/ads-tourism-plugin
+ * Plugin URI: https://github.com/Alef-Enterprises-Limited/ads-tourism-plugin
  * Description: WordPress-native tourism content for destinations, activities, accommodation, operators, and packages.
- * Version: 0.1.0
+ * Version: 1.0.0
  * Requires at least: 6.6
  * Requires PHP: 8.2
  * Author: Alef Digital Solutions
- * Author URI: https://github.com/alefsolutions
+ * Author URI: https://github.com/Alef-Enterprises-Limited
  * License: Apache-2.0
  * License URI: https://www.apache.org/licenses/LICENSE-2.0
  * Text Domain: ads-tourism

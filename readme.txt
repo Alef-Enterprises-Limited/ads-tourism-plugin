@@ -4,7 +4,7 @@ Tags: tourism, destinations, accommodation, activities, tour packages
 Requires at least: 6.6
 Tested up to: 6.8
 Requires PHP: 8.2
-Stable tag: 0.1.0
+Stable tag: 1.0.0
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -14,7 +14,7 @@ A WordPress-native tourism content and discovery foundation for places, activiti
 
 ADS Tourism provides connected content types for a tourism website while preserving WordPress templates, taxonomies, media, revisions, REST APIs, and page-builder compatibility.
 
-The current early-development release establishes the core content model, structured fields, connected records, a verification-first editorial workflow, reusable media galleries, fallback resolution, configurable tourism permalinks, secure CSV transfer, interactive discovery shortcodes, tourism SEO/schema integration, optional Google Maps, multilingual readiness, and optional WooCommerce Package commerce. Additional roadmap features are documented in the project repository.
+Version 1.0 provides the core content model, structured fields, connected records, a verification-first editorial workflow, reusable media galleries, fallback resolution, configurable tourism permalinks, secure CSV transfer, interactive discovery shortcodes, tourism SEO/schema integration, optional Google Maps, multilingual readiness, and optional WooCommerce Package commerce.
 
 Editors can use native WordPress screens to maintain tourism details, search for related records, order those relationships, and verify content before publication. Administrators may relax the verification publication gate under ADS Tourism > Settings.
 
@@ -32,9 +32,11 @@ Packages remain usable without WooCommerce. When WooCommerce is active, editors 
 2. Activate ADS Tourism through the Plugins screen.
 3. Open the ADS Tourism menu and begin adding tourism content.
 
+Before uninstalling, export or back up the site. ADS Tourism preserves data by default. Destructive uninstall must be explicitly enabled and confirmed under ADS Tourism > Settings; shared Media Library attachments and WooCommerce Products are never deleted.
+
 == Changelog ==
 
-= 0.1.0 =
+= 1.0.0 =
 
 * Initial development foundation.
 * Structured tourism fields and REST metadata.
@@ -44,3 +46,4 @@ Packages remain usable without WooCommerce. When WooCommerce is active, editors 
 * Builder-agnostic interactive listings and context-synchronized maps.
 * Tourism SEO/schema integration plus WPML and Polylang readiness.
 * Optional reciprocal Package/Product mapping and WooCommerce commerce controls.
+* Migration recovery, integrity scanning, privacy guidance, safe uninstall controls, and reproducible release artifacts.

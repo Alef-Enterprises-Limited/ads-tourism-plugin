@@ -18,6 +18,9 @@ use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Integration\Divi\Di
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Integration\WooCommerce\WooCommerceIntegration;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Map\MapSettings;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Map\MapShortcodes;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Maintenance\MaintenancePage;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Maintenance\MaintenanceSettings;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Maintenance\PrivacyPolicyGuide;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\MediaCleanup;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\MediaLinkMetaBox;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\MediaSettings;
@@ -54,7 +57,7 @@ final readonly class Plugin
 {
     public const SCHEMA_VERSION = 4;
 
-    public const VERSION = '0.1.0';
+    public const VERSION = '1.0.0';
 
     public function __construct(
         private ContentTypeRegistrar $contentTypes,
@@ -71,6 +74,9 @@ final readonly class Plugin
         private PublishingGate $publishingGate,
         private WorkflowColumns $workflowColumns,
         private WorkflowSettings $workflowSettings,
+        private MaintenanceSettings $maintenanceSettings,
+        private MaintenancePage $maintenancePage,
+        private PrivacyPolicyGuide $privacyPolicy,
         private VerificationHistoryMetaBox $verificationHistoryMetaBox,
         private MediaLinkMetaBox $mediaEditor,
         private MediaCleanup $mediaCleanup,
@@ -113,7 +119,10 @@ final readonly class Plugin
         add_action('admin_menu', [$this->workflowSettings, 'registerMenu']);
         add_action('admin_menu', [$this->importExportPage, 'registerMenu']);
         add_action('admin_menu', [$this->systemStatus, 'registerMenu']);
+        add_action('admin_menu', [$this->maintenancePage, 'registerMenu']);
         add_action('admin_init', [$this->workflowSettings, 'registerSettings']);
+        add_action('admin_init', [$this->maintenanceSettings, 'registerSettings']);
+        add_action('admin_init', [$this->privacyPolicy, 'register']);
         add_action('admin_init', [$this->mediaSettings, 'registerSettings']);
         add_action('admin_init', [$this->permalinkSettings, 'registerSettings']);
         add_action('admin_init', [$this->transferSettings, 'registerSettings']);
@@ -140,6 +149,8 @@ final readonly class Plugin
         add_action('admin_post_' . CsvDownloadController::ACTION_TEMPLATE, [$this->csvDownloads, 'template']);
         add_action('admin_post_' . CsvDownloadController::ACTION_EXPORT, [$this->csvDownloads, 'export']);
         add_action('admin_post_' . CsvDownloadController::ACTION_REJECTED, [$this->csvDownloads, 'rejected']);
+        add_action('admin_post_' . MaintenancePage::ACTION_REPAIR, [$this->maintenancePage, 'repair']);
+        add_action('admin_post_' . MigrationRunner::RETRY_ACTION, [$this->migrations, 'retry']);
         add_action(TransferMaintenance::HOOK, [$this->transferMaintenance, 'cleanup']);
         add_action('before_delete_post', [$this->relationshipCleanup, 'deleteForPost']);
         add_action('before_delete_post', [$this->mediaCleanup, 'deleteForPost']);
@@ -163,6 +174,7 @@ final readonly class Plugin
         add_filter('wp_insert_post_data', [$this->publishingGate, 'filterPostData'], 10, 2);
         add_filter('redirect_post_location', [$this->publishingGate, 'filterRedirect']);
         add_action('admin_notices', [$this->publishingGate, 'renderNotice']);
+        add_action('admin_notices', [$this->migrations, 'renderFailureNotice']);
         add_action('restrict_manage_posts', [$this->workflowColumns, 'renderFilter']);
         add_action('pre_get_posts', [$this->workflowColumns, 'applyFilter']);
         $this->workflowColumns->register();
@@ -193,7 +205,7 @@ final readonly class Plugin
         $this->transferMaintenance->schedule();
         $this->mapSettings->ensureOptions();
 
-        update_option('ads_tourism_version', self::VERSION);
+        update_option('ads_tourism_version', self::VERSION, false);
         flush_rewrite_rules();
     }
 

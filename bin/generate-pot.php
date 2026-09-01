@@ -8,6 +8,7 @@ use AlefDigitalSolutions\ADSTourism\Domain\Media\MediaRole;
 use AlefDigitalSolutions\ADSTourism\Domain\Query\QuerySort;
 use AlefDigitalSolutions\ADSTourism\Domain\Relationship\RelationType;
 use AlefDigitalSolutions\ADSTourism\Domain\Workflow\VerificationStatus;
+use AlefDigitalSolutions\ADSTourism\Plugin;
 use AlefDigitalSolutions\ADSTourism\Support\Autoloader;
 
 $projectRoot = dirname(__DIR__);
@@ -99,7 +100,7 @@ ksort($messages, SORT_NATURAL | SORT_FLAG_CASE);
 $pot = <<<'POT'
 msgid ""
 msgstr ""
-"Project-Id-Version: ADS Tourism 0.1.0\n"
+"Project-Id-Version: ADS Tourism {{VERSION}}\n"
 "Report-Msgid-Bugs-To: https://github.com/Alef-Enterprises-Limited/ads-tourism-plugin/issues\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -107,6 +108,7 @@ msgstr ""
 "X-Domain: ads-tourism\n"
 
 POT;
+$pot = str_replace('{{VERSION}}', Plugin::VERSION, $pot);
 
 foreach ($messages as $message => $references) {
     sort($references);
@@ -121,6 +123,17 @@ if (($argv[1] ?? '') === '--check') {
     $current = is_file($outputPath) ? file_get_contents($outputPath) : false;
 
     if ($current !== $pot) {
+        $temporaryPath = tempnam(sys_get_temp_dir(), 'ads-tourism-pot-');
+
+        if (is_string($temporaryPath) && file_put_contents($temporaryPath, $pot) !== false) {
+            $diffCommand = 'diff -u '
+                . escapeshellarg($outputPath)
+                . ' '
+                . escapeshellarg($temporaryPath);
+            passthru($diffCommand);
+            unlink($temporaryPath);
+        }
+
         fwrite(STDERR, "languages/ads-tourism.pot is out of date. Run composer make-pot.\n");
 
         exit(1);

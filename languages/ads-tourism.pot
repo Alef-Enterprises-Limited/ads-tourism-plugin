@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: ADS Tourism 0.1.0\n"
+"Project-Id-Version: ADS Tourism 1.0.0\n"
 "Report-Msgid-Bugs-To: https://github.com/Alef-Enterprises-Limited/ads-tourism-plugin/issues\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -1917,4 +1917,3 @@ msgstr ""
 #: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
 msgid "You do not have permission to view ADS Tourism system status."
 msgstr ""
-

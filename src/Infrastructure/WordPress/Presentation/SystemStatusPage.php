@@ -6,6 +6,7 @@ namespace AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Presentation;
 
 use AlefDigitalSolutions\ADSTourism\Domain\Content\ContentType;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\AdminMenu;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Database\MigrationRunner;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Integration\Divi\DiviCompatibility;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Integration\WooCommerce\WooCommerceCompatibility;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Map\MapProviderRegistry;
@@ -24,6 +25,7 @@ final readonly class SystemStatusPage
         private SeoPluginCompatibility $seo,
         private TranslationResolver $translations,
         private WooCommerceCompatibility $woocommerce,
+        private MigrationRunner $migrations,
     ) {}
 
     public function registerMenu(): void
@@ -81,6 +83,20 @@ final readonly class SystemStatusPage
             $this->woocommerce->isAvailable()
                 ? sprintf(__('Available — version %s', 'ads-tourism'), $this->woocommerce->version())
                 : __('Not detected — optional', 'ads-tourism'),
+        );
+        $this->row(
+            __('Database schema', 'ads-tourism'),
+            sprintf(
+                __('Installed %1$d / required %2$d', 'ads-tourism'),
+                $this->migrations->installedVersion(),
+                \AlefDigitalSolutions\ADSTourism\Plugin::SCHEMA_VERSION,
+            ),
+        );
+        $this->row(
+            __('Database migration state', 'ads-tourism'),
+            $this->migrations->isComplete()
+                ? __('Ready', 'ads-tourism')
+                : __('Incomplete — administrator action required', 'ads-tourism'),
         );
         $adapter = $this->translations->adapter();
         $this->row(

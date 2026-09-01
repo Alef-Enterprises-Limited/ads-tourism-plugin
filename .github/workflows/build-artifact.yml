@@ -1,0 +1,42 @@
+name: Build development artifact
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  artifact:
+    name: Build unsigned development ZIP
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.0.0
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@bf6b4fbd49ca58e4608c9c89fba0b8d90bd2a39f # 2.35.5
+        with:
+          php-version: "8.2"
+          extensions: zip
+          coverage: none
+
+      - name: Verify version metadata
+        run: php bin/verify-version.php
+
+      - name: Build and verify development artifact
+        run: |
+          php bin/build-release.php
+          php bin/verify-release.php
+
+      - name: Upload unsigned development artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: ads-tourism-${{ github.sha }}
+          path: |
+            build/ads-tourism-*.zip
+            build/ads-tourism-*.zip.sha256
+            build/ads-tourism-*-manifest.json
+          if-no-files-found: error
+          retention-days: 14

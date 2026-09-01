@@ -2,7 +2,12 @@
 
 ## Supported versions
 
-Security fixes are applied to the latest released minor version. The project is currently in pre-release development.
+Security fixes are applied to the latest released minor version.
+
+| Version | Supported |
+| --- | --- |
+| 1.0.x | Yes |
+| Earlier development versions | No |
 
 ## Reporting a vulnerability
 
