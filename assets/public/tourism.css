@@ -165,6 +165,25 @@
     opacity: 0.65;
 }
 
+.ads-tourism-map {
+    width: 100%;
+}
+
+.ads-tourism-map__canvas {
+    width: 100%;
+    min-height: 200px;
+    height: var(--ads-tourism-map-height, 420px);
+    border-radius: var(--ads-tourism-radius, 0.5rem);
+    overflow: hidden;
+    background: #eef1f4;
+}
+
+.ads-tourism-map-directions {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+}
+
 .ads-tourism-card {
     border: 1px solid color-mix(in srgb, var(--ads-tourism-border-color) 18%, transparent);
     border-radius: var(--ads-tourism-radius);

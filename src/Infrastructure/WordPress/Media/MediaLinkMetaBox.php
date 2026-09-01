@@ -55,7 +55,10 @@ final readonly class MediaLinkMetaBox
         wp_enqueue_style('ads-tourism-media-links', $baseUrl . 'assets/admin/media-links.css', [], Plugin::VERSION);
         wp_enqueue_script('ads-tourism-media-links', $baseUrl . 'assets/admin/media-links.js', [], Plugin::VERSION, true);
         wp_localize_script('ads-tourism-media-links', 'adsTourismMediaLinks', [
-            'roles' => MediaRole::labels(),
+            'roles' => array_map(
+                static fn(string $label): string => __($label, 'ads-tourism'),
+                MediaRole::labels(),
+            ),
             'strings' => [
                 'chooseImages' => __('Choose gallery images', 'ads-tourism'),
                 'useImages' => __('Add selected images', 'ads-tourism'),
@@ -247,7 +250,7 @@ final readonly class MediaLinkMetaBox
 
         foreach (MediaRole::labels() as $value => $label) {
             echo '<option value="' . esc_attr($value) . '" ' . selected($selectedRole->value, $value, false) . '>';
-            echo esc_html($label) . '</option>';
+            echo esc_html(__($label, 'ads-tourism')) . '</option>';
         }
 
         echo '</select></label>';

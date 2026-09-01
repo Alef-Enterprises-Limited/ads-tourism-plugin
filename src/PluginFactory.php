@@ -12,6 +12,8 @@ use AlefDigitalSolutions\ADSTourism\Application\Presentation\CustomCssSanitizer;
 use AlefDigitalSolutions\ADSTourism\Application\Presentation\TemplateCandidateResolver;
 use AlefDigitalSolutions\ADSTourism\Application\Query\TourismQueryFactory;
 use AlefDigitalSolutions\ADSTourism\Application\Relationship\RelationshipService;
+use AlefDigitalSolutions\ADSTourism\Application\SEO\SchemaGraphMerger;
+use AlefDigitalSolutions\ADSTourism\Application\SEO\SchemaTypeMapper;
 use AlefDigitalSolutions\ADSTourism\Application\Shortcode\ShortcodeContextRegistry;
 use AlefDigitalSolutions\ADSTourism\Application\Workflow\VerificationHistoryService;
 use AlefDigitalSolutions\ADSTourism\Domain\Field\RecordFieldSchema;
@@ -40,6 +42,12 @@ use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\Transf
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\WordPressTourismRecordImporter;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\WpdbImportRunRepository;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Integration\Divi\DiviCompatibility;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Map\GoogleMapsProvider;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Map\MapAssets;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Map\MapMarkerFactory;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Map\MapProviderRegistry;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Map\MapSettings;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Map\MapShortcodes;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\FeaturedMediaResolver;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\MediaCleanup;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\MediaLinkMetaBox;
@@ -49,6 +57,9 @@ use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\WpdbMediaLink
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Metadata\MetadataRegistrar;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Metadata\MetaValueSanitizer;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Metadata\RecordDetailsMetaBox;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Multilingual\MultilingualSettings;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Multilingual\TranslationResolver;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Multilingual\WordPressTranslationAdapter;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Permalink\PermalinkRedirector;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Permalink\PermalinkSettings;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Permalink\SlugHistory;
@@ -67,6 +78,11 @@ use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Relationship\Relati
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Relationship\RelationshipSearchController;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Relationship\WordPressRecordTypeResolver;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Relationship\WpdbRelationshipRepository;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\SEO\SeoDataResolver;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\SEO\SeoIntegration;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\SEO\SeoPluginCompatibility;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\SEO\SeoSettings;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\SEO\TourismSchemaMapper;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Shortcode\InteractiveShortcodes;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Shortcode\ListingRenderer;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Shortcode\PaginationRenderer;
@@ -105,6 +121,8 @@ final class PluginFactory
         $presentationSettings = new PresentationSettings(new CustomCssSanitizer());
         $divi = new DiviCompatibility();
         $frontendAssets = new FrontendAssets($pluginFile, $presentationSettings);
+        $multilingualSettings = new MultilingualSettings();
+        $translations = new TranslationResolver(new WordPressTranslationAdapter(), $multilingualSettings);
         $fallbackResolver = new FallbackResolver();
         $csvSecurity = new CsvSecurity();
         $csvSchema = new CsvSchema($fieldSchema);
@@ -132,6 +150,7 @@ final class PluginFactory
             $featuredMedia,
             $mediaRepository,
             $relationshipRepository,
+            $translations,
         );
         $queryFactory = new TourismQueryFactory();
         $queryCache = new PublicQueryCache();
@@ -141,6 +160,15 @@ final class PluginFactory
         $shortcodeAssets = new ShortcodeAssets($pluginFile, $frontendAssets);
         $shortcodeDiagnostics = new ShortcodeDiagnostic();
         $shortcodeContexts = new ShortcodeContextRegistry();
+        $mapSettings = new MapSettings();
+        $googleMaps = new GoogleMapsProvider($mapSettings);
+        $mapProviders = new MapProviderRegistry([$googleMaps], $mapSettings);
+        $mapMarkers = new MapMarkerFactory($translations);
+        $mapAssets = new MapAssets($pluginFile, $frontendAssets);
+        $seoSettings = new SeoSettings();
+        $seoPlugins = new SeoPluginCompatibility();
+        $seoData = new SeoDataResolver($relationshipRepository, $translations);
+        $schemaMapper = new TourismSchemaMapper(new SchemaTypeMapper(), $seoData);
 
         return new Plugin(
             new ContentTypeRegistrar($permalinkSettings),
@@ -196,8 +224,14 @@ final class PluginFactory
             $presentationSettings,
             new BuilderMetaRegistry($fieldSchema),
             $divi,
-            new SystemStatusPage($divi),
-            new PublicQueryController($queryFactory, $queryService, $listingRenderer, $paginationRenderer),
+            new SystemStatusPage($divi, $mapSettings, $mapProviders, $seoPlugins, $translations),
+            new PublicQueryController(
+                $queryFactory,
+                $queryService,
+                $listingRenderer,
+                $paginationRenderer,
+                $mapMarkers,
+            ),
             new QueryCacheInvalidator($queryCache),
             new InteractiveShortcodes(
                 $queryFactory,
@@ -214,8 +248,28 @@ final class PluginFactory
                 $frontendRenderer,
                 $shortcodeAssets,
                 $shortcodeDiagnostics,
+                $translations,
             ),
             $shortcodeAssets,
+            $mapSettings,
+            new MapShortcodes(
+                $mapProviders,
+                $mapMarkers,
+                $mapAssets,
+                $queryFactory,
+                $queryService,
+                $shortcodeContexts,
+                $shortcodeDiagnostics,
+            ),
+            $seoSettings,
+            new SeoIntegration(
+                $seoSettings,
+                $seoPlugins,
+                $seoData,
+                $schemaMapper,
+                new SchemaGraphMerger(),
+            ),
+            $multilingualSettings,
         );
     }
 }

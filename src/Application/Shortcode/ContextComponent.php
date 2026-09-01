@@ -12,6 +12,7 @@ enum ContextComponent: string
     case RESULTS = 'results';
     case PAGINATION = 'pagination';
     case LISTING = 'listing';
+    case MAP = 'map';
 
     public function isPrimary(): bool
     {

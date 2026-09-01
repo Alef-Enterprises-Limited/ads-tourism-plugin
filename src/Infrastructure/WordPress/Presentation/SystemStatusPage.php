@@ -7,12 +7,22 @@ namespace AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Presentation;
 use AlefDigitalSolutions\ADSTourism\Domain\Content\ContentType;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\AdminMenu;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Integration\Divi\DiviCompatibility;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Map\MapProviderRegistry;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Map\MapSettings;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Multilingual\TranslationResolver;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\SEO\SeoPluginCompatibility;
 
 final readonly class SystemStatusPage
 {
     public const PAGE_SLUG = 'ads-tourism-system-status';
 
-    public function __construct(private DiviCompatibility $divi) {}
+    public function __construct(
+        private DiviCompatibility $divi,
+        private MapSettings $maps,
+        private MapProviderRegistry $mapProviders,
+        private SeoPluginCompatibility $seo,
+        private TranslationResolver $translations,
+    ) {}
 
     public function registerMenu(): void
     {
@@ -52,6 +62,26 @@ final readonly class SystemStatusPage
             );
         }
 
+        $this->row(
+            __('Map provider', 'ads-tourism'),
+            $this->mapProviderLabel($this->maps->provider()),
+        );
+        $this->row(
+            __('Map provider available', 'ads-tourism'),
+            $this->mapProviders->selected() === null ? __('No', 'ads-tourism') : __('Yes', 'ads-tourism'),
+        );
+        $this->row(
+            __('SEO integration', 'ads-tourism'),
+            $this->seoPluginLabel($this->seo->activePlugin()),
+        );
+        $adapter = $this->translations->adapter();
+        $this->row(
+            __('Multilingual integration', 'ads-tourism'),
+            $adapter->isAvailable()
+                ? $this->translationAdapterLabel($adapter->key())
+                : __('Not detected — optional', 'ads-tourism'),
+        );
+
         echo '</tbody></table><p>';
         echo esc_html__(
             'All tourism post types are public, REST-enabled, and compatible with standard title, content, featured-image, archive, and taxonomy conditions.',
@@ -63,5 +93,32 @@ final readonly class SystemStatusPage
     private function row(string $check, string $status): void
     {
         echo '<tr><th scope="row">' . esc_html($check) . '</th><td>' . esc_html($status) . '</td></tr>';
+    }
+
+    private function mapProviderLabel(string $provider): string
+    {
+        return match ($provider) {
+            'google' => __('Google Maps', 'ads-tourism'),
+            'none' => __('Disabled — optional', 'ads-tourism'),
+            default => $provider,
+        };
+    }
+
+    private function seoPluginLabel(string $plugin): string
+    {
+        return match ($plugin) {
+            'yoast' => __('Yoast SEO', 'ads-tourism'),
+            'rank-math' => __('Rank Math SEO', 'ads-tourism'),
+            default => __('Native ADS Tourism metadata', 'ads-tourism'),
+        };
+    }
+
+    private function translationAdapterLabel(string $adapter): string
+    {
+        return match ($adapter) {
+            'wpml' => __('WPML', 'ads-tourism'),
+            'polylang' => __('Polylang', 'ads-tourism'),
+            default => $adapter,
+        };
     }
 }

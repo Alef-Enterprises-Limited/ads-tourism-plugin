@@ -2,7 +2,7 @@
 
 ADS Tourism is a WordPress-native foundation for tourism websites. It models destinations as the spine of a connected catalogue of things to do, places to stay, tour operators, and packages while leaving page composition to WordPress, Divi, or another builder.
 
-> **Status:** early development. The plugin currently provides the core content model, structured record fields, canonical relationships, an editorial verification workflow, linked galleries, fallback resolution, configurable permalinks, secure CSV import/export, builder-compatible fallback templates, interactive shortcode listings, and project quality/release tooling. Maps, multilingual adapters, and WooCommerce commerce adapters remain planned work.
+> **Status:** early development. The plugin currently provides the core content model, structured record fields, canonical relationships, an editorial verification workflow, linked galleries, fallback resolution, configurable permalinks, secure CSV import/export, builder-compatible fallback templates, interactive shortcode listings, tourism SEO/schema integration, optional Google Maps, multilingual adapters, and project quality/release tooling. WooCommerce commerce adapters remain planned work.
 
 ## Core content model
 
@@ -59,6 +59,14 @@ For custom layouts, compose separate search, filter, sort, results, and paginati
 ```
 
 The initial response is rendered by WordPress, forms and links work without JavaScript, and the public script progressively adds debounced search, AJAX filters and sorting, pagination or load-more behavior, independent multi-context state, and Back/Forward restoration. The public REST query accepts only allowlisted tourism fields and published records. See [Shortcodes and interactive listings](docs/user/shortcodes.md) and the [public query API](docs/developer/public-query-api.md).
+
+## SEO, maps, and multilingual readiness
+
+ADS Tourism emits factual tourism schema and native social metadata when no supported SEO plugin owns those concerns. With Yoast SEO or Rank Math, it contributes resolved tourism data to the plugin's graph without duplicating the same entity. Public records retain WordPress-native sitemap, canonical, archive, breadcrumb, and featured-image inputs; unverified and filtered utility views are noindexed.
+
+Maps are optional and provider-neutral, with Google Maps as the first adapter. The `ads_tourism_map` shortcode supports current, explicit multi-record, and listing-context maps; context maps follow AJAX result filters. Disabling maps leaves all coordinates and content intact.
+
+All interface strings use the `ads-tourism` text domain and ship in a generated POT template. Optional WPML and Polylang adapters resolve related records in the current language with a configurable original-language fallback. See [SEO, maps, and languages](docs/user/seo-maps-and-languages.md) and the [integration architecture](docs/developer/seo-maps-and-multilingual.md).
 
 ## Install for development
 

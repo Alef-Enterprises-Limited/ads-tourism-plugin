@@ -38,3 +38,9 @@ The project follows [Semantic Versioning](https://semver.org/) and the structure
 - A versioned, read-only public query REST endpoint restricted to published tourism content and allowlisted filters.
 - Progressive AJAX enhancement with debounced and cancellable search, URL state, Back/Forward restoration, load-more and infinite modes, live-region announcements, and no-JavaScript fallbacks.
 - Generation-keyed query caching through the WordPress object cache and transients, with content and taxonomy invalidation.
+- Native tourism JSON-LD, canonical, breadcrumb, robots, Open Graph, Twitter, Yoast SEO, and Rank Math integration with schema-graph deduplication.
+- Resolved SEO inputs for fallback images, summaries, coordinates, price guidance, taxonomies, and language-aware relationships.
+- A provider-neutral map contract, optional Google Maps browser-key adapter, and safe directions/no-output fallbacks.
+- Single-record, multi-record, and AJAX context-synchronized map shortcodes with bounded markers and accessible status updates.
+- WPML and Polylang adapters with configurable original-language fallback for related records and map markers.
+- Complete dynamic-label internationalization and deterministic POT generation enforced by CI.

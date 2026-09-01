@@ -161,7 +161,7 @@ final readonly class RelationshipMetaBox
         }
 
         $selected = $this->relationships->find($postId, $relationType);
-        $label = $relationType->labelFor($contentType);
+        $label = __($relationType->labelFor($contentType), 'ads-tourism');
         echo '<section class="ads-tourism-relation" data-relation-key="' . esc_attr($relationType->value) . '"';
         echo ' data-post-id="' . esc_attr((string) $postId) . '"';
         echo ' data-allows-primary="' . ($relationType->allowsPrimary() ? '1' : '0') . '">';
