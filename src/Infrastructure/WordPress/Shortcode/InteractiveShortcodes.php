@@ -152,7 +152,8 @@ final class InteractiveShortcodes
 
             foreach (QuerySort::labels() as $value => $label) {
                 $html .= '<option value="' . esc_attr($value) . '" '
-                    . selected($query->sort->value, $value, false) . '>' . esc_html($label) . '</option>';
+                    . selected($query->sort->value, $value, false) . '>';
+                $html .= esc_html(__($label, 'ads-tourism')) . '</option>';
             }
 
             return $html . '</select><noscript><button type="submit">'

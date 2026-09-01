@@ -8,6 +8,7 @@ use AlefDigitalSolutions\ADSTourism\Domain\Content\ContentType;
 use AlefDigitalSolutions\ADSTourism\Domain\ImportExport\CsvSchema;
 use AlefDigitalSolutions\ADSTourism\Domain\ImportExport\ImportRun;
 use AlefDigitalSolutions\ADSTourism\Domain\ImportExport\ImportRunRepository;
+use AlefDigitalSolutions\ADSTourism\Domain\Workflow\VerificationStatus;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\AdminMenu;
 
 final readonly class ImportExportAdminPage
@@ -186,7 +187,14 @@ final readonly class ImportExportAdminPage
         echo '<label><span>' . esc_html__('WordPress status', 'ads-tourism') . '</span><select name="post_status">';
         echo '<option value="">' . esc_html__('Any status', 'ads-tourism') . '</option>';
 
-        foreach (['draft' => 'Draft', 'pending' => 'Pending', 'publish' => 'Published', 'private' => 'Private'] as $value => $label) {
+        $postStatuses = [
+            'draft' => __('Draft', 'ads-tourism'),
+            'pending' => __('Pending', 'ads-tourism'),
+            'publish' => __('Published', 'ads-tourism'),
+            'private' => __('Private', 'ads-tourism'),
+        ];
+
+        foreach ($postStatuses as $value => $label) {
             echo '<option value="' . esc_attr($value) . '">' . esc_html($label) . '</option>';
         }
 
@@ -194,8 +202,8 @@ final readonly class ImportExportAdminPage
         echo '<label><span>' . esc_html__('Verification status', 'ads-tourism') . '</span>';
         echo '<select name="verification_status"><option value="">' . esc_html__('Any verification status', 'ads-tourism') . '</option>';
 
-        foreach (['unverified', 'in_review', 'verified'] as $status) {
-            echo '<option value="' . esc_attr($status) . '">' . esc_html(ucwords(str_replace('_', ' ', $status))) . '</option>';
+        foreach (VerificationStatus::labels() as $status => $label) {
+            echo '<option value="' . esc_attr($status) . '">' . esc_html(__($label, 'ads-tourism')) . '</option>';
         }
 
         echo '</select></label>';

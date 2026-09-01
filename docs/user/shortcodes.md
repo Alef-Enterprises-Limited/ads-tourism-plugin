@@ -63,6 +63,17 @@ One context can have only one `ads_tourism_results` or all-in-one listing. Multi
 
 When pagination appears before results in the page source, give it the same `type`, `per_page`, and `pagination` attributes as the results component. The shared cache prevents the matching server query from becoming duplicate database work.
 
+## Maps
+
+`ads_tourism_map` renders the current record by default, accepts `id` or comma-separated `ids`, and can join an interactive listing through the same explicit `context`.
+
+```text
+[ads_tourism_results context="discover" type="place,stay" per_page="24"]
+[ads_tourism_map context="discover" type="place,stay" per_page="24" height="480"]
+```
+
+The map follows AJAX filter, search, and sort updates for `discover`. See [SEO, maps, and languages](seo-maps-and-languages.md) for provider setup, every map attribute, safe fallbacks, and privacy guidance.
+
 ## Record components
 
 Record components use the current tourism record unless an `id` is supplied:

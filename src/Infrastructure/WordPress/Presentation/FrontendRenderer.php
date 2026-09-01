@@ -19,7 +19,9 @@ use AlefDigitalSolutions\ADSTourism\Domain\Relationship\RelationshipRepository;
 use AlefDigitalSolutions\ADSTourism\Domain\Relationship\RelationType;
 use AlefDigitalSolutions\ADSTourism\Domain\Taxonomy\TourismTaxonomy;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\FeaturedMediaResolver;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Multilingual\TranslationResolver;
 use WP_Post;
+use WP_Term;
 
 final readonly class FrontendRenderer
 {
@@ -60,6 +62,7 @@ final readonly class FrontendRenderer
         private FeaturedMediaResolver $featuredMedia,
         private MediaLinkRepository $media,
         private RelationshipRepository $relationships,
+        private TranslationResolver $translations,
     ) {}
 
     public function register(): void
@@ -230,7 +233,8 @@ final readonly class FrontendRenderer
         echo esc_html__('Details', 'ads-tourism') . '</h2><dl class="ads-tourism-details__list">';
 
         foreach ($rows as [$field, $value]) {
-            echo '<div class="ads-tourism-details__item"><dt>' . esc_html($field->label) . '</dt><dd>';
+            echo '<div class="ads-tourism-details__item"><dt>';
+            echo esc_html(__($field->label, 'ads-tourism')) . '</dt><dd>';
             $this->renderFieldValue($field, $value);
             echo '</dd></div>';
         }
@@ -253,9 +257,28 @@ final readonly class FrontendRenderer
                 continue;
             }
 
+            $translatedTerms = [];
+
+            foreach ($terms as $term) {
+                if (!$term instanceof WP_Term) {
+                    continue;
+                }
+
+                $translatedId = $this->translations->termId($term->term_id, $taxonomy->value);
+                $translated = $translatedId === null ? null : get_term($translatedId, $taxonomy->value);
+
+                if ($translated instanceof WP_Term) {
+                    $translatedTerms[$translated->term_id] = $translated;
+                }
+            }
+
+            if ($translatedTerms === []) {
+                continue;
+            }
+
             $taxonomyObject = get_taxonomy($taxonomy->value);
             $label = $taxonomyObject === false ? $taxonomy->value : (string) $taxonomyObject->labels->name;
-            $groups[] = [$label, $taxonomy, $terms];
+            $groups[] = [$label, $taxonomy, array_values($translatedTerms)];
         }
 
         if ($groups === []) {
@@ -303,6 +326,8 @@ final readonly class FrontendRenderer
 
             foreach ($this->relationships->findForRecord($postId, $relationType, $side) as $relationship) {
                 $relatedId = $relationship->relatedPostId($side);
+                $relatedType = (string) get_post_type($relatedId);
+                $relatedId = $this->translations->postId($relatedId, $relatedType) ?? 0;
                 $post = get_post($relatedId);
 
                 if ($post instanceof WP_Post && $post->post_status === 'publish') {
@@ -311,7 +336,7 @@ final readonly class FrontendRenderer
             }
 
             if ($records !== []) {
-                $groups[] = [$relationType->labelFor($contentType), $records];
+                $groups[] = [__($relationType->labelFor($contentType), 'ads-tourism'), $records];
             }
         }
 
@@ -563,7 +588,7 @@ final readonly class FrontendRenderer
         $text = is_scalar($value) ? (string) $value : '';
 
         if ($field->type === FieldType::SELECT && isset($field->options[$text])) {
-            $text = $field->options[$text];
+            $text = __($field->options[$text], 'ads-tourism');
         }
 
         if ($field->type === FieldType::URL && wp_http_validate_url($text) !== false) {

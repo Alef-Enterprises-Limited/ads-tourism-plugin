@@ -51,7 +51,7 @@ final class VerificationHistoryMetaBox
             $status = VerificationStatus::tryFrom((string) ($entry['status'] ?? ''));
             $statusLabel = $status === null
                 ? (string) ($entry['status'] ?? '')
-                : VerificationStatus::labels()[$status->value];
+                : __(VerificationStatus::labels()[$status->value], 'ads-tourism');
             $source = trim(implode(' — ', array_filter([
                 (string) ($entry['source_name'] ?? ''),
                 (string) ($entry['source_reference'] ?? ''),

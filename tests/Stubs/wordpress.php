@@ -234,6 +234,11 @@ function apply_filters(string $hookName, mixed $value, mixed ...$args): mixed
     return $value;
 }
 
+function has_filter(string $hookName, callable|string|array|false $callback = false): int|false
+{
+    return false;
+}
+
 function do_action(string $hookName, mixed ...$args): void {}
 
 function add_menu_page(
@@ -415,6 +420,11 @@ function get_post_field(string $field, int|WP_Post $post = 0, string $context = 
 function get_post_type_object(string $postType): ?WP_Post_Type
 {
     return new WP_Post_Type();
+}
+
+function get_post_type_archive_link(string $postType): string|false
+{
+    return 'https://example.com/' . $postType . '/';
 }
 
 function get_query_var(string $queryVariable, mixed $defaultValue = ''): mixed
@@ -871,6 +881,11 @@ function wpautop(string $text, bool $br = true): string
 function wp_trim_words(string $text, int $number = 55, ?string $more = null): string
 {
     return $text;
+}
+
+function wp_strip_all_tags(string $text, bool $removeBreaks = false): string
+{
+    return strip_tags($text);
 }
 
 function wp_get_theme(string $stylesheet = '', string $themeRoot = ''): WP_Theme

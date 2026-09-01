@@ -15,11 +15,14 @@ use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\Import
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\TransferMaintenance;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\TransferSettings;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Integration\Divi\DiviCompatibility;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Map\MapSettings;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Map\MapShortcodes;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\MediaCleanup;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\MediaLinkMetaBox;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\MediaSettings;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Metadata\MetadataRegistrar;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Metadata\RecordDetailsMetaBox;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Multilingual\MultilingualSettings;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Permalink\PermalinkRedirector;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Permalink\PermalinkSettings;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Permalink\SlugHistory;
@@ -34,6 +37,8 @@ use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Query\QueryCacheInv
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Relationship\RelationshipCleanup;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Relationship\RelationshipMetaBox;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Relationship\RelationshipSearchController;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\SEO\SeoIntegration;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\SEO\SeoSettings;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Shortcode\InteractiveShortcodes;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Shortcode\RecordComponentShortcodes;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Shortcode\ShortcodeAssets;
@@ -90,6 +95,11 @@ final readonly class Plugin
         private InteractiveShortcodes $interactiveShortcodes,
         private RecordComponentShortcodes $recordShortcodes,
         private ShortcodeAssets $shortcodeAssets,
+        private MapSettings $mapSettings,
+        private MapShortcodes $mapShortcodes,
+        private SeoSettings $seoSettings,
+        private SeoIntegration $seo,
+        private MultilingualSettings $multilingualSettings,
     ) {}
 
     public function register(): void
@@ -106,6 +116,9 @@ final readonly class Plugin
         add_action('admin_init', [$this->permalinkSettings, 'registerSettings']);
         add_action('admin_init', [$this->transferSettings, 'registerSettings']);
         add_action('admin_init', [$this->presentationSettings, 'registerSettings']);
+        add_action('admin_init', [$this->mapSettings, 'registerSettings']);
+        add_action('admin_init', [$this->seoSettings, 'registerSettings']);
+        add_action('admin_init', [$this->multilingualSettings, 'registerSettings']);
         add_action('add_meta_boxes', [$this->recordDetails, 'register']);
         add_action('add_meta_boxes', [$this->relationshipEditor, 'register']);
         add_action('add_meta_boxes', [$this->verificationHistoryMetaBox, 'register']);
@@ -159,6 +172,8 @@ final readonly class Plugin
         $this->queryCacheInvalidator->register();
         $this->interactiveShortcodes->register();
         $this->recordShortcodes->register();
+        $this->mapShortcodes->register();
+        $this->seo->register();
     }
 
     public function registerContentModel(): void
@@ -173,6 +188,7 @@ final readonly class Plugin
         $this->registerContentModel();
         $this->migrations->run();
         $this->transferMaintenance->schedule();
+        $this->mapSettings->ensureOptions();
 
         update_option('ads_tourism_version', self::VERSION);
         flush_rewrite_rules();
