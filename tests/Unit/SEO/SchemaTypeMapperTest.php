@@ -25,6 +25,6 @@ final class SchemaTypeMapperTest extends TestCase
     #[DataProvider('mappings')]
     public function testItMapsTourismRecordsToRelevantSchemaTypes(ContentType $type, array $expected): void
     {
-        self::assertSame($expected, new SchemaTypeMapper()->for($type));
+        self::assertSame($expected, (new SchemaTypeMapper())->for($type));
     }
 }

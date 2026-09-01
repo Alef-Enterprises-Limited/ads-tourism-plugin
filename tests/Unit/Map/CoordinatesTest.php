@@ -13,8 +13,8 @@ final class CoordinatesTest extends TestCase
 {
     public function testItAcceptsBoundaryCoordinates(): void
     {
-        self::assertSame(-90.0, new Coordinates(-90, -180)->latitude);
-        self::assertSame(180.0, new Coordinates(90, 180)->longitude);
+        self::assertSame(-90.0, (new Coordinates(-90, -180))->latitude);
+        self::assertSame(180.0, (new Coordinates(90, 180))->longitude);
     }
 
     /** @return iterable<string, array{float, float}> */
