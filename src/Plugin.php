@@ -16,11 +16,11 @@ use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\Transf
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\TransferSettings;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Integration\Divi\DiviCompatibility;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Integration\WooCommerce\WooCommerceIntegration;
-use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Map\MapSettings;
-use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Map\MapShortcodes;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Maintenance\MaintenancePage;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Maintenance\MaintenanceSettings;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Maintenance\PrivacyPolicyGuide;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Map\MapSettings;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Map\MapShortcodes;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\MediaCleanup;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\MediaLinkMetaBox;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\MediaSettings;
