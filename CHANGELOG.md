@@ -27,3 +27,8 @@ The project follows [Semantic Versioning](https://semver.org/) and the structure
 - AJAX-batched record imports with external-ID duplicate policies, explicit clearing, and controlled taxonomy terms.
 - Per-row transactional writes, rejected-row reports, import history, protected temporary files, and automatic expiry cleanup.
 - Filtered ZIP exports containing record files, taxonomy definitions, relationships, media associations, and a checksummed manifest.
+- Accessible fallback templates for tourism singles, post-type archives, taxonomy archives, cards, pagination, and empty results.
+- Theme overrides under `ads-tourism/` with specific/generic lookup and extension filters.
+- Standard, Standard plus Custom Content, and Full Custom per-record layout behavior without structured-data loss.
+- A builder-visible scalar metadata registry and optional Divi post-type compatibility hooks with system status.
+- Responsive BEM-style fallback CSS with tourism-only loading, a disable setting, and bounded administrator custom CSS.

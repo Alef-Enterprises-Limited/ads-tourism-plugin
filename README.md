@@ -2,7 +2,7 @@
 
 ADS Tourism is a WordPress-native foundation for tourism websites. It models destinations as the spine of a connected catalogue of things to do, places to stay, tour operators, and packages while leaving page composition to WordPress, Divi, or another builder.
 
-> **Status:** early development. The plugin currently provides the core content model, structured record fields, canonical relationships, an editorial verification workflow, linked galleries, fallback resolution, configurable permalinks, secure CSV import/export, and project quality/release tooling. Front-end components, maps, multilingual adapters, and WooCommerce commerce adapters remain planned work.
+> **Status:** early development. The plugin currently provides the core content model, structured record fields, canonical relationships, an editorial verification workflow, linked galleries, fallback resolution, configurable permalinks, secure CSV import/export, builder-compatible fallback templates, and project quality/release tooling. Interactive shortcode listings, maps, multilingual adapters, and WooCommerce commerce adapters remain planned work.
 
 ## Core content model
 
@@ -37,6 +37,12 @@ Administrators can configure fallback images and all tourism post-type/taxonomy 
 **ADS Tourism → CSV Import/Export** provides a template-led spreadsheet workflow. Imports use stable external IDs, explicit column mapping, a dry-run preview, duplicate policies, controlled taxonomy slugs, and bounded AJAX batches. Invalid rows are isolated in a downloadable rejected-row report; valid rows continue safely. New records always begin as Draft and Unverified.
 
 Exports may be filtered by record type, workflow state, modified date, or selected IDs. A full ZIP contains record files, taxonomy definitions, relationships, media associations, and a checksummed JSON manifest. See the [CSV import/export guide](docs/user/csv-import-export.md) and [CSV transfer architecture](docs/developer/csv-transfer.md).
+
+## Templates and builders
+
+Every public tourism single, post-type archive, and taxonomy archive has a responsive fallback template. Themes can override templates under `your-theme/ads-tourism/`, while Divi Theme Builder and other standards-compliant builders can assign global content-type, archive, taxonomy, and individual-record designs.
+
+Per-record layout modes support the shared structured template, the structured template plus editor/builder content, or a fully custom body. Presentation choices never delete the normalized tourism fields. Minimal plugin CSS can be disabled, and administrators can add scoped custom CSS under **ADS Tourism → Settings**. See [Templates and page builders](docs/user/templates-and-builders.md) and [Presentation architecture](docs/developer/presentation.md).
 
 ## Install for development
 
