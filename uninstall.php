@@ -74,7 +74,7 @@ foreach ($taxonomies as $taxonomy) {
         'fields' => 'ids',
     ]);
 
-    if (is_wp_error($termIds)) {
+    if (!is_array($termIds)) {
         continue;
     }
 
