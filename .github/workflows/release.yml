@@ -1,0 +1,47 @@
+name: Publish release
+
+on:
+  push:
+    tags:
+      - "v[0-9]+.[0-9]+.[0-9]+*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: Verify and publish plugin ZIP
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.0.0
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@bf6b4fbd49ca58e4608c9c89fba0b8d90bd2a39f # 2.35.5
+        with:
+          php-version: "8.2"
+          extensions: zip
+          coverage: none
+          tools: composer:v2
+
+      - name: Install development dependencies
+        run: composer install --no-interaction --prefer-dist --no-progress
+
+      - name: Verify tag and version metadata
+        run: php bin/verify-version.php "${GITHUB_REF_NAME}"
+
+      - name: Run formatting, analysis, and tests
+        run: composer check
+
+      - name: Build plugin ZIP
+        run: php bin/build-release.php
+
+      - name: Publish GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: >-
+          gh release create "${GITHUB_REF_NAME}"
+          build/ads-tourism-*.zip
+          --generate-notes
+          --title "ADS Tourism ${GITHUB_REF_NAME}"

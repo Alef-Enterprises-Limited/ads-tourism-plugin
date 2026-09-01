@@ -1,0 +1,39 @@
+{
+  "name": "alefsolutions/ads-tourism",
+  "description": "A WordPress-native tourism content and discovery plugin.",
+  "type": "wordpress-plugin",
+  "license": "Apache-2.0",
+  "require": {
+    "php": ">=8.2"
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^3.95",
+    "phpstan/phpstan": "^2.1",
+    "phpunit/phpunit": "^11.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "AlefDigitalSolutions\\ADSTourism\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "AlefDigitalSolutions\\ADSTourism\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "analyse": "phpstan analyse --configuration=phpstan.neon.dist",
+    "check": [
+      "@check:style",
+      "@analyse",
+      "@test"
+    ],
+    "check:style": "php-cs-fixer fix --config=.php-cs-fixer.dist.php --dry-run --diff",
+    "format": "php-cs-fixer fix --config=.php-cs-fixer.dist.php",
+    "test": "phpunit --configuration=phpunit.xml.dist"
+  },
+  "config": {
+    "allow-plugins": {},
+    "sort-packages": true
+  }
+}
