@@ -110,6 +110,15 @@
     font-weight: 600;
 }
 
+.ads-tourism-control :where(input, select, button):focus-visible,
+.ads-tourism-pagination__link:focus-visible,
+.ads-tourism-card__title a:focus-visible,
+.ads-tourism-commerce-controls a:focus-visible,
+.ads-tourism-map-directions:focus-visible {
+    outline: 0.1875rem solid currentColor;
+    outline-offset: 0.1875rem;
+}
+
 .ads-tourism-search__row,
 .ads-tourism-filters__range,
 .ads-tourism-filters fieldset {
@@ -181,6 +190,21 @@
 .ads-tourism-map-directions {
     display: inline-flex;
     align-items: center;
+    min-height: 2.75rem;
+}
+
+.ads-tourism-commerce-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+    margin-block: 1rem;
+}
+
+.ads-tourism-commerce-controls .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     min-height: 2.75rem;
 }
 

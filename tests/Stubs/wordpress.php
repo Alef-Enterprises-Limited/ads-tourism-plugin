@@ -12,6 +12,48 @@ define('ABSPATH', '/');
 define('HOUR_IN_SECONDS', 3600);
 define('MINUTE_IN_SECONDS', 60);
 define('PCLZIP_OPT_REMOVE_PATH', 77001);
+define('WC_VERSION', '10.0.0');
+
+class WooCommerce {}
+
+class WC_Product
+{
+    public function get_meta(string $key, bool $single = true, string $context = 'view'): mixed
+    {
+        return '';
+    }
+
+    public function update_meta_data(string $key, mixed $value, int $metaId = 0): void {}
+
+    public function delete_meta_data(string $key): void {}
+
+    public function set_name(string $name): void {}
+
+    public function set_status(string $status = 'publish'): void {}
+
+    public function set_catalog_visibility(string $visibility = 'visible'): void {}
+
+    public function set_short_description(string $description): void {}
+
+    public function set_image_id(int $imageId = 0): void {}
+
+    public function save(): int
+    {
+        return 1;
+    }
+
+    public function is_purchasable(): bool
+    {
+        return true;
+    }
+
+    public function add_to_cart_url(): string
+    {
+        return 'https://example.com/cart/';
+    }
+}
+
+class WC_Product_Simple extends WC_Product {}
 
 class WP_Post
 {
@@ -152,6 +194,10 @@ class WP_REST_Response
 
 class wpdb
 {
+    public string $options = 'wp_options';
+
+    public string $postmeta = 'wp_postmeta';
+
     public string $prefix = 'wp_';
 
     public string $posts = 'wp_posts';
@@ -191,6 +237,11 @@ class wpdb
     public function get_row(string $query): ?object
     {
         return null;
+    }
+
+    public function get_var(string $query, int $column = 0, int $row = 0): string|int|float|null
+    {
+        return 0;
     }
 
     /**
@@ -338,6 +389,11 @@ function delete_post_meta(int $postId, string $metaKey, mixed $metaValue = ''): 
     return true;
 }
 
+function delete_option(string $option): bool
+{
+    return true;
+}
+
 function delete_post_thumbnail(int|WP_Post $post): bool
 {
     return true;
@@ -400,6 +456,11 @@ function get_current_screen(): ?WP_Screen
 function get_current_user_id(): int
 {
     return 1;
+}
+
+function get_edit_post_link(int|WP_Post $post = 0, string $context = 'display'): ?string
+{
+    return 'post.php';
 }
 
 function get_option(string $option, mixed $default = false): mixed
@@ -525,6 +586,11 @@ function get_terms(array $arguments = []): array|WP_Error
 function get_posts(array $arguments = []): array
 {
     return [];
+}
+
+function taxonomy_exists(string $taxonomy): bool
+{
+    return true;
 }
 
 function get_transient(string $transient): mixed
@@ -752,6 +818,16 @@ function wp_clear_scheduled_hook(string $hook, mixed ...$args): int|false
     return 0;
 }
 
+function wc_get_product(int|WP_Post $product = 0): WC_Product|false|null
+{
+    return new WC_Product();
+}
+
+function wc_get_checkout_url(): string
+{
+    return 'https://example.com/checkout/';
+}
+
 function wp_create_nonce(string|int $action = -1): string
 {
     return '';
@@ -862,6 +938,18 @@ function wp_insert_term(string $term, string $taxonomy, array $arguments = []): 
 {
     return ['term_id' => 1, 'term_taxonomy_id' => 1];
 }
+
+function wp_delete_post(int $postId, bool $forceDelete = false): WP_Post|false|null
+{
+    return null;
+}
+
+function wp_delete_term(int $termId, string $taxonomy, array $args = []): bool|int|WP_Error
+{
+    return true;
+}
+
+function wp_add_privacy_policy_content(string $pluginName, string $policyText): void {}
 
 function wp_json_encode(mixed $value, int $flags = 0, int $depth = 512): string|false
 {

@@ -1,8 +1,8 @@
-# ADS Tourism
+# ADS Tourism 1.0
 
-ADS Tourism is a WordPress-native foundation for tourism websites. It models destinations as the spine of a connected catalogue of things to do, places to stay, tour operators, and packages while leaving page composition to WordPress, Divi, or another builder.
+ADS Tourism is a WordPress-native content and discovery plugin for tourism websites. It models destinations as the spine of a connected catalogue of things to do, places to stay, tour operators, and packages while leaving page composition to WordPress, Divi, or another builder.
 
-> **Status:** early development. The plugin currently provides the core content model, structured record fields, canonical relationships, an editorial verification workflow, linked galleries, fallback resolution, configurable permalinks, secure CSV import/export, builder-compatible fallback templates, interactive shortcode listings, tourism SEO/schema integration, optional Google Maps, multilingual adapters, and project quality/release tooling. WooCommerce commerce adapters remain planned work.
+Version 1.0 provides the core content model, structured record fields, canonical relationships, an editorial verification workflow, linked galleries, fallback resolution, configurable permalinks, secure CSV import/export, builder-compatible fallback templates, interactive shortcode listings, tourism SEO/schema integration, optional Google Maps, multilingual adapters, optional WooCommerce commerce, and release-hardening tools.
 
 ## Core content model
 
@@ -68,6 +68,12 @@ Maps are optional and provider-neutral, with Google Maps as the first adapter. T
 
 All interface strings use the `ads-tourism` text domain and ship in a generated POT template. Optional WPML and Polylang adapters resolve related records in the current language with a configurable original-language fallback. See [SEO, maps, and languages](docs/user/seo-maps-and-languages.md) and the [integration architecture](docs/developer/seo-maps-and-multilingual.md).
 
+## Optional WooCommerce commerce
+
+Packages remain complete tourism records when WooCommerce is absent. When WooCommerce is active, editors can explicitly create or link one Product, synchronize Package presentation details, and detach it without deleting either record. Catalogue and Enquiry modes never create orders; WooCommerce mode can render Add to Cart and direct-checkout controls only for a valid purchasable Product.
+
+Listing cards may open the Package or Product page. Existing tourism record shortcodes automatically resolve the linked Package on Product pages, making them usable inside Divi Woo templates and other builders. WooCommerce owns all price, tax, stock, cart, checkout, order, and payment data. See [WooCommerce for Packages](docs/user/woocommerce.md) and the [WooCommerce integration architecture](docs/developer/woocommerce.md).
+
 ## Install for development
 
 Requirements:
@@ -96,9 +102,11 @@ The runtime deliberately has no Composer dependency. A small PSR-4-compatible lo
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for development rules and [CHANGELOG.md](CHANGELOG.md) for delivered behavior.
 
+Administrator operations are covered by [maintenance and privacy](docs/user/maintenance-and-privacy.md). Release engineering is documented in the [release process](docs/developer/release-process.md), with separate [performance budgets](docs/testing/performance.md), [accessibility and builder checks](docs/testing/accessibility-and-builders.md), the [1.0 acceptance checklist](docs/testing/acceptance-checklist.md), and [known limitations](docs/known-limitations.md).
+
 ## Builds and releases
 
-Pull requests and pushes run formatting, static analysis, and unit tests against supported PHP versions. Successful checks also produce an installable ZIP as a workflow artifact. Pushing a SemVer tag such as `v0.1.0` verifies version consistency and publishes the ZIP to a GitHub release.
+Pull requests and pushes run formatting, static analysis, tests, and release-artifact verification against supported PHP versions. Successful checks produce an installable ZIP, SHA-256 checksum, and file manifest. An approved SemVer tag such as `v1.0.0` verifies the complete release contract before GitHub publication.
 
 ## License
 

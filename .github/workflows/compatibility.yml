@@ -1,0 +1,44 @@
+name: Compatibility checks
+
+on:
+  schedule:
+    - cron: "17 20 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  supported-runtime:
+    name: PHP ${{ matrix.php }} compatibility
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ["8.2", "8.3", "8.4"]
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5.0.0
+
+      - name: Set up PHP
+        uses: shivammathur/setup-php@bf6b4fbd49ca58e4608c9c89fba0b8d90bd2a39f # 2.35.5
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: zip
+          coverage: none
+          tools: composer:v2
+
+      - name: Install and audit dependencies
+        run: |
+          composer install --no-interaction --prefer-dist --no-progress
+          composer audit --no-interaction
+
+      - name: Run compatibility suite
+        run: composer check
+
+      - name: Verify installable artifact
+        run: |
+          php bin/verify-version.php
+          php bin/build-release.php
+          php bin/verify-release.php
