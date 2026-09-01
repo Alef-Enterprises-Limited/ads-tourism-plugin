@@ -444,7 +444,7 @@ function get_current_user_id(): int
     return 1;
 }
 
-function get_edit_post_link(int|WP_Post $post = 0, string $context = 'display'): string|null
+function get_edit_post_link(int|WP_Post $post = 0, string $context = 'display'): ?string
 {
     return 'post.php';
 }
