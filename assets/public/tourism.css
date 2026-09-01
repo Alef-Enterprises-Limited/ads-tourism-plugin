@@ -184,6 +184,21 @@
     min-height: 2.75rem;
 }
 
+.ads-tourism-commerce-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+    margin-block: 1rem;
+}
+
+.ads-tourism-commerce-controls .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 2.75rem;
+}
+
 .ads-tourism-card {
     border: 1px solid color-mix(in srgb, var(--ads-tourism-border-color) 18%, transparent);
     border-radius: var(--ads-tourism-radius);

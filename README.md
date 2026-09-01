@@ -2,7 +2,7 @@
 
 ADS Tourism is a WordPress-native foundation for tourism websites. It models destinations as the spine of a connected catalogue of things to do, places to stay, tour operators, and packages while leaving page composition to WordPress, Divi, or another builder.
 
-> **Status:** early development. The plugin currently provides the core content model, structured record fields, canonical relationships, an editorial verification workflow, linked galleries, fallback resolution, configurable permalinks, secure CSV import/export, builder-compatible fallback templates, interactive shortcode listings, tourism SEO/schema integration, optional Google Maps, multilingual adapters, and project quality/release tooling. WooCommerce commerce adapters remain planned work.
+> **Status:** early development. The plugin currently provides the core content model, structured record fields, canonical relationships, an editorial verification workflow, linked galleries, fallback resolution, configurable permalinks, secure CSV import/export, builder-compatible fallback templates, interactive shortcode listings, tourism SEO/schema integration, optional Google Maps, multilingual adapters, optional WooCommerce commerce, and project quality/release tooling.
 
 ## Core content model
 
@@ -67,6 +67,12 @@ ADS Tourism emits factual tourism schema and native social metadata when no supp
 Maps are optional and provider-neutral, with Google Maps as the first adapter. The `ads_tourism_map` shortcode supports current, explicit multi-record, and listing-context maps; context maps follow AJAX result filters. Disabling maps leaves all coordinates and content intact.
 
 All interface strings use the `ads-tourism` text domain and ship in a generated POT template. Optional WPML and Polylang adapters resolve related records in the current language with a configurable original-language fallback. See [SEO, maps, and languages](docs/user/seo-maps-and-languages.md) and the [integration architecture](docs/developer/seo-maps-and-multilingual.md).
+
+## Optional WooCommerce commerce
+
+Packages remain complete tourism records when WooCommerce is absent. When WooCommerce is active, editors can explicitly create or link one Product, synchronize Package presentation details, and detach it without deleting either record. Catalogue and Enquiry modes never create orders; WooCommerce mode can render Add to Cart and direct-checkout controls only for a valid purchasable Product.
+
+Listing cards may open the Package or Product page. Existing tourism record shortcodes automatically resolve the linked Package on Product pages, making them usable inside Divi Woo templates and other builders. WooCommerce owns all price, tax, stock, cart, checkout, order, and payment data. See [WooCommerce for Packages](docs/user/woocommerce.md) and the [WooCommerce integration architecture](docs/developer/woocommerce.md).
 
 ## Install for development
 

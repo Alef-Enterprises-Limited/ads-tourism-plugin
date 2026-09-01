@@ -88,11 +88,14 @@ Record components use the current tourism record unless an `id` is supplied:
 [ads_tourism_related_packages]
 [ads_tourism_package_itinerary]
 [ads_tourism_package_provider]
+[ads_tourism_commerce_controls]
 ```
 
 `ads_tourism_field` exposes only public scalar fields defined by the plugin schema. It applies the normal fallback resolver and omits its markup when no usable value exists. Galleries use WordPress Media Library associations and linked images, and also omit empty output safely. Related components return published linked records only.
 
 The gallery accepts optional `limit` (`0` through `100`), `columns` (`1` through `6`), `role`, `order` (`manual`, `newest`, `oldest`, or `random`), WordPress image `size`, and Boolean `captions`, `credits`, and `lightbox` overrides. Empty attributes inherit the record's gallery settings. A `class` override is sanitized and added to the gallery section.
+
+Commerce controls accept `id`, `class`, and `action` (`configured`, `add_to_cart`, `buy_now`, or `both`). Catalogue and Enquiry modes never render cart actions. On a linked WooCommerce Product page, record components without an explicit `id` automatically use the linked Package. See [WooCommerce for Packages](woocommerce.md).
 
 ## URL state and no-JavaScript behavior
 

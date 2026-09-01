@@ -255,7 +255,9 @@ final readonly class RecordComponentShortcodes
     {
         $explicit = absint($attributes['id'] ?? 0);
 
-        return $explicit > 0 ? $explicit : get_the_ID();
+        return $explicit > 0
+            ? $explicit
+            : absint(apply_filters('ads_tourism_record_context_id', get_the_ID(), $attributes));
     }
 
     private function isSimple(FieldDefinition $field): bool

@@ -44,3 +44,7 @@ The project follows [Semantic Versioning](https://semver.org/) and the structure
 - Single-record, multi-record, and AJAX context-synchronized map shortcodes with bounded markers and accessible status updates.
 - WPML and Polylang adapters with configurable original-language fallback for related records and map markers.
 - Complete dynamic-label internationalization and deterministic POT generation enforced by CI.
+- Optional WooCommerce detection, reciprocal Package/Product mapping, and explicit create, link, synchronize, and detach actions.
+- Catalogue, Enquiry, and WooCommerce mode resolution with safe non-transactional fallbacks.
+- Builder-agnostic Add to Cart and Buy Now controls, configurable listing destinations, and linked Product-page tourism components.
+- WooCommerce CRUD integration, Product/Package deletion cleanup, and HPOS compatibility declaration.

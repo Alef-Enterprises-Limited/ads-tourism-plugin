@@ -98,6 +98,14 @@ msgstr ""
 msgid "Add selected images"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Integration/WooCommerce/CommerceSettings.php:1 src/Infrastructure/WordPress/Integration/WooCommerce/CommerceShortcodes.php:1
+msgid "Add to Cart"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Integration/WooCommerce/CommerceSettings.php:1
+msgid "Add to Cart and Buy Now"
+msgstr ""
+
 #: src/Infrastructure/WordPress/AdminMenu.php:1
 msgid "ADS Tourism"
 msgstr ""
@@ -128,6 +136,10 @@ msgstr ""
 
 #: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
 msgid "ADS Tourism System Status"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Integration/WooCommerce/CommerceSettings.php:1
+msgid "ADS Tourism WooCommerce"
 msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
@@ -202,6 +214,10 @@ msgstr ""
 msgid "Any verification status"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Integration/WooCommerce/CommerceShortcodes.php:1
+msgid "A Package is required for commerce controls."
+msgstr ""
+
 #: src/Infrastructure/WordPress/Shortcode/RecordComponentShortcodes.php:1
 msgid "A Package is required for the itinerary component."
 msgstr ""
@@ -232,6 +248,10 @@ msgstr ""
 
 #: src/Domain/Relationship/RelationType.php:1
 msgid "Available at places"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
+msgid "Available — version %s"
 msgstr ""
 
 #: src/Infrastructure/WordPress/Shortcode/RecordComponentShortcodes.php:1
@@ -274,6 +294,10 @@ msgstr ""
 msgid "Business name"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Integration/WooCommerce/CommerceSettings.php:1 src/Infrastructure/WordPress/Integration/WooCommerce/CommerceShortcodes.php:1
+msgid "Buy Now"
+msgstr ""
+
 #: src/Domain/Field/RecordFieldSchema.php:1
 msgid "Cancellation conditions"
 msgstr ""
@@ -282,7 +306,7 @@ msgstr ""
 msgid "Caption"
 msgstr ""
 
-#: src/Domain/Field/RecordFieldSchema.php:1
+#: src/Domain/Field/RecordFieldSchema.php:1 src/Infrastructure/WordPress/Integration/WooCommerce/CommerceSettings.php:1
 msgid "Catalogue"
 msgstr ""
 
@@ -330,6 +354,10 @@ msgstr ""
 msgid "Choose a default image"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Integration/WooCommerce/CommerceShortcodes.php:1
+msgid "Choose a valid commerce control action."
+msgstr ""
+
 #: src/Infrastructure/WordPress/ImportExport/CsvDownloadController.php:1
 msgid "Choose a valid tourism record type."
 msgstr ""
@@ -358,6 +386,10 @@ msgstr ""
 msgid "Column mapping"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Integration/WooCommerce/CommerceSettings.php:1
+msgid "Commerce display"
+msgstr ""
+
 #: src/Domain/Field/RecordFieldSchema.php:1
 msgid "Commerce mode"
 msgstr ""
@@ -384,6 +416,10 @@ msgstr ""
 
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
 msgid "Created / Updated / Skipped / Rejected"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Integration/WooCommerce/PackageCommerceMetaBox.php:1
+msgid "Create draft Product"
 msgstr ""
 
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
@@ -428,6 +464,10 @@ msgstr ""
 
 #: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1
 msgid "Detach"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Integration/WooCommerce/PackageCommerceMetaBox.php:1
+msgid "Detach Product"
 msgstr ""
 
 #: src/Infrastructure/WordPress/Presentation/FrontendRenderer.php:1
@@ -478,6 +518,10 @@ msgstr ""
 msgid "Draft"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Integration/WooCommerce/PackageCommerceMetaBox.php:1
+msgid "Draft WooCommerce product created and linked."
+msgstr ""
+
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
 msgid "Duplicate external ID"
 msgstr ""
@@ -510,6 +554,10 @@ msgstr ""
 msgid "Editorial workflow"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Integration/WooCommerce/PackageCommerceMetaBox.php:1
+msgid "Edit Product"
+msgstr ""
+
 #: src/Domain/Field/RecordFieldSchema.php:1
 msgid "Email"
 msgstr ""
@@ -526,12 +574,20 @@ msgstr ""
 msgid "Enable gallery lightbox"
 msgstr ""
 
-#: src/Domain/Field/RecordFieldSchema.php:1
+#: src/Infrastructure/WordPress/Integration/WooCommerce/CommerceShortcodes.php:1
+msgid "Enquire now"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1 src/Infrastructure/WordPress/Integration/WooCommerce/CommerceSettings.php:1
 msgid "Enquiry"
 msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
 msgid "Enquiry URL"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Integration/WooCommerce/PackageCommerceMetaBox.php:1
+msgid "Enter an existing product ID and update the Package to link it. A product can belong to only one Package."
 msgstr ""
 
 #: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1
@@ -548,6 +604,10 @@ msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
 msgid "Exclusions"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Integration/WooCommerce/PackageCommerceMetaBox.php:1
+msgid "Existing WooCommerce product linked."
 msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
@@ -734,6 +794,10 @@ msgstr ""
 msgid "Invalid relationship search."
 msgstr ""
 
+#: src/Infrastructure/WordPress/Integration/WooCommerce/CommerceSettings.php:1
+msgid "Invalid WooCommerce-mode fallback"
+msgstr ""
+
 #: src/Domain/Field/RecordFieldSchema.php:1 src/Domain:1
 msgid "Itinerary"
 msgstr ""
@@ -768,6 +832,10 @@ msgstr ""
 
 #: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1
 msgid "Linked image URL or relative path"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Integration/WooCommerce/PackageCommerceMetaBox.php:1
+msgid "Linked product tourism details synchronized."
 msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1 src/Infrastructure/WordPress/Shortcode/PaginationRenderer.php:1
@@ -1054,6 +1122,22 @@ msgstr ""
 msgid "Package"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Integration/WooCommerce/PackageCommerceMetaBox.php:1
+msgid "Package commerce"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Integration/WooCommerce/CommerceSettings.php:1
+msgid "Package listing destination"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Integration/WooCommerce/CommerceSettings.php:1
+msgid "Package page"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Integration/WooCommerce/CommerceSettings.php:1
+msgid "Package page controls"
+msgstr ""
+
 #: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1 src/Infrastructure/WordPress/Media/MediaSettings.php:1 src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1
 msgid "Packages"
 msgstr ""
@@ -1306,6 +1390,10 @@ msgstr ""
 msgid "Safety notes"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Integration/WooCommerce/PackageCommerceMetaBox.php:1
+msgid "Saved product ID: %d"
+msgstr ""
+
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
 msgid "Save transfer settings"
 msgstr ""
@@ -1454,6 +1542,10 @@ msgstr ""
 msgid "Summary"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Integration/WooCommerce/PackageCommerceMetaBox.php:1
+msgid "Sync tourism details"
+msgstr ""
+
 #: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
 msgid "System Status"
 msgstr ""
@@ -1496,6 +1588,18 @@ msgstr ""
 
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
 msgid "The request failed. Try again or check the server logs."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Integration/WooCommerce/PackageCommerceMetaBox.php:1
+msgid "The selected product could not be linked. Confirm that it exists and is not linked elsewhere."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Integration/WooCommerce/CommerceSettings.php:1
+msgid "These settings apply only to Packages in WooCommerce mode with a valid linked product."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Integration/WooCommerce/PackageCommerceMetaBox.php:1
+msgid "The WooCommerce product action could not be completed."
 msgstr ""
 
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
@@ -1710,6 +1814,10 @@ msgstr ""
 msgid "View %s"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Integration/WooCommerce/CommerceShortcodes.php:1
+msgid "View offer"
+msgstr ""
+
 #: src/Domain/Field/RecordFieldSchema.php:1
 msgid "Visitor advice"
 msgstr ""
@@ -1722,8 +1830,36 @@ msgstr ""
 msgid "What to bring"
 msgstr ""
 
-#: src/Domain/Field/RecordFieldSchema.php:1
+#: src/Domain/Field/RecordFieldSchema.php:1 src/Infrastructure/WordPress/Integration/WooCommerce/CommerceSettings.php:1
 msgid "WooCommerce"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
+msgid "WooCommerce integration"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Integration/WooCommerce/PackageCommerceMetaBox.php:1
+msgid "WooCommerce is not active. Package content and any saved product mapping remain available for later reactivation."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Integration/WooCommerce/PackageCommerceMetaBox.php:1
+msgid "WooCommerce mode requires an active linked product. Public output will use the configured safe fallback."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Integration/WooCommerce/CommerceSettings.php:1
+msgid "WooCommerce owns prices, tax, stock, cart, checkout, orders, and payment. ADS Tourism keeps the Package description, itinerary, relationships, and tourism media."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Integration/WooCommerce/PackageCommerceMetaBox.php:1
+msgid "WooCommerce product detached. The product was not deleted."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Integration/WooCommerce/PackageCommerceMetaBox.php:1
+msgid "WooCommerce product ID"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Integration/WooCommerce/CommerceSettings.php:1
+msgid "WooCommerce product page"
 msgstr ""
 
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
@@ -1750,6 +1886,10 @@ msgstr ""
 msgid "Yoast SEO"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Integration/WooCommerce/CommerceActionController.php:1
+msgid "You cannot manage commerce for this Package."
+msgstr ""
+
 #: src/Infrastructure/WordPress/Relationship/RelationshipSearchController.php:1
 msgid "You cannot search tourism records."
 msgstr ""
@@ -1764,6 +1904,10 @@ msgstr ""
 
 #: src/Infrastructure/WordPress/Workflow/WorkflowSettings.php:1
 msgid "You do not have permission to manage ADS Tourism settings."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Integration/WooCommerce/CommerceSettings.php:1
+msgid "You do not have permission to manage WooCommerce integration settings."
 msgstr ""
 
 #: src/Infrastructure/WordPress/ImportExport/CsvDownloadController.php:1 src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1

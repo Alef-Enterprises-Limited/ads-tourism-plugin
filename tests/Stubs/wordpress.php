@@ -12,6 +12,48 @@ define('ABSPATH', '/');
 define('HOUR_IN_SECONDS', 3600);
 define('MINUTE_IN_SECONDS', 60);
 define('PCLZIP_OPT_REMOVE_PATH', 77001);
+define('WC_VERSION', '10.0.0');
+
+class WooCommerce {}
+
+class WC_Product
+{
+    public function get_meta(string $key, bool $single = true, string $context = 'view'): mixed
+    {
+        return '';
+    }
+
+    public function update_meta_data(string $key, mixed $value, int $metaId = 0): void {}
+
+    public function delete_meta_data(string $key): void {}
+
+    public function set_name(string $name): void {}
+
+    public function set_status(string $status = 'publish'): void {}
+
+    public function set_catalog_visibility(string $visibility = 'visible'): void {}
+
+    public function set_short_description(string $description): void {}
+
+    public function set_image_id(int $imageId = 0): void {}
+
+    public function save(): int
+    {
+        return 1;
+    }
+
+    public function is_purchasable(): bool
+    {
+        return true;
+    }
+
+    public function add_to_cart_url(): string
+    {
+        return 'https://example.com/cart/';
+    }
+}
+
+class WC_Product_Simple extends WC_Product {}
 
 class WP_Post
 {
@@ -402,6 +444,11 @@ function get_current_user_id(): int
     return 1;
 }
 
+function get_edit_post_link(int|WP_Post $post = 0, string $context = 'display'): ?string
+{
+    return 'post.php';
+}
+
 function get_option(string $option, mixed $default = false): mixed
 {
     return $default;
@@ -750,6 +797,16 @@ function wp_add_inline_style(string $handle, string $data): bool
 function wp_clear_scheduled_hook(string $hook, mixed ...$args): int|false
 {
     return 0;
+}
+
+function wc_get_product(int|WP_Post $product = 0): WC_Product|false|null
+{
+    return new WC_Product();
+}
+
+function wc_get_checkout_url(): string
+{
+    return 'https://example.com/checkout/';
 }
 
 function wp_create_nonce(string|int $action = -1): string
