@@ -35,7 +35,7 @@ final class WordPressTranslationAdapter implements TranslationAdapterInterface
         }
 
         if ($this->hasPolylang()) {
-            $language = call_user_func('pll_current_language', 'slug');
+            $language = $this->callPolylang('pll_current_language', 'slug');
 
             return is_string($language) ? $language : '';
         }
@@ -52,7 +52,7 @@ final class WordPressTranslationAdapter implements TranslationAdapterInterface
         }
 
         if ($this->hasPolylang()) {
-            $translated = call_user_func('pll_get_post', $postId, $this->currentLanguage());
+            $translated = $this->callPolylang('pll_get_post', $postId, $this->currentLanguage());
 
             return is_int($translated) && $translated > 0 ? $translated : null;
         }
@@ -69,7 +69,7 @@ final class WordPressTranslationAdapter implements TranslationAdapterInterface
         }
 
         if ($this->hasPolylang()) {
-            $translated = call_user_func('pll_get_term', $termId, $this->currentLanguage());
+            $translated = $this->callPolylang('pll_get_term', $termId, $this->currentLanguage());
 
             return is_int($translated) && $translated > 0 ? $translated : null;
         }
@@ -87,5 +87,14 @@ final class WordPressTranslationAdapter implements TranslationAdapterInterface
         return function_exists('pll_get_post')
             && function_exists('pll_get_term')
             && function_exists('pll_current_language');
+    }
+
+    private function callPolylang(string $function, mixed ...$arguments): mixed
+    {
+        if (!is_callable($function)) {
+            return null;
+        }
+
+        return $function(...$arguments);
     }
 }

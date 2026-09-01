@@ -140,7 +140,7 @@ final readonly class SeoIntegration
      */
     public function filterSchemaGraph(array $graph, mixed $context): array
     {
-        return $this->appendSchema($graph);
+        return array_values($this->appendSchema($graph));
     }
 
     /**

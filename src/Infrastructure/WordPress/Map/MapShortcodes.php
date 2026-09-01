@@ -197,7 +197,7 @@ final readonly class MapShortcodes
 
         $marker = $markers[0];
         $url = add_query_arg([
-            'api' => 1,
+            'api' => '1',
             'destination' => $marker->coordinates->latitude . ',' . $marker->coordinates->longitude,
         ], 'https://www.google.com/maps/dir/');
 

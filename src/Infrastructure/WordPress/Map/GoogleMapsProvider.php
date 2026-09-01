@@ -70,7 +70,7 @@ final readonly class GoogleMapsProvider implements MapProviderInterface
     public function directionsUrl(Coordinates $coordinates): string
     {
         return add_query_arg([
-            'api' => 1,
+            'api' => '1',
             'destination' => $coordinates->latitude . ',' . $coordinates->longitude,
         ], 'https://www.google.com/maps/dir/');
     }

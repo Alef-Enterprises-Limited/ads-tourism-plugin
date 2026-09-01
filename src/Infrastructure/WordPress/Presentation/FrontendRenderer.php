@@ -260,10 +260,6 @@ final readonly class FrontendRenderer
             $translatedTerms = [];
 
             foreach ($terms as $term) {
-                if (!$term instanceof WP_Term) {
-                    continue;
-                }
-
                 $translatedId = $this->translations->termId($term->term_id, $taxonomy->value);
                 $translated = $translatedId === null ? null : get_term($translatedId, $taxonomy->value);
 
