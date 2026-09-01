@@ -68,6 +68,7 @@ foreach ($taxonomies as $taxonomy) {
         register_taxonomy($taxonomy, $postTypes, ['public' => false]);
     }
 
+    /** @var list<int>|WP_Error $termIds */
     $termIds = get_terms([
         'taxonomy' => $taxonomy,
         'hide_empty' => false,
@@ -79,8 +80,7 @@ foreach ($taxonomies as $taxonomy) {
     }
 
     foreach ($termIds as $termId) {
-        $resolvedTermId = $termId instanceof WP_Term ? $termId->term_id : absint($termId);
-        wp_delete_term($resolvedTermId, $taxonomy);
+        wp_delete_term(absint($termId), $taxonomy);
     }
 }
 

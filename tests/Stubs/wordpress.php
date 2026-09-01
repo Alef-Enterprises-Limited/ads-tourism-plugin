@@ -571,7 +571,7 @@ function get_term_by(string $field, string|int $value, string $taxonomy = '', st
 /**
  * @param array<string, mixed> $arguments
  *
- * @return list<int|WP_Term>|WP_Error
+ * @return list<WP_Term>|WP_Error
  */
 function get_terms(array $arguments = []): array|WP_Error
 {
