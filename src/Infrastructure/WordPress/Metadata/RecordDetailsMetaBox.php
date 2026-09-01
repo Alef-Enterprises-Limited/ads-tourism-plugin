@@ -122,13 +122,13 @@ final readonly class RecordDetailsMetaBox
 
         echo '<tr>';
         echo '<th scope="row"><label for="' . esc_attr($field->key) . '">';
-        echo esc_html($field->label);
+        echo esc_html(__($field->label, 'ads-tourism'));
         echo '</label></th><td>';
 
         $this->renderInput($field, $value);
 
         if ($field->description !== '') {
-            echo '<p class="description">' . esc_html($field->description) . '</p>';
+            echo '<p class="description">' . esc_html(__($field->description, 'ads-tourism')) . '</p>';
         }
 
         echo '</td></tr>';
@@ -159,7 +159,8 @@ final readonly class RecordDetailsMetaBox
 
             foreach ($field->options as $optionValue => $optionLabel) {
                 echo '<option value="' . esc_attr($optionValue) . '" ';
-                echo selected((string) $value, $optionValue, false) . '>' . esc_html($optionLabel) . '</option>';
+                echo selected((string) $value, $optionValue, false) . '>';
+                echo esc_html(__($optionLabel, 'ads-tourism')) . '</option>';
             }
 
             echo '</select>';

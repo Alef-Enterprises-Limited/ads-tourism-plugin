@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Query;
 
 use AlefDigitalSolutions\ADSTourism\Application\Query\TourismQueryFactory;
+use AlefDigitalSolutions\ADSTourism\Domain\Map\MapMarker;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Map\MapMarkerFactory;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Shortcode\ListingRenderer;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Shortcode\PaginationRenderer;
 use InvalidArgumentException;
@@ -23,6 +25,7 @@ final readonly class PublicQueryController
         private WordPressQueryService $queryService,
         private ListingRenderer $listings,
         private PaginationRenderer $pagination,
+        private MapMarkerFactory $markers,
     ) {}
 
     public function register(): void
@@ -52,6 +55,10 @@ final readonly class PublicQueryController
                 'total_pages' => $result->totalPages,
                 'page' => $result->page,
                 'state' => $query->normalizedState(),
+                'markers' => array_map(
+                    static fn(MapMarker $marker): array => $marker->toArray(),
+                    $this->markers->forPosts($result->postIds),
+                ),
             ]);
         } catch (InvalidArgumentException $exception) {
             return new WP_Error('ads_tourism_invalid_query', $exception->getMessage(), ['status' => 400]);

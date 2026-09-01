@@ -51,7 +51,7 @@ final class WorkflowColumns
         if ($column === 'ads_tourism_stage') {
             echo esc_html($this->stageLabel((string) get_post_status($postId), $verification));
         } elseif ($column === 'ads_tourism_verification') {
-            echo esc_html(VerificationStatus::labels()[$verification->value]);
+            echo esc_html(__(VerificationStatus::labels()[$verification->value], 'ads-tourism'));
         } elseif ($column === 'ads_tourism_last_verified') {
             $lastVerified = (string) get_post_meta($postId, 'ads_tourism_last_verified_at', true);
             echo $lastVerified === '' ? '—' : esc_html($lastVerified);
@@ -77,7 +77,7 @@ final class WorkflowColumns
 
         foreach (VerificationStatus::labels() as $value => $label) {
             echo '<option value="' . esc_attr($value) . '" ' . selected($selectedStatus, $value, false) . '>';
-            echo esc_html($label) . '</option>';
+            echo esc_html(__($label, 'ads-tourism')) . '</option>';
         }
 
         echo '</select>';
@@ -110,10 +110,10 @@ final class WorkflowColumns
     private function stageLabel(string $postStatus, VerificationStatus $verification): string
     {
         return match (true) {
-            $postStatus === 'publish' && $verification === VerificationStatus::VERIFIED => 'Published',
-            $postStatus === 'pending' && $verification === VerificationStatus::VERIFIED => 'Verified',
-            $postStatus === 'pending' => 'In Review',
-            default => 'Draft',
+            $postStatus === 'publish' && $verification === VerificationStatus::VERIFIED => __('Published', 'ads-tourism'),
+            $postStatus === 'pending' && $verification === VerificationStatus::VERIFIED => __('Verified', 'ads-tourism'),
+            $postStatus === 'pending' => __('In Review', 'ads-tourism'),
+            default => __('Draft', 'ads-tourism'),
         };
     }
 }

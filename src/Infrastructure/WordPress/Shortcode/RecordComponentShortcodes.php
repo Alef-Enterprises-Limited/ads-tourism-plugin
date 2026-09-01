@@ -10,6 +10,7 @@ use AlefDigitalSolutions\ADSTourism\Domain\Field\FieldType;
 use AlefDigitalSolutions\ADSTourism\Domain\Field\RecordFieldSchema;
 use AlefDigitalSolutions\ADSTourism\Domain\Relationship\RelationshipRepository;
 use AlefDigitalSolutions\ADSTourism\Domain\Relationship\RelationType;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Multilingual\TranslationResolver;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Presentation\FrontendRenderer;
 use WP_Post;
 
@@ -30,6 +31,7 @@ final readonly class RecordComponentShortcodes
         private FrontendRenderer $frontend,
         private ShortcodeAssets $assets,
         private ShortcodeDiagnostic $diagnostics,
+        private TranslationResolver $translations,
     ) {}
 
     public function register(): void
@@ -68,7 +70,8 @@ final readonly class RecordComponentShortcodes
         $html = '<span class="ads-tourism-field' . ($class === '' ? '' : ' ' . esc_attr($class)) . '">';
 
         if (filter_var($attributes['label'], FILTER_VALIDATE_BOOLEAN)) {
-            $html .= '<span class="ads-tourism-field__label">' . esc_html($field->label) . '</span> ';
+            $html .= '<span class="ads-tourism-field__label">';
+            $html .= esc_html(__($field->label, 'ads-tourism')) . '</span> ';
         }
 
         return $html . '<span class="ads-tourism-field__value">' . $this->formatField($field, $value) . '</span></span>';
@@ -213,7 +216,10 @@ final readonly class RecordComponentShortcodes
             }
 
             foreach ($this->relationships->findForRecord($postId, $relationType, $side) as $relationship) {
-                $related = get_post($relationship->relatedPostId($side));
+                $relatedId = $relationship->relatedPostId($side);
+                $relatedType = (string) get_post_type($relatedId);
+                $relatedId = $this->translations->postId($relatedId, $relatedType) ?? 0;
+                $related = get_post($relatedId);
 
                 if (
                     $related instanceof WP_Post
@@ -264,7 +270,9 @@ final readonly class RecordComponentShortcodes
         }
 
         $text = is_scalar($value) ? (string) $value : '';
-        $text = $field->type === FieldType::SELECT && isset($field->options[$text]) ? $field->options[$text] : $text;
+        $text = $field->type === FieldType::SELECT && isset($field->options[$text])
+            ? __($field->options[$text], 'ads-tourism')
+            : $text;
 
         if ($field->type === FieldType::URL && wp_http_validate_url($text) !== false) {
             return '<a href="' . esc_url($text) . '">' . esc_html($text) . '</a>';

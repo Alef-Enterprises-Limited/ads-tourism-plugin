@@ -1,0 +1,1776 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ADS Tourism 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/Alef-Enterprises-Limited/ads-tourism-plugin/issues\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Domain: ads-tourism\n"
+#: src/Infrastructure/WordPress/Shortcode/ListingRenderer.php:1
+msgid "%d tourism record found."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Shortcode/ListingRenderer.php:1
+msgid "%d tourism records found."
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1
+msgid "%s archives"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1
+msgid "%s attributes"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Media/MediaSettings.php:1
+msgid "%s default"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "%s list"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "%s list navigation"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Absolute"
+msgstr ""
+
+#: src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "Accessibility Feature"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "Accessibility Features"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Accessibility information"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Accessibility notes"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1
+msgid "Accommodation and other places where visitors can stay."
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1
+msgid "Activities, attractions, and experiences for visitors."
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1 src/Domain:1 src/Infrastructure/WordPress/Shortcode/InteractiveShortcodes.php:1
+msgid "Activity"
+msgstr ""
+
+#: src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "Activity Type"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "Activity Types"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1
+msgid "Add linked image"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1
+msgid "Add New"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "Add New %s"
+msgstr ""
+
+#: src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "Add or remove %s"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Address"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1
+msgid "Add selected images"
+msgstr ""
+
+#: src/Infrastructure/WordPress/AdminMenu.php:1
+msgid "ADS Tourism"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Shortcode/ShortcodeDiagnostic.php:1
+msgid "ADS Tourism:"
+msgstr ""
+
+#: src/Infrastructure/WordPress/SEO/SeoSettings.php:1
+msgid "ADS Tourism can emit focused tourism schema itself or contribute it through a compatible SEO plugin."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Workflow/PublishingGate.php:1
+msgid "ADS Tourism kept this record in review because it must be verified before publication."
+msgstr ""
+
+#: ads-tourism.php:1
+msgid "ADS Tourism requires PHP 8.2 or newer. The plugin has not been started."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Workflow/WorkflowSettings.php:1
+msgid "ADS Tourism Settings"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Multilingual/MultilingualSettings.php:1
+msgid "ADS Tourism stores language-neutral relationships and can resolve translated records through WPML or Polylang when either plugin is active."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
+msgid "ADS Tourism System Status"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Adult price"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Advanced — controlled term slugs"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "After template content"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Airport transfer information"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Shortcode/InteractiveShortcodes.php:1
+msgid "All"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "All %s"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Allow administrators to create unknown taxonomy terms during import"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "All record types"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "All roles"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
+msgid "All tourism post types are public, REST-enabled, and compatible with standard title, content, featured-image, archive, and taxonomy conditions."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Workflow/WorkflowColumns.php:1
+msgid "All verification statuses"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1
+msgid "Alt-text override"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Altitude (metres)"
+msgstr ""
+
+#: src/Infrastructure/WordPress/SEO/SeoSettings.php:1
+msgid "Always use ADS Tourism schema"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "Amenities"
+msgstr ""
+
+#: src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "Amenity"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Any status"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Any verification status"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Shortcode/RecordComponentShortcodes.php:1
+msgid "A Package is required for the itinerary component."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Shortcode/RecordComponentShortcodes.php:1
+msgid "A Package is required for the provider component."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Shortcode/InteractiveShortcodes.php:1
+msgid "Apply"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Shortcode/InteractiveShortcodes.php:1
+msgid "Apply filters"
+msgstr ""
+
+#: src/Infrastructure/WordPress/SEO/SeoSettings.php:1
+msgid "Automatic — defer to a detected SEO plugin"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Availability notes"
+msgstr ""
+
+#: src/Domain/Relationship/RelationType.php:1
+msgid "Available activities"
+msgstr ""
+
+#: src/Domain/Relationship/RelationType.php:1
+msgid "Available at places"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Shortcode/RecordComponentShortcodes.php:1
+msgid "A valid tourism record is required for the gallery."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Shortcode/RecordComponentShortcodes.php:1
+msgid "A valid tourism relationship component is required."
+msgstr ""
+
+#: src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "Back to %s"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Before template content"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Best time to visit"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Blank cells leave existing values unchanged during updates. Use %s to remove a value."
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Booking conditions"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Booking instructions"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
+msgid "Builder compatibility"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Business name"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Cancellation conditions"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1
+msgid "Caption"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Catalogue"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Catalogue call-to-action label"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Catalogue call-to-action URL"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/FrontendRenderer.php:1
+msgid "Categories"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Challenging"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Workflow/VerificationHistoryMetaBox.php:1
+msgid "Changed at"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1
+msgid "Change URL bases carefully. ADS Tourism validates duplicates and reserved paths, then redirects previously configured bases."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
+msgid "Check"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Check-in notes"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Check-out notes"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Child price"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Media/MediaSettings.php:1
+msgid "Choose a default image"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/CsvDownloadController.php:1
+msgid "Choose a valid tourism record type."
+msgstr ""
+
+#: src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "Choose from the most used %s"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1
+msgid "Choose gallery images"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Media/MediaSettings.php:1
+msgid "Choose image"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1
+msgid "Choose Media Library images"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Media/MediaSettings.php:1
+msgid "Clear"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Column mapping"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Commerce mode"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Configured template slot"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Contact person"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Contact provider"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Workflow/WorkflowSettings.php:1
+msgid "Control how tourism records move from draft through review and verification to publication."
+msgstr ""
+
+#: src/Domain/Relationship/RelationType.php:1
+msgid "Covered places"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Created / Updated / Skipped / Rejected"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Create unknown taxonomy terms after preview"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Create with a new external ID"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1
+msgid "Credit"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "CSV column"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "CSV Import/Export"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "CSV Import and Export"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Custom content position"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/PresentationSettings.php:1
+msgid "Custom CSS"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Date collected"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Media/MediaSettings.php:1
+msgid "Default images"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1
+msgid "Detach"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/FrontendRenderer.php:1
+msgid "Details"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Difficulty level"
+msgstr ""
+
+#: src/Infrastructure/WordPress/SEO/SeoSettings.php:1
+msgid "Disable ADS Tourism schema"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Map/MapSettings.php:1 src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
+msgid "Disabled"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
+msgid "Disabled — optional"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Display fallback overrides"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
+msgid "Divi detected"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
+msgid "Divi post-type integration: %s"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Download export ZIP"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Download rejected rows"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Download templates:"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1 src/Infrastructure/WordPress/Workflow/WorkflowColumns.php:1
+msgid "Draft"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Duplicate external ID"
+msgstr ""
+
+#: src/Domain:1
+msgid "Duration"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Duration (days)"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Duration (nights)"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Shortcode/InteractiveShortcodes.php:1
+msgid "Duration in days"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Easy"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "Edit %s"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Workflow/WorkflowSettings.php:1
+msgid "Editorial workflow"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Email"
+msgstr ""
+
+#: src/Infrastructure/WordPress/SEO/SeoSettings.php:1
+msgid "Emit Open Graph and Twitter card inputs when no supported SEO plugin is active."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
+msgid "Enabled"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Enable gallery lightbox"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Enquiry"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Enquiry URL"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1
+msgid "Enter a relative path or a valid HTTPS URL."
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Entry fee information"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Equipment required"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Exclusions"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Expert"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Export records"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "External booking or enquiry URL"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "External featured-media URL"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "External ID"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "External URL type"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1 src/Domain:1
+msgid "Facility"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Media/MediaSettings.php:1
+msgid "Fallback images"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Media/MediaSettings.php:1
+msgid "Fallback images are display choices only. They are not written into a record as its featured image."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/PresentationSettings.php:1
+msgid "Fallback styles"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1 src/Domain:1
+msgid "Featured"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1
+msgid "Featured image"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "File"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1
+msgid "Filter %s list"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Workflow/WorkflowColumns.php:1
+msgid "Filter by verification status"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Shortcode/InteractiveShortcodes.php:1
+msgid "Filter tourism records"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Fitness requirements"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Fixed"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/PresentationSettings.php:1
+msgid "Frontend presentation"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Fully custom content"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1 src/Domain:1 src/Infrastructure/WordPress/Presentation/FrontendRenderer.php:1
+msgid "Gallery"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Gallery columns"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Gallery maximum images"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Gallery order"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Gallery pagination"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Gallery role filter"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Gallery WordPress image size"
+msgstr ""
+
+#: src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "Geographic Area"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "Geographic Areas"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Map/MapShortcodes.php:1
+msgid "Get directions"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Media/MediaSettings.php:1
+msgid "Global tourism default"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Map/MapSettings.php:1 src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
+msgid "Google Maps"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Map/MapSettings.php:1
+msgid "Google Maps browser key"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Group price"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1 src/Domain:1
+msgid "Hero"
+msgstr ""
+
+#: src/Infrastructure/WordPress/SEO/SeoIntegration.php:1
+msgid "Home"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Import complete."
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Import records"
+msgstr ""
+
+#: src/Domain/Relationship/RelationType.php:1
+msgid "Included activities"
+msgstr ""
+
+#: src/Domain/Relationship/RelationType.php:1
+msgid "Included stays"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Include featured image in gallery"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1
+msgid "Include parent-place paths in hierarchical Place URLs."
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Inclusions"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Workflow/WorkflowColumns.php:1
+msgid "In Review"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1
+msgid "Insert into %s"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Relationship/RelationshipSearchController.php:1
+msgid "Invalid relationship search."
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1 src/Domain:1
+msgid "Itinerary"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1 src/Domain:1
+msgid "Landscape"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Workflow/WorkflowColumns.php:1
+msgid "Last verified"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Last verified at"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Latitude"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Layout mode"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Licence or registration notes"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1
+msgid "Linked image"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1
+msgid "Linked image URL or relative path"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1 src/Infrastructure/WordPress/Shortcode/PaginationRenderer.php:1
+msgid "Load more"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/PresentationSettings.php:1
+msgid "Load the ADS Tourism fallback stylesheet on tourism pages."
+msgstr ""
+
+#: src/Domain/Relationship/RelationType.php:1
+msgid "Located at place"
+msgstr ""
+
+#: src/Domain/Relationship/RelationType.php:1
+msgid "Located stays"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Longitude"
+msgstr ""
+
+#: src/Domain/Relationship/RelationType.php:1
+msgid "Managed by operators"
+msgstr ""
+
+#: src/Infrastructure/WordPress/AdminMenu.php:1
+msgid "Manage destinations, activities, accommodation, tour operators, and packages from the ADS Tourism menu."
+msgstr ""
+
+#: src/Domain/Relationship/RelationType.php:1
+msgid "Managed stays"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Manual"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1 src/Domain:1
+msgid "Manual order"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1 src/Domain:1
+msgid "Map"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Map/GoogleMapsProvider.php:1
+msgid "Map data © Google"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Map/MapSettings.php:1 src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
+msgid "Map provider"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
+msgid "Map provider available"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Map/MapSettings.php:1
+msgid "Maps"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Map/MapSettings.php:1
+msgid "Maps are optional. Coordinates remain stored when maps are disabled or a provider is unavailable."
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Map zoom"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Shortcode/InteractiveShortcodes.php:1
+msgid "Maximum"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Maximum participants"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Maximum upload size (MB)"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1
+msgid "Media Library image"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Meeting-point latitude"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Meeting-point longitude"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Meeting point"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Shortcode/InteractiveShortcodes.php:1
+msgid "Minimum"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Minimum age"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Minimum participants"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Multilingual/MultilingualSettings.php:1
+msgid "Missing translations"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Moderate"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Modified after"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Modified before"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1 src/Infrastructure/WordPress/Relationship/RelationshipMetaBox.php:1
+msgid "Move down"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1 src/Infrastructure/WordPress/Relationship/RelationshipMetaBox.php:1
+msgid "Move up"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Multilingual/MultilingualSettings.php:1 src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
+msgid "Multilingual integration"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
+msgid "Native ADS Tourism metadata"
+msgstr ""
+
+#: src/Infrastructure/WordPress/SEO/SeoSettings.php:1
+msgid "Native social metadata"
+msgstr ""
+
+#: src/Domain/Relationship/RelationType.php:1
+msgid "Nearby activities"
+msgstr ""
+
+#: src/Domain/Relationship/RelationType.php:1
+msgid "Nearby places"
+msgstr ""
+
+#: src/Domain/Relationship/RelationType.php:1
+msgid "Nearby stays"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1 src/Domain:1
+msgid "Needs update"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1
+msgid "New %s"
+msgstr ""
+
+#: src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "New %s Name"
+msgstr ""
+
+#: src/Domain:1
+msgid "Newest"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Newest first"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/FrontendRenderer.php:1 src/Infrastructure/WordPress/Shortcode/PaginationRenderer.php:1
+msgid "Next"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/FrontendRenderer.php:1 src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1 src/Infrastructure/WordPress/Shortcode/RecordComponentShortcodes.php:1
+msgid "No"
+msgstr ""
+
+#: src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "No %s"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "No %s found."
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1
+msgid "No %s found in Trash."
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "No CSV imports have been started."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Map/MapAssets.php:1
+msgid "No mapped tourism records are available."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Relationship/RelationshipMetaBox.php:1
+msgid "No matching records found."
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "No pagination"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Map/MapSettings.php:1
+msgid "Not configured"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
+msgid "Not detected — optional"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Workflow/VerificationHistoryMetaBox.php:1
+msgid "Note"
+msgstr ""
+
+#: templates/components/no-results.php:1
+msgid "No tourism records found"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Shortcode/ListingRenderer.php:1
+msgid "No tourism records match these filters."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Workflow/VerificationHistoryMetaBox.php:1
+msgid "No verification changes have been recorded yet."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
+msgid "No — optional"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Numbered pagination"
+msgstr ""
+
+#: src/Domain/Relationship/RelationType.php:1
+msgid "Offered by"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Office address"
+msgstr ""
+
+#: src/Domain:1
+msgid "Oldest"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Oldest first"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Opening hours or visitor access"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Operating hours"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Shortcode/InteractiveShortcodes.php:1
+msgid "Operator"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1 src/Domain:1
+msgid "Operator logo"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/PresentationSettings.php:1
+msgid "Optional administrator CSS, limited to 50 KB. Unsafe style and script constructs are removed."
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/Shortcode/InteractiveShortcodes.php:1
+msgid "Package"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1 src/Infrastructure/WordPress/Media/MediaSettings.php:1 src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1
+msgid "Packages"
+msgstr ""
+
+#: src/Domain/Relationship/RelationType.php:1
+msgid "Packages covering this place"
+msgstr ""
+
+#: src/Domain/Relationship/RelationType.php:1
+msgid "Packages including this activity"
+msgstr ""
+
+#: src/Domain/Relationship/RelationType.php:1
+msgid "Packages including this stay"
+msgstr ""
+
+#: src/Domain/Relationship/RelationType.php:1
+msgid "Packages offered here"
+msgstr ""
+
+#: src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "Package Type"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "Package Types"
+msgstr ""
+
+#: src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "Parent %s"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "Parent %s:"
+msgstr ""
+
+#: src/Domain/Relationship/RelationType.php:1
+msgid "Partner packages"
+msgstr ""
+
+#: src/Domain/Relationship/RelationType.php:1
+msgid "Partner providers"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Pending"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1 src/Domain:1
+msgid "Pending verification"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Per group"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1
+msgid "Permalinks"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Per night"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Per person"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Physical address"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Shortcode/InteractiveShortcodes.php:1
+msgid "Place"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1 src/Infrastructure/WordPress/Media/MediaSettings.php:1 src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1
+msgid "Places to Go"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1 src/Infrastructure/WordPress/Media/MediaSettings.php:1 src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1
+msgid "Places to Stay"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1
+msgid "Place to Go"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1
+msgid "Place to Stay"
+msgstr ""
+
+#: src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "Place Type"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "Place Types"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
+msgid "Polylang"
+msgstr ""
+
+#: src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "Popular %s"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/FrontendRenderer.php:1 src/Infrastructure/WordPress/Shortcode/PaginationRenderer.php:1
+msgid "Previous"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Shortcode/InteractiveShortcodes.php:1
+msgid "Price"
+msgstr ""
+
+#: src/Domain:1
+msgid "Price: high to low"
+msgstr ""
+
+#: src/Domain:1
+msgid "Price: low to high"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Price basis"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Price currency"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Price from"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Price guidance"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Price notes"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1 src/Infrastructure/WordPress/Relationship/RelationshipMetaBox.php:1
+msgid "Primary"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Private"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Processed"
+msgstr ""
+
+#: src/Domain/Relationship/RelationType.php:1
+msgid "Provided activities"
+msgstr ""
+
+#: src/Domain/Relationship/RelationType.php:1
+msgid "Provided by operators"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Workflow/WorkflowSettings.php:1
+msgid "Publication gate"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Publication notes"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1 src/Infrastructure/WordPress/Workflow/WorkflowColumns.php:1
+msgid "Published"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1 src/Domain:1
+msgid "Random"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
+msgid "Rank Math SEO"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Recent imports"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Record type"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1 src/Domain:1
+msgid "Rejected"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/FrontendRenderer.php:1
+msgid "Related tourism"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Relative"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Relationship/RelationshipMetaBox.php:1
+msgid "Remove"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1
+msgid "Remove featured image"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Map/MapSettings.php:1
+msgid "Remove the stored Google Maps key"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Report"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Workflow/WorkflowSettings.php:1
+msgid "Require a verified status before a tourism record can be published."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1
+msgid "Rights notice"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1
+msgid "Role"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1 src/Domain:1
+msgid "Room"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Room summary"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Rows per AJAX batch"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Safety information"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Safety notes"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Save transfer settings"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Shortcode/InteractiveShortcodes.php:1
+msgid "Search"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/Relationship/RelationshipMetaBox.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "Search %s"
+msgstr ""
+
+#: src/Infrastructure/WordPress/SEO/SeoSettings.php:1
+msgid "Search and social metadata"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Relationship/RelationshipMetaBox.php:1
+msgid "Search for records, add them once, and ADS Tourism will make the relationship available in both directions."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Shortcode/InteractiveShortcodes.php:1
+msgid "Search tourism"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Season or availability notes"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Selected post IDs"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1
+msgid "Select images from the WordPress Media Library or link to an HTTPS or site-relative image. Detaching an image never deletes the Media Library file."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
+msgid "SEO integration"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "SEO schema override"
+msgstr ""
+
+#: src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "Separate %s with commas"
+msgstr ""
+
+#: src/Domain/Relationship/RelationType.php:1
+msgid "Served places"
+msgstr ""
+
+#: src/Domain/Relationship/RelationType.php:1
+msgid "Serving operators"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1
+msgid "Set featured image"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Workflow/WorkflowSettings.php:1
+msgid "Settings"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Show gallery captions"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Show gallery credits"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Simple — fields only"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Skip existing record"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Social links"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Shortcode/InteractiveShortcodes.php:1
+msgid "Sort by"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Workflow/VerificationHistoryMetaBox.php:1 src/Infrastructure/WordPress/Workflow/WorkflowColumns.php:1
+msgid "Source"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Source name"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Source reference"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Source URL"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Standard template"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Standard template with custom content"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Start import"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Relationship/RelationshipMetaBox.php:1
+msgid "Start typing to search…"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1 src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1 src/Infrastructure/WordPress/Workflow/VerificationHistoryMetaBox.php:1
+msgid "Status"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Shortcode/InteractiveShortcodes.php:1
+msgid "Stay"
+msgstr ""
+
+#: src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "Stay Type"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "Stay Types"
+msgstr ""
+
+#: src/Infrastructure/WordPress/SEO/SeoSettings.php:1
+msgid "Structured data ownership"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Structured itinerary"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Summary"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
+msgid "System Status"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Taxonomy import"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Telephone"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Temporary-file retention (hours)"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/PresentationSettings.php:1
+msgid "The bundled styles are deliberately minimal. Disable them when your theme or builder supplies all presentation."
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/CsvDownloadController.php:1
+msgid "The CSV template could not be generated."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Map/MapSettings.php:1
+msgid "The Google Maps browser key contains unsupported characters."
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/CsvDownloadController.php:1
+msgid "The rejected-row report is unavailable."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Relationship/RelationshipMetaBox.php:1
+msgid "The relationship search failed."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Shortcode/RecordComponentShortcodes.php:1
+msgid "The requested public tourism field is unavailable."
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "The request failed. Try again or check the server logs."
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "The ZIP contains record CSV files, taxonomy definitions, relationships, media links, and a checksummed manifest."
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1 src/Infrastructure/WordPress/Media/MediaSettings.php:1 src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1
+msgid "Things to Do"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1
+msgid "Thing to Do"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1 src/Domain:1
+msgid "Thumbnail"
+msgstr ""
+
+#: src/Domain:1
+msgid "Title A–Z"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1
+msgid "Title override"
+msgstr ""
+
+#: src/Domain:1
+msgid "Title Z–A"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1
+msgid "Tourism businesses and tour operators."
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1
+msgid "Tourism destinations and geographic places."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Metadata/RecordDetailsMetaBox.php:1
+msgid "Tourism details"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Tourism field"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1
+msgid "Tourism gallery"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Map/MapShortcodes.php:1
+msgid "Tourism map"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Map/MapAssets.php:1
+msgid "Tourism map updated."
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1
+msgid "Tourism offers and packages from operators or accommodation providers."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/FrontendRenderer.php:1
+msgid "Tourism record navigation"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Relationship/RelationshipMetaBox.php:1
+msgid "Tourism relationships"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Shortcode/ShortcodeAssets.php:1
+msgid "Tourism results could not be updated. Please try again."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Shortcode/PaginationRenderer.php:1
+msgid "Tourism results pages"
+msgstr ""
+
+#: src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "Tourism Tag"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "Tourism Tags"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1
+msgid "Tourism URL bases"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1
+msgid "Tour Operator"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1 src/Infrastructure/WordPress/Media/MediaSettings.php:1 src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1
+msgid "Tour Operators"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Trading name"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Transfer settings"
+msgstr ""
+
+#: src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "Traveller Type"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "Traveller Types"
+msgstr ""
+
+#: templates/components/no-results.php:1
+msgid "Try another archive or check back after more records are published."
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Type"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Typical duration"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1 src/Domain:1
+msgid "Unverified"
+msgstr ""
+
+#: src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "Update %s"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Update existing record"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Shortcode/ShortcodeAssets.php:1
+msgid "Updating tourism results…"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Upload and map columns"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1
+msgid "Uploaded to this %s"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Map/MapSettings.php:1
+msgid "Use a browser-restricted key and restrict HTTP referrers to this website. The browser key is necessarily visible to visitors; never enter a server-only secret."
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1
+msgid "Use as featured image"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Workflow/VerificationHistoryMetaBox.php:1
+msgid "User ID"
+msgstr ""
+
+#: src/Infrastructure/WordPress/AdminMenu.php:1
+msgid "Use the native content screens to add structured details, connect related records, and manage verification before publication."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Multilingual/MultilingualSettings.php:1
+msgid "Use the original-language record when no translated equivalent exists."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Media/MediaSettings.php:1
+msgid "Use this image"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Use versioned CSV templates to validate data before writing. New records are always Draft and Unverified."
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "UTF-8 CSV file"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Validate and preview"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Workflow/WorkflowColumns.php:1
+msgid "Verification"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Workflow/VerificationHistoryMetaBox.php:1
+msgid "Verification history"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Verification notes"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1 src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Verification status"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1 src/Domain:1 src/Infrastructure/WordPress/Workflow/WorkflowColumns.php:1
+msgid "Verified"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Verified by user ID"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "View %s"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Visitor advice"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Website URL"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "What to bring"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "WooCommerce"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "WordPress status"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Workflow/WorkflowColumns.php:1
+msgid "Workflow stage"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Working…"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
+msgid "WPML"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/FrontendRenderer.php:1 src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1 src/Infrastructure/WordPress/Shortcode/RecordComponentShortcodes.php:1
+msgid "Yes"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
+msgid "Yoast SEO"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Relationship/RelationshipSearchController.php:1
+msgid "You cannot search tourism records."
+msgstr ""
+
+#: src/Infrastructure/WordPress/AdminMenu.php:1
+msgid "You do not have permission to access ADS Tourism."
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/CsvImportController.php:1
+msgid "You do not have permission to import tourism records."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Workflow/WorkflowSettings.php:1
+msgid "You do not have permission to manage ADS Tourism settings."
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/CsvDownloadController.php:1 src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "You do not have permission to transfer tourism records."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
+msgid "You do not have permission to view ADS Tourism system status."
+msgstr ""
+

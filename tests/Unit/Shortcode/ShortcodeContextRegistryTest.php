@@ -41,6 +41,15 @@ final class ShortcodeContextRegistryTest extends TestCase
         self::assertTrue($registry->register($context, ContextComponent::PAGINATION)->accepted);
     }
 
+    public function testAContextAcceptsAMapAlongsideItsResults(): void
+    {
+        $registry = new ShortcodeContextRegistry();
+        $context = new ContextName('discover');
+
+        self::assertTrue($registry->register($context, ContextComponent::RESULTS)->accepted);
+        self::assertTrue($registry->register($context, ContextComponent::MAP)->accepted);
+    }
+
     public function testAutomaticListingContextsAreUnique(): void
     {
         $registry = new ShortcodeContextRegistry();
