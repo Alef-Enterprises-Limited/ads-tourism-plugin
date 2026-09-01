@@ -61,23 +61,28 @@ class WP_Theme
     }
 }
 
+class WP_Label_Collection
+{
+    public string $name = '';
+}
+
 class WP_Post_Type
 {
-    public object $labels;
+    public WP_Label_Collection $labels;
 
     public function __construct()
     {
-        $this->labels = (object) ['name' => ''];
+        $this->labels = new WP_Label_Collection();
     }
 }
 
 class WP_Taxonomy
 {
-    public object $labels;
+    public WP_Label_Collection $labels;
 
     public function __construct()
     {
-        $this->labels = (object) ['name' => ''];
+        $this->labels = new WP_Label_Collection();
     }
 }
 
@@ -788,6 +793,7 @@ function wp_get_theme(string $stylesheet = '', string $themeRoot = ''): WP_Theme
     return new WP_Theme();
 }
 
+/** @phpstan-impure */
 function have_posts(): bool
 {
     return false;

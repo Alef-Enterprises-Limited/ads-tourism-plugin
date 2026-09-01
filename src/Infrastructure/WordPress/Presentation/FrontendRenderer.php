@@ -20,7 +20,6 @@ use AlefDigitalSolutions\ADSTourism\Domain\Relationship\RelationType;
 use AlefDigitalSolutions\ADSTourism\Domain\Taxonomy\TourismTaxonomy;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\FeaturedMediaResolver;
 use WP_Post;
-use WP_Term;
 
 final readonly class FrontendRenderer
 {
@@ -271,10 +270,6 @@ final readonly class FrontendRenderer
             echo '<div class="ads-tourism-taxonomies__group"><h3>' . esc_html($label) . '</h3><ul>';
 
             foreach ($terms as $term) {
-                if (!$term instanceof WP_Term) {
-                    continue;
-                }
-
                 $url = get_term_link($term, $taxonomy->value);
                 echo '<li>';
 
