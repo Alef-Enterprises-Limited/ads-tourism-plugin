@@ -53,6 +53,39 @@ class WP_Term
     public string $description = '';
 }
 
+class WP_Theme
+{
+    public function get(string $header): string
+    {
+        return '';
+    }
+}
+
+class WP_Label_Collection
+{
+    public string $name = '';
+}
+
+class WP_Post_Type
+{
+    public WP_Label_Collection $labels;
+
+    public function __construct()
+    {
+        $this->labels = new WP_Label_Collection();
+    }
+}
+
+class WP_Taxonomy
+{
+    public WP_Label_Collection $labels;
+
+    public function __construct()
+    {
+        $this->labels = new WP_Label_Collection();
+    }
+}
+
 class PclZip
 {
     public function __construct(string $filename) {}
@@ -157,6 +190,13 @@ function absint(mixed $value): int
 function add_action(string $hookName, callable $callback, int $priority = 10, int $acceptedArgs = 1): void {}
 
 function add_filter(string $hookName, callable $callback, int $priority = 10, int $acceptedArgs = 1): void {}
+
+function apply_filters(string $hookName, mixed $value, mixed ...$args): mixed
+{
+    return $value;
+}
+
+function do_action(string $hookName, mixed ...$args): void {}
 
 function add_menu_page(
     string $pageTitle,
@@ -319,6 +359,61 @@ function get_option(string $option, mixed $default = false): mixed
     return $default;
 }
 
+function get_post(int|WP_Post|null $post = null, string $output = 'OBJECT', string $filter = 'raw'): WP_Post|array|null
+{
+    return null;
+}
+
+function get_post_field(string $field, int|WP_Post $post = 0, string $context = 'display'): string
+{
+    return '';
+}
+
+function get_post_type_object(string $postType): ?WP_Post_Type
+{
+    return new WP_Post_Type();
+}
+
+function get_query_var(string $queryVariable, mixed $defaultValue = ''): mixed
+{
+    return $defaultValue;
+}
+
+function get_taxonomy(string $taxonomy): WP_Taxonomy|false
+{
+    return new WP_Taxonomy();
+}
+
+/** @return list<WP_Term>|false|WP_Error */
+function get_the_terms(int|WP_Post $post, string $taxonomy): array|false|WP_Error
+{
+    return [];
+}
+
+function get_term_link(WP_Term|int|string $term, string $taxonomy = ''): string|WP_Error
+{
+    return '';
+}
+
+function get_the_archive_title(): string
+{
+    return '';
+}
+
+function get_the_archive_description(): string
+{
+    return '';
+}
+
+function get_the_ID(): int
+{
+    return 1;
+}
+
+function get_header(string $name = '', array $args = []): void {}
+
+function get_footer(string $name = '', array $args = []): void {}
+
 function get_permalink(int|WP_Post $post = 0, bool $leaveName = false): string|false
 {
     return '';
@@ -389,6 +484,29 @@ function is_admin(): bool
     return true;
 }
 
+function is_email(string $email, bool $deprecated = false): string|false
+{
+    return $email;
+}
+
+/** @param string|list<string> $postTypes */
+function is_singular(string|array $postTypes = ''): bool
+{
+    return false;
+}
+
+/** @param string|list<string> $postTypes */
+function is_post_type_archive(string|array $postTypes = ''): bool
+{
+    return false;
+}
+
+/** @param string|list<string> $taxonomies */
+function is_tax(string|array $taxonomies = '', string|int|array $terms = ''): bool
+{
+    return false;
+}
+
 function is_404(): bool
 {
     return false;
@@ -409,6 +527,12 @@ function load_plugin_textdomain(string $domain, bool $deprecated = false, string
     return true;
 }
 
+/** @param list<string> $templateNames */
+function locate_template(array $templateNames, bool $load = false, bool $loadOnce = true, array $args = []): string
+{
+    return '';
+}
+
 function nocache_headers(): void {}
 
 function plugin_basename(string $file): string
@@ -419,6 +543,11 @@ function plugin_basename(string $file): string
 function plugin_dir_url(string $file): string
 {
     return '';
+}
+
+function plugin_dir_path(string $file): string
+{
+    return dirname($file) . '/';
 }
 
 function plugins_url(string $path = '', string $plugin = ''): string
@@ -528,6 +657,11 @@ function wp_attachment_is_image(int|WP_Post $post = 0): bool
     return true;
 }
 
+function wp_add_inline_style(string $handle, string $data): bool
+{
+    return true;
+}
+
 function wp_clear_scheduled_hook(string $hook, mixed ...$args): int|false
 {
     return 0;
@@ -571,6 +705,16 @@ function wp_enqueue_style(
     string $media = 'all',
 ): void {}
 
+function wp_register_style(
+    string $handle,
+    string|false $source,
+    array $dependencies = [],
+    string|bool|null $version = false,
+    string $media = 'all',
+): bool {
+    return true;
+}
+
 /** @param array<string, mixed> $data */
 function wp_localize_script(string $handle, string $objectName, array $data): bool
 {
@@ -585,6 +729,19 @@ function wp_is_post_revision(int|WP_Post $post): int|false
 /** @param string|array{int, int} $size */
 function wp_get_attachment_image_url(int $attachmentId, string|array $size = 'thumbnail', bool $icon = false): string|false
 {
+    return '';
+}
+
+/**
+ * @param string|array{int, int} $size
+ * @param array<string, string>  $attributes
+ */
+function wp_get_attachment_image(
+    int $attachmentId,
+    string|array $size = 'thumbnail',
+    bool $icon = false,
+    array $attributes = [],
+): string {
     return '';
 }
 
@@ -615,6 +772,37 @@ function wp_json_encode(mixed $value, int $flags = 0, int $depth = 512): string|
 {
     return json_encode($value, $flags, $depth);
 }
+
+function wp_kses_post(mixed $data): string
+{
+    return is_string($data) ? $data : '';
+}
+
+function wpautop(string $text, bool $br = true): string
+{
+    return $text;
+}
+
+function wp_trim_words(string $text, int $number = 55, ?string $more = null): string
+{
+    return $text;
+}
+
+function wp_get_theme(string $stylesheet = '', string $themeRoot = ''): WP_Theme
+{
+    return new WP_Theme();
+}
+
+/** @phpstan-impure */
+function have_posts(): bool
+{
+    return false;
+}
+
+function the_post(): void {}
+
+/** @param array<string, mixed> $arguments */
+function the_posts_pagination(array $arguments = []): void {}
 
 function wp_nonce_field(
     int|string $action = -1,

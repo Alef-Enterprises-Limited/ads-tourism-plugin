@@ -8,6 +8,8 @@ use AlefDigitalSolutions\ADSTourism\Application\Fallback\FallbackResolver;
 use AlefDigitalSolutions\ADSTourism\Application\Fallback\MediaFallbackResolver;
 use AlefDigitalSolutions\ADSTourism\Application\ImportExport\CsvImportService;
 use AlefDigitalSolutions\ADSTourism\Application\Media\MediaLinkService;
+use AlefDigitalSolutions\ADSTourism\Application\Presentation\CustomCssSanitizer;
+use AlefDigitalSolutions\ADSTourism\Application\Presentation\TemplateCandidateResolver;
 use AlefDigitalSolutions\ADSTourism\Application\Relationship\RelationshipService;
 use AlefDigitalSolutions\ADSTourism\Application\Workflow\VerificationHistoryService;
 use AlefDigitalSolutions\ADSTourism\Domain\Field\RecordFieldSchema;
@@ -35,6 +37,7 @@ use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\Transf
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\TransferSettings;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\WordPressTourismRecordImporter;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\WpdbImportRunRepository;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Integration\Divi\DiviCompatibility;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\FeaturedMediaResolver;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\MediaCleanup;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\MediaLinkMetaBox;
@@ -47,6 +50,12 @@ use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Metadata\RecordDeta
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Permalink\PermalinkRedirector;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Permalink\PermalinkSettings;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Permalink\SlugHistory;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Presentation\BuilderMetaRegistry;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Presentation\FrontendAssets;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Presentation\FrontendRenderer;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Presentation\PresentationSettings;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Presentation\SystemStatusPage;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Presentation\TemplateLoader;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Relationship\RelationshipCleanup;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Relationship\RelationshipMetaBox;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Relationship\RelationshipSearchController;
@@ -80,6 +89,9 @@ final class PluginFactory
         );
         $permalinkSettings = new PermalinkSettings(new PermalinkBaseValidator());
         $mediaSettings = new MediaSettings($pluginFile);
+        $featuredMedia = new FeaturedMediaResolver(new MediaFallbackResolver(), $mediaSettings);
+        $presentationSettings = new PresentationSettings(new CustomCssSanitizer());
+        $divi = new DiviCompatibility();
         $fallbackResolver = new FallbackResolver();
         $csvSecurity = new CsvSecurity();
         $csvSchema = new CsvSchema($fieldSchema);
@@ -130,7 +142,7 @@ final class PluginFactory
             new SlugHistory(),
             new FallbackHooks(
                 new RecordFieldFallbackResolver($fallbackResolver),
-                new FeaturedMediaResolver(new MediaFallbackResolver(), $mediaSettings),
+                $featuredMedia,
             ),
             new ImportExportAdminPage($importRuns, $transferSettings, $pluginFile),
             new CsvImportController(
@@ -150,6 +162,19 @@ final class PluginFactory
             ),
             $transferSettings,
             new TransferMaintenance($transferFiles, $transferSettings, $importRuns),
+            new TemplateLoader($pluginFile, new TemplateCandidateResolver()),
+            new FrontendRenderer(
+                $pluginFile,
+                $fieldSchema,
+                $featuredMedia,
+                $mediaRepository,
+                $relationshipRepository,
+            ),
+            new FrontendAssets($pluginFile, $presentationSettings),
+            $presentationSettings,
+            new BuilderMetaRegistry($fieldSchema),
+            $divi,
+            new SystemStatusPage($divi),
         );
     }
 }

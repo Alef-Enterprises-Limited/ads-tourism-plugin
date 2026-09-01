@@ -14,6 +14,7 @@ use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\CsvImp
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\ImportExportAdminPage;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\TransferMaintenance;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\TransferSettings;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Integration\Divi\DiviCompatibility;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\MediaCleanup;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\MediaLinkMetaBox;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\MediaSettings;
@@ -22,6 +23,12 @@ use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Metadata\RecordDeta
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Permalink\PermalinkRedirector;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Permalink\PermalinkSettings;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Permalink\SlugHistory;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Presentation\BuilderMetaRegistry;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Presentation\FrontendAssets;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Presentation\FrontendRenderer;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Presentation\PresentationSettings;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Presentation\SystemStatusPage;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Presentation\TemplateLoader;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Relationship\RelationshipCleanup;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Relationship\RelationshipMetaBox;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Relationship\RelationshipSearchController;
@@ -66,6 +73,13 @@ final readonly class Plugin
         private CsvDownloadController $csvDownloads,
         private TransferSettings $transferSettings,
         private TransferMaintenance $transferMaintenance,
+        private TemplateLoader $templates,
+        private FrontendRenderer $frontendRenderer,
+        private FrontendAssets $frontendAssets,
+        private PresentationSettings $presentationSettings,
+        private BuilderMetaRegistry $builderMeta,
+        private DiviCompatibility $divi,
+        private SystemStatusPage $systemStatus,
     ) {}
 
     public function register(): void
@@ -76,10 +90,12 @@ final readonly class Plugin
         add_action('admin_menu', [$this->adminMenu, 'register']);
         add_action('admin_menu', [$this->workflowSettings, 'registerMenu']);
         add_action('admin_menu', [$this->importExportPage, 'registerMenu']);
+        add_action('admin_menu', [$this->systemStatus, 'registerMenu']);
         add_action('admin_init', [$this->workflowSettings, 'registerSettings']);
         add_action('admin_init', [$this->mediaSettings, 'registerSettings']);
         add_action('admin_init', [$this->permalinkSettings, 'registerSettings']);
         add_action('admin_init', [$this->transferSettings, 'registerSettings']);
+        add_action('admin_init', [$this->presentationSettings, 'registerSettings']);
         add_action('add_meta_boxes', [$this->recordDetails, 'register']);
         add_action('add_meta_boxes', [$this->relationshipEditor, 'register']);
         add_action('add_meta_boxes', [$this->verificationHistoryMetaBox, 'register']);
@@ -116,6 +132,7 @@ final readonly class Plugin
             2,
         );
         add_action('template_redirect', [$this->permalinkRedirector, 'redirectOldUrl']);
+        add_action('wp_enqueue_scripts', [$this->frontendAssets, 'enqueue']);
         add_filter('wp_insert_post_data', [$this->publishingGate, 'filterPostData'], 10, 2);
         add_filter('redirect_post_location', [$this->publishingGate, 'filterRedirect']);
         add_action('admin_notices', [$this->publishingGate, 'renderNotice']);
@@ -123,6 +140,10 @@ final readonly class Plugin
         add_action('pre_get_posts', [$this->workflowColumns, 'applyFilter']);
         $this->workflowColumns->register();
         $this->fallbacks->register();
+        $this->templates->register();
+        $this->frontendRenderer->register();
+        $this->builderMeta->register();
+        $this->divi->register();
     }
 
     public function registerContentModel(): void
