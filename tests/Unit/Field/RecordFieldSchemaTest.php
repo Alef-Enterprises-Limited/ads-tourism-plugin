@@ -26,6 +26,8 @@ final class RecordFieldSchemaTest extends TestCase
             self::assertNotNull($this->schema->find($contentType, 'ads_tourism_layout_mode'));
             self::assertNotNull($this->schema->find($contentType, 'ads_tourism_verification_status'));
             self::assertNotNull($this->schema->find($contentType, 'ads_tourism_external_featured_media_url'));
+            self::assertNotNull($this->schema->find($contentType, 'ads_tourism_gallery_max_images'));
+            self::assertNotNull($this->schema->find($contentType, 'ads_tourism_gallery_pagination'));
         }
     }
 

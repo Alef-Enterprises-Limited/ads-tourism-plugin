@@ -5,9 +5,12 @@ declare(strict_types=1);
 namespace AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress;
 
 use AlefDigitalSolutions\ADSTourism\Domain\Taxonomy\TourismTaxonomy;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Permalink\PermalinkSettings;
 
-final class TaxonomyRegistrar
+final readonly class TaxonomyRegistrar
 {
+    public function __construct(private PermalinkSettings $permalinks) {}
+
     public function register(): void
     {
         foreach (TourismTaxonomy::cases() as $taxonomy) {
@@ -32,7 +35,7 @@ final class TaxonomyRegistrar
             'show_in_quick_edit' => true,
             'show_in_rest' => true,
             'rewrite' => [
-                'slug' => $taxonomy->rewriteBase(),
+                'slug' => $this->permalinks->taxonomyBase($taxonomy),
                 'with_front' => false,
                 'hierarchical' => $taxonomy->isHierarchical(),
             ],
