@@ -6,12 +6,14 @@ on:
       - "v[0-9]+.[0-9]+.[0-9]+*"
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   release:
     name: Verify and publish plugin ZIP
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: Check out repository
@@ -28,6 +30,9 @@ jobs:
       - name: Install development dependencies
         run: composer install --no-interaction --prefer-dist --no-progress
 
+      - name: Audit Composer dependencies
+        run: composer audit --no-interaction
+
       - name: Verify tag and version metadata
         run: php bin/verify-version.php "${GITHUB_REF_NAME}"
 
@@ -37,11 +42,29 @@ jobs:
       - name: Build plugin ZIP
         run: php bin/build-release.php
 
-      - name: Publish GitHub release
+      - name: Verify release artifacts
+        run: php bin/verify-release.php
+
+      - name: Create draft GitHub release with verified assets
         env:
           GH_TOKEN: ${{ github.token }}
         run: >-
           gh release create "${GITHUB_REF_NAME}"
           build/ads-tourism-*.zip
+          build/ads-tourism-*.zip.sha256
+          build/ads-tourism-*-manifest.json
+          --draft
           --generate-notes
           --title "ADS Tourism ${GITHUB_REF_NAME}"
+
+      - name: Verify attached release assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          asset_count="$(gh release view "${GITHUB_REF_NAME}" --json assets --jq '.assets | length')"
+          test "${asset_count}" -eq 3
+
+      - name: Publish verified GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release edit "${GITHUB_REF_NAME}" --draft=false

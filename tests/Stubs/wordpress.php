@@ -194,6 +194,10 @@ class WP_REST_Response
 
 class wpdb
 {
+    public string $options = 'wp_options';
+
+    public string $postmeta = 'wp_postmeta';
+
     public string $prefix = 'wp_';
 
     public string $posts = 'wp_posts';
@@ -233,6 +237,11 @@ class wpdb
     public function get_row(string $query): ?object
     {
         return null;
+    }
+
+    public function get_var(string $query, int $column = 0, int $row = 0): string|int|float|null
+    {
+        return 0;
     }
 
     /**
@@ -376,6 +385,11 @@ function dbDelta(string $queries = '', bool $execute = true): array
 }
 
 function delete_post_meta(int $postId, string $metaKey, mixed $metaValue = ''): bool
+{
+    return true;
+}
+
+function delete_option(string $option): bool
 {
     return true;
 }
@@ -572,6 +586,11 @@ function get_terms(array $arguments = []): array|WP_Error
 function get_posts(array $arguments = []): array
 {
     return [];
+}
+
+function taxonomy_exists(string $taxonomy): bool
+{
+    return true;
 }
 
 function get_transient(string $transient): mixed
@@ -919,6 +938,18 @@ function wp_insert_term(string $term, string $taxonomy, array $arguments = []): 
 {
     return ['term_id' => 1, 'term_taxonomy_id' => 1];
 }
+
+function wp_delete_post(int $postId, bool $forceDelete = false): WP_Post|false|null
+{
+    return null;
+}
+
+function wp_delete_term(int $termId, string $taxonomy, array $args = []): bool|int|WP_Error
+{
+    return true;
+}
+
+function wp_add_privacy_policy_content(string $pluginName, string $policyText): void {}
 
 function wp_json_encode(mixed $value, int $flags = 0, int $depth = 512): string|false
 {

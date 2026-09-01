@@ -12,19 +12,22 @@ Autoloader::register();
 
 $pluginFile = file_get_contents($projectRoot . '/ads-tourism.php');
 $readmeFile = file_get_contents($projectRoot . '/readme.txt');
+$changelogFile = file_get_contents($projectRoot . '/CHANGELOG.md');
 
-if ($pluginFile === false || $readmeFile === false) {
+if ($pluginFile === false || $readmeFile === false || $changelogFile === false) {
     fwrite(STDERR, "Unable to read the plugin version files.\n");
     exit(1);
 }
 
 preg_match('/^\s*\*\s*Version:\s*(\S+)/m', $pluginFile, $pluginHeaderMatch);
 preg_match('/^Stable tag:\s*(\S+)/m', $readmeFile, $readmeMatch);
+preg_match('/^## \[(\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?)\]/m', $changelogFile, $changelogMatch);
 
 $versions = [
     'Plugin::VERSION' => Plugin::VERSION,
     'plugin header' => $pluginHeaderMatch[1] ?? null,
     'readme stable tag' => $readmeMatch[1] ?? null,
+    'changelog release' => $changelogMatch[1] ?? null,
 ];
 
 $expectedVersion = Plugin::VERSION;
