@@ -123,10 +123,6 @@ if (($argv[1] ?? '') === '--check') {
     if ($current !== $pot) {
         fwrite(STDERR, "languages/ads-tourism.pot is out of date. Run composer make-pot.\n");
 
-        foreach (str_split(base64_encode($pot), 4000) as $chunk) {
-            fwrite(STDERR, 'ADS_TOURISM_POT_CHUNK:' . $chunk . "\n");
-        }
-
         exit(1);
     }
 

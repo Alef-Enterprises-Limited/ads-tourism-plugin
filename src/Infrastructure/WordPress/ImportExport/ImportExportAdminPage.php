@@ -95,9 +95,10 @@ final readonly class ImportExportAdminPage
     {
         echo '<section class="ads-tourism-transfer__panel">';
         echo '<h2>' . esc_html__('Import records', 'ads-tourism') . '</h2>';
-        echo '<p>' . esc_html__(
-            'Blank cells leave existing values unchanged during updates. Use ' . CsvSchema::CLEAR_VALUE . ' to remove a value.',
-            'ads-tourism',
+        echo '<p>' . sprintf(
+            /* translators: %s is the CSV marker that clears an existing value. */
+            esc_html__('Blank cells leave existing values unchanged during updates. Use %s to remove a value.', 'ads-tourism'),
+            esc_html(CsvSchema::CLEAR_VALUE),
         ) . '</p>';
         echo '<div class="ads-tourism-transfer__templates"><strong>'
             . esc_html__('Download templates:', 'ads-tourism') . '</strong> ';

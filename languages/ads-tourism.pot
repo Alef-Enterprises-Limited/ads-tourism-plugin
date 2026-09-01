@@ -6,7 +6,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Domain: ads-tourism\n"
-
 #: src/Infrastructure/WordPress/Shortcode/ListingRenderer.php:1
 msgid "%d tourism record found."
 msgstr ""
@@ -33,22 +32,6 @@ msgstr ""
 
 #: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
 msgid "%s list navigation"
-msgstr ""
-
-#: src/Infrastructure/WordPress/Shortcode/RecordComponentShortcodes.php:1
-msgid "A Package is required for the itinerary component."
-msgstr ""
-
-#: src/Infrastructure/WordPress/Shortcode/RecordComponentShortcodes.php:1
-msgid "A Package is required for the provider component."
-msgstr ""
-
-#: src/Infrastructure/WordPress/Shortcode/RecordComponentShortcodes.php:1
-msgid "A valid tourism record is required for the gallery."
-msgstr ""
-
-#: src/Infrastructure/WordPress/Shortcode/RecordComponentShortcodes.php:1
-msgid "A valid tourism relationship component is required."
 msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
@@ -107,16 +90,20 @@ msgstr ""
 msgid "Add or remove %s"
 msgstr ""
 
-#: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1
-msgid "Add selected images"
-msgstr ""
-
 #: src/Domain/Field/RecordFieldSchema.php:1
 msgid "Address"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1
+msgid "Add selected images"
+msgstr ""
+
 #: src/Infrastructure/WordPress/AdminMenu.php:1
 msgid "ADS Tourism"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Shortcode/ShortcodeDiagnostic.php:1
+msgid "ADS Tourism:"
 msgstr ""
 
 #: src/Infrastructure/WordPress/SEO/SeoSettings.php:1
@@ -141,10 +128,6 @@ msgstr ""
 
 #: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
 msgid "ADS Tourism System Status"
-msgstr ""
-
-#: src/Infrastructure/WordPress/Shortcode/ShortcodeDiagnostic.php:1
-msgid "ADS Tourism:"
 msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
@@ -172,6 +155,10 @@ msgid "All %s"
 msgstr ""
 
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Allow administrators to create unknown taxonomy terms during import"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
 msgid "All record types"
 msgstr ""
 
@@ -185,10 +172,6 @@ msgstr ""
 
 #: src/Infrastructure/WordPress/Workflow/WorkflowColumns.php:1
 msgid "All verification statuses"
-msgstr ""
-
-#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
-msgid "Allow administrators to create unknown taxonomy terms during import"
 msgstr ""
 
 #: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1
@@ -219,6 +202,14 @@ msgstr ""
 msgid "Any verification status"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Shortcode/RecordComponentShortcodes.php:1
+msgid "A Package is required for the itinerary component."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Shortcode/RecordComponentShortcodes.php:1
+msgid "A Package is required for the provider component."
+msgstr ""
+
 #: src/Infrastructure/WordPress/Shortcode/InteractiveShortcodes.php:1
 msgid "Apply"
 msgstr ""
@@ -243,6 +234,14 @@ msgstr ""
 msgid "Available at places"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Shortcode/RecordComponentShortcodes.php:1
+msgid "A valid tourism record is required for the gallery."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Shortcode/RecordComponentShortcodes.php:1
+msgid "A valid tourism relationship component is required."
+msgstr ""
+
 #: src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
 msgid "Back to %s"
 msgstr ""
@@ -256,7 +255,7 @@ msgid "Best time to visit"
 msgstr ""
 
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
-msgid "Blank cells leave existing values unchanged during updates. Use "
+msgid "Blank cells leave existing values unchanged during updates. Use %s to remove a value."
 msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
@@ -303,12 +302,12 @@ msgstr ""
 msgid "Challenging"
 msgstr ""
 
-#: src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1
-msgid "Change URL bases carefully. ADS Tourism validates duplicates and reserved paths, then redirects previously configured bases."
-msgstr ""
-
 #: src/Infrastructure/WordPress/Workflow/VerificationHistoryMetaBox.php:1
 msgid "Changed at"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1
+msgid "Change URL bases carefully. ADS Tourism validates duplicates and reserved paths, then redirects previously configured bases."
 msgstr ""
 
 #: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
@@ -384,15 +383,15 @@ msgid "Covered places"
 msgstr ""
 
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Created / Updated / Skipped / Rejected"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
 msgid "Create unknown taxonomy terms after preview"
 msgstr ""
 
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
 msgid "Create with a new external ID"
-msgstr ""
-
-#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
-msgid "Created / Updated / Skipped / Rejected"
 msgstr ""
 
 #: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1
@@ -404,11 +403,11 @@ msgid "CSV column"
 msgstr ""
 
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
-msgid "CSV Import and Export"
+msgid "CSV Import/Export"
 msgstr ""
 
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
-msgid "CSV Import/Export"
+msgid "CSV Import and Export"
 msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
@@ -519,12 +518,12 @@ msgstr ""
 msgid "Emit Open Graph and Twitter card inputs when no supported SEO plugin is active."
 msgstr ""
 
-#: src/Domain/Field/RecordFieldSchema.php:1
-msgid "Enable gallery lightbox"
-msgstr ""
-
 #: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
 msgid "Enabled"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Enable gallery lightbox"
 msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
@@ -703,8 +702,12 @@ msgstr ""
 msgid "Import records"
 msgstr ""
 
-#: src/Infrastructure/WordPress/Workflow/WorkflowColumns.php:1
-msgid "In Review"
+#: src/Domain/Relationship/RelationType.php:1
+msgid "Included activities"
+msgstr ""
+
+#: src/Domain/Relationship/RelationType.php:1
+msgid "Included stays"
 msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
@@ -715,16 +718,12 @@ msgstr ""
 msgid "Include parent-place paths in hierarchical Place URLs."
 msgstr ""
 
-#: src/Domain/Relationship/RelationType.php:1
-msgid "Included activities"
-msgstr ""
-
-#: src/Domain/Relationship/RelationType.php:1
-msgid "Included stays"
-msgstr ""
-
 #: src/Domain/Field/RecordFieldSchema.php:1
 msgid "Inclusions"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Workflow/WorkflowColumns.php:1
+msgid "In Review"
 msgstr ""
 
 #: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1
@@ -791,12 +790,12 @@ msgstr ""
 msgid "Longitude"
 msgstr ""
 
-#: src/Infrastructure/WordPress/AdminMenu.php:1
-msgid "Manage destinations, activities, accommodation, tour operators, and packages from the ADS Tourism menu."
-msgstr ""
-
 #: src/Domain/Relationship/RelationType.php:1
 msgid "Managed by operators"
+msgstr ""
+
+#: src/Infrastructure/WordPress/AdminMenu.php:1
+msgid "Manage destinations, activities, accommodation, tour operators, and packages from the ADS Tourism menu."
 msgstr ""
 
 #: src/Domain/Relationship/RelationType.php:1
@@ -827,16 +826,16 @@ msgstr ""
 msgid "Map provider available"
 msgstr ""
 
-#: src/Domain/Field/RecordFieldSchema.php:1
-msgid "Map zoom"
-msgstr ""
-
 #: src/Infrastructure/WordPress/Map/MapSettings.php:1
 msgid "Maps"
 msgstr ""
 
 #: src/Infrastructure/WordPress/Map/MapSettings.php:1
 msgid "Maps are optional. Coordinates remain stored when maps are disabled or a provider is unavailable."
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Map zoom"
 msgstr ""
 
 #: src/Infrastructure/WordPress/Shortcode/InteractiveShortcodes.php:1
@@ -856,15 +855,15 @@ msgid "Media Library image"
 msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
-msgid "Meeting point"
-msgstr ""
-
-#: src/Domain/Field/RecordFieldSchema.php:1
 msgid "Meeting-point latitude"
 msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
 msgid "Meeting-point longitude"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Meeting point"
 msgstr ""
 
 #: src/Infrastructure/WordPress/Shortcode/InteractiveShortcodes.php:1
@@ -927,7 +926,7 @@ msgstr ""
 msgid "Nearby stays"
 msgstr ""
 
-#: src/Domain:1
+#: src/Domain/Field/RecordFieldSchema.php:1 src/Domain:1
 msgid "Needs update"
 msgstr ""
 
@@ -959,12 +958,12 @@ msgstr ""
 msgid "No %s"
 msgstr ""
 
-#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1
-msgid "No %s found in Trash."
-msgstr ""
-
 #: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
 msgid "No %s found."
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1
+msgid "No %s found in Trash."
 msgstr ""
 
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
@@ -983,6 +982,18 @@ msgstr ""
 msgid "No pagination"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Map/MapSettings.php:1
+msgid "Not configured"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
+msgid "Not detected — optional"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Workflow/VerificationHistoryMetaBox.php:1
+msgid "Note"
+msgstr ""
+
 #: templates/components/no-results.php:1
 msgid "No tourism records found"
 msgstr ""
@@ -997,18 +1008,6 @@ msgstr ""
 
 #: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
 msgid "No — optional"
-msgstr ""
-
-#: src/Infrastructure/WordPress/Map/MapSettings.php:1
-msgid "Not configured"
-msgstr ""
-
-#: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
-msgid "Not detected — optional"
-msgstr ""
-
-#: src/Infrastructure/WordPress/Workflow/VerificationHistoryMetaBox.php:1
-msgid "Note"
 msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
@@ -1055,14 +1054,6 @@ msgstr ""
 msgid "Package"
 msgstr ""
 
-#: src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
-msgid "Package Type"
-msgstr ""
-
-#: src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
-msgid "Package Types"
-msgstr ""
-
 #: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1 src/Infrastructure/WordPress/Media/MediaSettings.php:1 src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1
 msgid "Packages"
 msgstr ""
@@ -1081,6 +1072,14 @@ msgstr ""
 
 #: src/Domain/Relationship/RelationType.php:1
 msgid "Packages offered here"
+msgstr ""
+
+#: src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "Package Type"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
+msgid "Package Types"
 msgstr ""
 
 #: src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
@@ -1103,12 +1102,16 @@ msgstr ""
 msgid "Pending"
 msgstr ""
 
-#: src/Domain:1
+#: src/Domain/Field/RecordFieldSchema.php:1 src/Domain:1
 msgid "Pending verification"
 msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
 msgid "Per group"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1
+msgid "Permalinks"
 msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
@@ -1119,16 +1122,20 @@ msgstr ""
 msgid "Per person"
 msgstr ""
 
-#: src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1
-msgid "Permalinks"
-msgstr ""
-
 #: src/Domain/Field/RecordFieldSchema.php:1
 msgid "Physical address"
 msgstr ""
 
 #: src/Infrastructure/WordPress/Shortcode/InteractiveShortcodes.php:1
 msgid "Place"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1 src/Infrastructure/WordPress/Media/MediaSettings.php:1 src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1
+msgid "Places to Go"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1 src/Infrastructure/WordPress/Media/MediaSettings.php:1 src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1
+msgid "Places to Stay"
 msgstr ""
 
 #: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1
@@ -1147,14 +1154,6 @@ msgstr ""
 msgid "Place Types"
 msgstr ""
 
-#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1 src/Infrastructure/WordPress/Media/MediaSettings.php:1 src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1
-msgid "Places to Go"
-msgstr ""
-
-#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1 src/Infrastructure/WordPress/Media/MediaSettings.php:1 src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1
-msgid "Places to Stay"
-msgstr ""
-
 #: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
 msgid "Polylang"
 msgstr ""
@@ -1169,6 +1168,14 @@ msgstr ""
 
 #: src/Infrastructure/WordPress/Shortcode/InteractiveShortcodes.php:1
 msgid "Price"
+msgstr ""
+
+#: src/Domain:1
+msgid "Price: high to low"
+msgstr ""
+
+#: src/Domain:1
+msgid "Price: low to high"
 msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
@@ -1189,14 +1196,6 @@ msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
 msgid "Price notes"
-msgstr ""
-
-#: src/Domain:1
-msgid "Price: high to low"
-msgstr ""
-
-#: src/Domain:1
-msgid "Price: low to high"
 msgstr ""
 
 #: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1 src/Infrastructure/WordPress/Relationship/RelationshipMetaBox.php:1
@@ -1247,7 +1246,7 @@ msgstr ""
 msgid "Record type"
 msgstr ""
 
-#: src/Domain:1
+#: src/Domain/Field/RecordFieldSchema.php:1 src/Domain:1
 msgid "Rejected"
 msgstr ""
 
@@ -1335,12 +1334,12 @@ msgstr ""
 msgid "Season or availability notes"
 msgstr ""
 
-#: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1
-msgid "Select images from the WordPress Media Library or link to an HTTPS or site-relative image. Detaching an image never deletes the Media Library file."
-msgstr ""
-
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
 msgid "Selected post IDs"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1
+msgid "Select images from the WordPress Media Library or link to an HTTPS or site-relative image. Detaching an image never deletes the Media Library file."
 msgstr ""
 
 #: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
@@ -1491,24 +1490,24 @@ msgstr ""
 msgid "The relationship search failed."
 msgstr ""
 
-#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
-msgid "The request failed. Try again or check the server logs."
-msgstr ""
-
 #: src/Infrastructure/WordPress/Shortcode/RecordComponentShortcodes.php:1
 msgid "The requested public tourism field is unavailable."
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "The request failed. Try again or check the server logs."
 msgstr ""
 
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
 msgid "The ZIP contains record CSV files, taxonomy definitions, relationships, media links, and a checksummed manifest."
 msgstr ""
 
-#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1
-msgid "Thing to Do"
-msgstr ""
-
 #: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1 src/Infrastructure/WordPress/Media/MediaSettings.php:1 src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1
 msgid "Things to Do"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1
+msgid "Thing to Do"
 msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1 src/Domain:1
@@ -1525,14 +1524,6 @@ msgstr ""
 
 #: src/Domain:1
 msgid "Title Z–A"
-msgstr ""
-
-#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1
-msgid "Tour Operator"
-msgstr ""
-
-#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1 src/Infrastructure/WordPress/Media/MediaSettings.php:1 src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1
-msgid "Tour Operators"
 msgstr ""
 
 #: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1
@@ -1595,6 +1586,14 @@ msgstr ""
 msgid "Tourism URL bases"
 msgstr ""
 
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1
+msgid "Tour Operator"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1 src/Infrastructure/WordPress/Media/MediaSettings.php:1 src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1
+msgid "Tour Operators"
+msgstr ""
+
 #: src/Domain/Field/RecordFieldSchema.php:1
 msgid "Trading name"
 msgstr ""
@@ -1623,7 +1622,7 @@ msgstr ""
 msgid "Typical duration"
 msgstr ""
 
-#: src/Domain:1
+#: src/Domain/Field/RecordFieldSchema.php:1 src/Domain:1
 msgid "Unverified"
 msgstr ""
 
@@ -1655,6 +1654,10 @@ msgstr ""
 msgid "Use as featured image"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Workflow/VerificationHistoryMetaBox.php:1
+msgid "User ID"
+msgstr ""
+
 #: src/Infrastructure/WordPress/AdminMenu.php:1
 msgid "Use the native content screens to add structured details, connect related records, and manage verification before publication."
 msgstr ""
@@ -1669,10 +1672,6 @@ msgstr ""
 
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
 msgid "Use versioned CSV templates to validate data before writing. New records are always Draft and Unverified."
-msgstr ""
-
-#: src/Infrastructure/WordPress/Workflow/VerificationHistoryMetaBox.php:1
-msgid "User ID"
 msgstr ""
 
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
@@ -1699,7 +1698,7 @@ msgstr ""
 msgid "Verification status"
 msgstr ""
 
-#: src/Domain:1 src/Infrastructure/WordPress/Workflow/WorkflowColumns.php:1
+#: src/Domain/Field/RecordFieldSchema.php:1 src/Domain:1 src/Infrastructure/WordPress/Workflow/WorkflowColumns.php:1
 msgid "Verified"
 msgstr ""
 
