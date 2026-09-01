@@ -8,9 +8,11 @@ use AlefDigitalSolutions\ADSTourism\Domain\Content\ContentType;
 use AlefDigitalSolutions\ADSTourism\Domain\Taxonomy\TourismTaxonomy;
 use AlefDigitalSolutions\ADSTourism\Plugin;
 
-final readonly class FrontendAssets
+final class FrontendAssets
 {
     private const STYLE_HANDLE = 'ads-tourism-frontend';
+
+    private bool $enqueued = false;
 
     public function __construct(
         private string $pluginFile,
@@ -22,6 +24,17 @@ final readonly class FrontendAssets
         if (!$this->isTourismRequest()) {
             return;
         }
+
+        $this->enqueueComponents();
+    }
+
+    public function enqueueComponents(): void
+    {
+        if ($this->enqueued) {
+            return;
+        }
+
+        $this->enqueued = true;
 
         $customCss = $this->settings->customCss();
 

@@ -32,3 +32,9 @@ The project follows [Semantic Versioning](https://semver.org/) and the structure
 - Standard, Standard plus Custom Content, and Full Custom per-record layout behavior without structured-data loss.
 - A builder-visible scalar metadata registry and optional Divi post-type compatibility hooks with system status.
 - Responsive BEM-style fallback CSS with tourism-only loading, a disable setting, and bounded administrator custom CSS.
+- Builder-agnostic record, gallery, relationship, itinerary, and provider shortcodes.
+- Type-specific and mixed tourism listing shortcodes with bounded columns, page sizes, sorting, and pagination modes.
+- Separately placeable search, filter, sort, results, and pagination components joined by strict explicit contexts.
+- A versioned, read-only public query REST endpoint restricted to published tourism content and allowlisted filters.
+- Progressive AJAX enhancement with debounced and cancellable search, URL state, Back/Forward restoration, load-more and infinite modes, live-region announcements, and no-JavaScript fallbacks.
+- Generation-keyed query caching through the WordPress object cache and transients, with content and taxonomy invalidation.

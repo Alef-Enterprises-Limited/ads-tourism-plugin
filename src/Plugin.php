@@ -29,9 +29,14 @@ use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Presentation\Fronte
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Presentation\PresentationSettings;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Presentation\SystemStatusPage;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Presentation\TemplateLoader;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Query\PublicQueryController;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Query\QueryCacheInvalidator;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Relationship\RelationshipCleanup;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Relationship\RelationshipMetaBox;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Relationship\RelationshipSearchController;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Shortcode\InteractiveShortcodes;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Shortcode\RecordComponentShortcodes;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Shortcode\ShortcodeAssets;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\TaxonomyRegistrar;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\TranslationLoader;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Workflow\PublishingGate;
@@ -80,6 +85,11 @@ final readonly class Plugin
         private BuilderMetaRegistry $builderMeta,
         private DiviCompatibility $divi,
         private SystemStatusPage $systemStatus,
+        private PublicQueryController $publicQuery,
+        private QueryCacheInvalidator $queryCacheInvalidator,
+        private InteractiveShortcodes $interactiveShortcodes,
+        private RecordComponentShortcodes $recordShortcodes,
+        private ShortcodeAssets $shortcodeAssets,
     ) {}
 
     public function register(): void
@@ -133,6 +143,8 @@ final readonly class Plugin
         );
         add_action('template_redirect', [$this->permalinkRedirector, 'redirectOldUrl']);
         add_action('wp_enqueue_scripts', [$this->frontendAssets, 'enqueue']);
+        add_action('wp_enqueue_scripts', [$this->shortcodeAssets, 'register'], 5);
+        add_action('rest_api_init', [$this->publicQuery, 'register']);
         add_filter('wp_insert_post_data', [$this->publishingGate, 'filterPostData'], 10, 2);
         add_filter('redirect_post_location', [$this->publishingGate, 'filterRedirect']);
         add_action('admin_notices', [$this->publishingGate, 'renderNotice']);
@@ -144,6 +156,9 @@ final readonly class Plugin
         $this->frontendRenderer->register();
         $this->builderMeta->register();
         $this->divi->register();
+        $this->queryCacheInvalidator->register();
+        $this->interactiveShortcodes->register();
+        $this->recordShortcodes->register();
     }
 
     public function registerContentModel(): void
