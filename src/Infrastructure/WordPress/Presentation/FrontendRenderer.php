@@ -345,32 +345,43 @@ final readonly class FrontendRenderer
         echo '</section>';
     }
 
-    private function renderGallery(int $postId): void
+    /** @param array<string, mixed> $overrides */
+    public function renderGallery(int $postId, array $overrides = []): void
     {
-        $roleValue = (string) get_post_meta($postId, 'ads_tourism_gallery_role_filter', true);
+        $roleValue = $this->galleryStringOption($overrides, 'role', $postId, 'gallery_role_filter');
         $role = $roleValue === '' || $roleValue === 'all' ? null : MediaRole::tryFrom($roleValue);
+
+        if ($roleValue !== '' && $roleValue !== 'all' && $role === null) {
+            return;
+        }
+
         $links = $this->media->findForEntity($postId, $role);
 
         if ($links === []) {
             return;
         }
 
-        if ((string) get_post_meta($postId, 'ads_tourism_gallery_order', true) === 'newest') {
+        $order = $this->galleryStringOption($overrides, 'order', $postId, 'gallery_order');
+
+        if ($order === 'newest') {
             $links = array_reverse($links);
+        } elseif ($order === 'random') {
+            shuffle($links);
         }
 
-        $maximum = max(0, (int) get_post_meta($postId, 'ads_tourism_gallery_max_images', true));
+        $maximum = $this->galleryIntegerOption($overrides, 'limit', $postId, 'gallery_max_images', 0, 100);
 
         if ($maximum > 0) {
             $links = array_slice($links, 0, $maximum);
         }
 
-        $columns = min(6, max(1, (int) get_post_meta($postId, 'ads_tourism_gallery_columns', true) ?: 3));
-        $size = sanitize_key((string) get_post_meta($postId, 'ads_tourism_gallery_image_size', true));
+        $columns = $this->galleryIntegerOption($overrides, 'columns', $postId, 'gallery_columns', 1, 6) ?: 3;
+        $size = sanitize_key($this->galleryStringOption($overrides, 'size', $postId, 'gallery_image_size'));
         $size = $size === '' ? 'large' : $size;
-        $showCaptions = (bool) get_post_meta($postId, 'ads_tourism_gallery_show_captions', true);
-        $showCredits = (bool) get_post_meta($postId, 'ads_tourism_gallery_show_credits', true);
-        $lightbox = (bool) get_post_meta($postId, 'ads_tourism_gallery_lightbox', true);
+        $showCaptions = $this->galleryBooleanOption($overrides, 'captions', $postId, 'gallery_show_captions');
+        $showCredits = $this->galleryBooleanOption($overrides, 'credits', $postId, 'gallery_show_credits');
+        $lightbox = $this->galleryBooleanOption($overrides, 'lightbox', $postId, 'gallery_lightbox');
+        $class = isset($overrides['class']) && is_string($overrides['class']) ? trim($overrides['class']) : '';
         $rendered = 0;
 
         ob_start();
@@ -385,11 +396,54 @@ final readonly class FrontendRenderer
             return;
         }
 
-        echo '<section class="ads-tourism-record__section ads-tourism-gallery" aria-labelledby="ads-tourism-gallery-title">';
-        echo '<h2 id="ads-tourism-gallery-title" class="ads-tourism-record__section-title">';
+        echo '<section class="ads-tourism-record__section ads-tourism-gallery';
+        echo $class === '' ? '' : ' ' . esc_attr($class);
+        echo '" aria-label="' . esc_attr__('Gallery', 'ads-tourism') . '">';
+        echo '<h2 class="ads-tourism-record__section-title">';
         echo esc_html__('Gallery', 'ads-tourism') . '</h2>';
         echo '<div class="ads-tourism-gallery__grid" style="--ads-tourism-gallery-columns:';
         echo esc_attr((string) $columns) . '">' . $items . '</div></section>';
+    }
+
+    /** @param array<string, mixed> $overrides */
+    private function galleryStringOption(
+        array $overrides,
+        string $key,
+        int $postId,
+        string $metaKey,
+    ): string {
+        $override = $overrides[$key] ?? null;
+
+        return is_scalar($override) && (string) $override !== ''
+            ? (string) $override
+            : (string) get_post_meta($postId, 'ads_tourism_' . $metaKey, true);
+    }
+
+    /** @param array<string, mixed> $overrides */
+    private function galleryIntegerOption(
+        array $overrides,
+        string $key,
+        int $postId,
+        string $metaKey,
+        int $minimum,
+        int $maximum,
+    ): int {
+        $value = $this->galleryStringOption($overrides, $key, $postId, $metaKey);
+        $integer = filter_var($value, FILTER_VALIDATE_INT);
+
+        return is_int($integer) ? min($maximum, max($minimum, $integer)) : $minimum;
+    }
+
+    /** @param array<string, mixed> $overrides */
+    private function galleryBooleanOption(
+        array $overrides,
+        string $key,
+        int $postId,
+        string $metaKey,
+    ): bool {
+        $value = $this->galleryStringOption($overrides, $key, $postId, $metaKey);
+
+        return filter_var($value, FILTER_VALIDATE_BOOLEAN);
     }
 
     private function renderGalleryItem(
@@ -438,7 +492,7 @@ final readonly class FrontendRenderer
         return true;
     }
 
-    private function renderCard(int $postId): void
+    public function renderCard(int $postId): void
     {
         $renderer = $this;
         $this->includeComponent('card', compact('postId', 'renderer'));

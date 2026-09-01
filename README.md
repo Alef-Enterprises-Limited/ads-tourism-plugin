@@ -2,7 +2,7 @@
 
 ADS Tourism is a WordPress-native foundation for tourism websites. It models destinations as the spine of a connected catalogue of things to do, places to stay, tour operators, and packages while leaving page composition to WordPress, Divi, or another builder.
 
-> **Status:** early development. The plugin currently provides the core content model, structured record fields, canonical relationships, an editorial verification workflow, linked galleries, fallback resolution, configurable permalinks, secure CSV import/export, builder-compatible fallback templates, and project quality/release tooling. Interactive shortcode listings, maps, multilingual adapters, and WooCommerce commerce adapters remain planned work.
+> **Status:** early development. The plugin currently provides the core content model, structured record fields, canonical relationships, an editorial verification workflow, linked galleries, fallback resolution, configurable permalinks, secure CSV import/export, builder-compatible fallback templates, interactive shortcode listings, and project quality/release tooling. Maps, multilingual adapters, and WooCommerce commerce adapters remain planned work.
 
 ## Core content model
 
@@ -43,6 +43,22 @@ Exports may be filtered by record type, workflow state, modified date, or select
 Every public tourism single, post-type archive, and taxonomy archive has a responsive fallback template. Themes can override templates under `your-theme/ads-tourism/`, while Divi Theme Builder and other standards-compliant builders can assign global content-type, archive, taxonomy, and individual-record designs.
 
 Per-record layout modes support the shared structured template, the structured template plus editor/builder content, or a fully custom body. Presentation choices never delete the normalized tourism fields. Minimal plugin CSS can be disabled, and administrators can add scoped custom CSS under **ADS Tourism → Settings**. See [Templates and page builders](docs/user/templates-and-builders.md) and [Presentation architecture](docs/developer/presentation.md).
+
+## Shortcodes and interactive discovery
+
+Listings can be placed in any shortcode-capable editor or builder. Type-specific shortcodes include `ads_tourism_places`, `ads_tourism_activities`, `ads_tourism_stays`, `ads_tourism_operators`, and `ads_tourism_packages`; `ads_tourism_listing` can query more than one type.
+
+For custom layouts, compose separate search, filter, sort, results, and pagination components with the same explicit context:
+
+```text
+[ads_tourism_search context="discover"]
+[ads_tourism_filters context="discover" fields="area,activity_type,price"]
+[ads_tourism_sort context="discover"]
+[ads_tourism_results context="discover" type="activity,package" per_page="12"]
+[ads_tourism_pagination context="discover"]
+```
+
+The initial response is rendered by WordPress, forms and links work without JavaScript, and the public script progressively adds debounced search, AJAX filters and sorting, pagination or load-more behavior, independent multi-context state, and Back/Forward restoration. The public REST query accepts only allowlisted tourism fields and published records. See [Shortcodes and interactive listings](docs/user/shortcodes.md) and the [public query API](docs/developer/public-query-api.md).
 
 ## Install for development
 

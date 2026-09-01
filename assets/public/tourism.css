@@ -97,8 +97,72 @@
 .ads-tourism-grid {
     display: grid;
     gap: var(--ads-tourism-space-md);
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--ads-tourism-grid-min)), 1fr));
+    grid-template-columns: repeat(var(--ads-tourism-listing-columns, auto-fit), minmax(min(100%, var(--ads-tourism-grid-min)), 1fr));
     margin-block: var(--ads-tourism-space-lg);
+}
+
+.ads-tourism-control {
+    margin-block: var(--ads-tourism-space-md);
+}
+
+.ads-tourism-control label,
+.ads-tourism-control legend {
+    font-weight: 600;
+}
+
+.ads-tourism-search__row,
+.ads-tourism-filters__range,
+.ads-tourism-filters fieldset {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--ads-tourism-space-sm);
+}
+
+.ads-tourism-search input[type="search"] {
+    flex: 1 1 16rem;
+}
+
+.ads-tourism-filters__field,
+.ads-tourism-filters__range label {
+    display: grid;
+    gap: var(--ads-tourism-space-xs);
+    min-width: 12rem;
+}
+
+.ads-tourism-pagination {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--ads-tourism-space-xs);
+    justify-content: center;
+    margin-block: var(--ads-tourism-space-lg);
+}
+
+.ads-tourism-pagination__current,
+.ads-tourism-pagination__link {
+    border: 1px solid color-mix(in srgb, var(--ads-tourism-border-color) 18%, transparent);
+    border-radius: var(--ads-tourism-radius);
+    display: inline-block;
+    padding: var(--ads-tourism-space-xs) var(--ads-tourism-space-sm);
+}
+
+.ads-tourism-diagnostic {
+    border-inline-start: 0.25rem solid currentColor;
+    margin-block: var(--ads-tourism-space-sm);
+    padding: var(--ads-tourism-space-sm);
+}
+
+.ads-tourism-itinerary__item {
+    padding-block-end: var(--ads-tourism-space-md);
+}
+
+.ads-tourism-itinerary__time,
+.ads-tourism-itinerary__title {
+    display: block;
+}
+
+.ads-tourism-results[aria-busy="true"] {
+    opacity: 0.65;
 }
 
 .ads-tourism-card {

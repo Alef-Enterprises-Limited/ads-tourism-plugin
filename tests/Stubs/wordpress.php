@@ -34,6 +34,9 @@ class WP_Post
 
 class WP_Error
 {
+    /** @param array<string, mixed>|string|int $data */
+    public function __construct(string $code = '', string $message = '', array|string|int $data = '') {}
+
     public function get_error_message(string $code = ''): string
     {
         return '';
@@ -64,6 +67,8 @@ class WP_Theme
 class WP_Label_Collection
 {
     public string $name = '';
+
+    public string $singular_name = '';
 }
 
 class WP_Post_Type
@@ -103,6 +108,8 @@ class WP_Query
 
     public int $max_num_pages = 0;
 
+    public int $found_posts = 0;
+
     /** @param array<string, mixed> $query */
     public function __construct(array $query = []) {}
 
@@ -122,6 +129,25 @@ class WP_Query
 class WP_Screen
 {
     public string $post_type = '';
+}
+
+class WP_REST_Request
+{
+    /** @return array<string, mixed> */
+    public function get_params(): array
+    {
+        return [];
+    }
+
+    public function get_param(string $key): mixed
+    {
+        return null;
+    }
+}
+
+class WP_REST_Response
+{
+    public function __construct(mixed $data = null, int $status = 200, array $headers = []) {}
 }
 
 class wpdb
@@ -182,12 +208,24 @@ function __(string $text, string $domain = 'default'): string
     return $text;
 }
 
+function __return_true(): bool
+{
+    return true;
+}
+
+function _n(string $single, string $plural, int $number, string $domain = 'default'): string
+{
+    return $number === 1 ? $single : $plural;
+}
+
 function absint(mixed $value): int
 {
     return abs((int) $value);
 }
 
 function add_action(string $hookName, callable $callback, int $priority = 10, int $acceptedArgs = 1): void {}
+
+function add_shortcode(string $tag, callable $callback): void {}
 
 function add_filter(string $hookName, callable $callback, int $priority = 10, int $acceptedArgs = 1): void {}
 
@@ -303,6 +341,11 @@ function delete_post_thumbnail(int|WP_Post $post): bool
 function delete_transient(string $transient): bool
 {
     return true;
+}
+
+function determine_locale(): string
+{
+    return 'en_US';
 }
 
 function do_settings_sections(string $page): void {}
@@ -583,6 +626,22 @@ function register_activation_hook(string $file, callable $callback): void {}
 
 function register_deactivation_hook(string $file, callable $callback): void {}
 
+/** @param array<string, mixed> $arguments */
+function register_rest_route(string $routeNamespace, string $route, array $arguments = [], bool $override = false): bool
+{
+    return true;
+}
+
+function rest_ensure_response(mixed $response): WP_REST_Response
+{
+    return new WP_REST_Response($response);
+}
+
+function rest_url(string $path = '', string $scheme = 'rest'): string
+{
+    return 'https://example.com/wp-json/' . ltrim($path, '/');
+}
+
 function rest_sanitize_boolean(mixed $value): bool
 {
     return (bool) $value;
@@ -601,6 +660,11 @@ function sanitize_file_name(string $filename): string
 function sanitize_key(string $key): string
 {
     return $key;
+}
+
+function sanitize_html_class(string $class, string $fallback = ''): string
+{
+    return $class;
 }
 
 function sanitize_text_field(string $text): string
@@ -626,6 +690,17 @@ function selected(mixed $selected, mixed $current = true, bool $display = true):
 function set_transient(string $transient, mixed $value, int $expiration = 0): bool
 {
     return true;
+}
+
+/**
+ * @param array<string, mixed> $pairs
+ * @param array<string, mixed> $attributes
+ *
+ * @return array<string, mixed>
+ */
+function shortcode_atts(array $pairs, array $attributes, string $shortcode = ''): array
+{
+    return array_replace($pairs, array_intersect_key($attributes, $pairs));
 }
 
 function set_post_thumbnail(int|WP_Post $post, int $thumbnailId): int|bool
@@ -694,6 +769,16 @@ function wp_enqueue_script(
     string|bool|null $version = false,
     bool $inFooter = false,
 ): void {}
+
+function wp_register_script(
+    string $handle,
+    string|false $source,
+    array $dependencies = [],
+    string|bool|null $version = false,
+    bool|array $arguments = false,
+): bool {
+    return true;
+}
 
 function wp_enqueue_media(array $arguments = []): void {}
 
@@ -889,4 +974,16 @@ function wp_mkdir_p(string $target): bool
 function wp_verify_nonce(string $nonce, int|string $action = -1): int|false
 {
     return 1;
+}
+
+function wp_cache_get(string $key, string $group = '', bool $force = false, ?bool &$found = null): mixed
+{
+    $found = false;
+
+    return false;
+}
+
+function wp_cache_set(string $key, mixed $data, string $group = '', int $expire = 0): bool
+{
+    return true;
 }

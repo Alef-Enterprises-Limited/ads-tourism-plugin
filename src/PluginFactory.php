@@ -10,7 +10,9 @@ use AlefDigitalSolutions\ADSTourism\Application\ImportExport\CsvImportService;
 use AlefDigitalSolutions\ADSTourism\Application\Media\MediaLinkService;
 use AlefDigitalSolutions\ADSTourism\Application\Presentation\CustomCssSanitizer;
 use AlefDigitalSolutions\ADSTourism\Application\Presentation\TemplateCandidateResolver;
+use AlefDigitalSolutions\ADSTourism\Application\Query\TourismQueryFactory;
 use AlefDigitalSolutions\ADSTourism\Application\Relationship\RelationshipService;
+use AlefDigitalSolutions\ADSTourism\Application\Shortcode\ShortcodeContextRegistry;
 use AlefDigitalSolutions\ADSTourism\Application\Workflow\VerificationHistoryService;
 use AlefDigitalSolutions\ADSTourism\Domain\Field\RecordFieldSchema;
 use AlefDigitalSolutions\ADSTourism\Domain\ImportExport\CsvReader;
@@ -56,11 +58,21 @@ use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Presentation\Fronte
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Presentation\PresentationSettings;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Presentation\SystemStatusPage;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Presentation\TemplateLoader;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Query\PublicQueryCache;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Query\PublicQueryController;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Query\QueryCacheInvalidator;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Query\WordPressQueryService;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Relationship\RelationshipCleanup;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Relationship\RelationshipMetaBox;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Relationship\RelationshipSearchController;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Relationship\WordPressRecordTypeResolver;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Relationship\WpdbRelationshipRepository;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Shortcode\InteractiveShortcodes;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Shortcode\ListingRenderer;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Shortcode\PaginationRenderer;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Shortcode\RecordComponentShortcodes;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Shortcode\ShortcodeAssets;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Shortcode\ShortcodeDiagnostic;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\TaxonomyRegistrar;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\TranslationLoader;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Workflow\PublishingGate;
@@ -92,6 +104,7 @@ final class PluginFactory
         $featuredMedia = new FeaturedMediaResolver(new MediaFallbackResolver(), $mediaSettings);
         $presentationSettings = new PresentationSettings(new CustomCssSanitizer());
         $divi = new DiviCompatibility();
+        $frontendAssets = new FrontendAssets($pluginFile, $presentationSettings);
         $fallbackResolver = new FallbackResolver();
         $csvSecurity = new CsvSecurity();
         $csvSchema = new CsvSchema($fieldSchema);
@@ -113,6 +126,21 @@ final class PluginFactory
             new CsvRejectedRowWriter($csvSecurity),
         );
         $csvExports = new CsvExportService($wpdb, $csvSchema, $csvSecurity, $mediaRepository);
+        $frontendRenderer = new FrontendRenderer(
+            $pluginFile,
+            $fieldSchema,
+            $featuredMedia,
+            $mediaRepository,
+            $relationshipRepository,
+        );
+        $queryFactory = new TourismQueryFactory();
+        $queryCache = new PublicQueryCache();
+        $queryService = new WordPressQueryService($relationshipRepository, $queryCache);
+        $listingRenderer = new ListingRenderer($frontendRenderer);
+        $paginationRenderer = new PaginationRenderer();
+        $shortcodeAssets = new ShortcodeAssets($pluginFile, $frontendAssets);
+        $shortcodeDiagnostics = new ShortcodeDiagnostic();
+        $shortcodeContexts = new ShortcodeContextRegistry();
 
         return new Plugin(
             new ContentTypeRegistrar($permalinkSettings),
@@ -163,18 +191,31 @@ final class PluginFactory
             $transferSettings,
             new TransferMaintenance($transferFiles, $transferSettings, $importRuns),
             new TemplateLoader($pluginFile, new TemplateCandidateResolver()),
-            new FrontendRenderer(
-                $pluginFile,
-                $fieldSchema,
-                $featuredMedia,
-                $mediaRepository,
-                $relationshipRepository,
-            ),
-            new FrontendAssets($pluginFile, $presentationSettings),
+            $frontendRenderer,
+            $frontendAssets,
             $presentationSettings,
             new BuilderMetaRegistry($fieldSchema),
             $divi,
             new SystemStatusPage($divi),
+            new PublicQueryController($queryFactory, $queryService, $listingRenderer, $paginationRenderer),
+            new QueryCacheInvalidator($queryCache),
+            new InteractiveShortcodes(
+                $queryFactory,
+                $queryService,
+                $shortcodeContexts,
+                $listingRenderer,
+                $paginationRenderer,
+                $shortcodeAssets,
+                $shortcodeDiagnostics,
+            ),
+            new RecordComponentShortcodes(
+                $fieldSchema,
+                $relationshipRepository,
+                $frontendRenderer,
+                $shortcodeAssets,
+                $shortcodeDiagnostics,
+            ),
+            $shortcodeAssets,
         );
     }
 }
