@@ -6,6 +6,14 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Domain: ads-tourism\n"
+#: src/Infrastructure/WordPress/Maintenance/MaintenancePage.php:1
+msgid "%d safe integrity issues were repaired."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Maintenance/MaintenancePage.php:1
+msgid "%d safe integrity issue was repaired."
+msgstr ""
+
 #: src/Infrastructure/WordPress/Shortcode/ListingRenderer.php:1
 msgid "%d tourism record found."
 msgstr ""
@@ -106,7 +114,7 @@ msgstr ""
 msgid "Add to Cart and Buy Now"
 msgstr ""
 
-#: src/Infrastructure/WordPress/AdminMenu.php:1
+#: src/Infrastructure/WordPress/AdminMenu.php:1 src/Infrastructure/WordPress/Maintenance/PrivacyPolicyGuide.php:1
 msgid "ADS Tourism"
 msgstr ""
 
@@ -118,8 +126,16 @@ msgstr ""
 msgid "ADS Tourism can emit focused tourism schema itself or contribute it through a compatible SEO plugin."
 msgstr ""
 
+#: src/Infrastructure/WordPress/Database/MigrationRunner.php:1
+msgid "ADS Tourism database update is incomplete."
+msgstr ""
+
 #: src/Infrastructure/WordPress/Workflow/PublishingGate.php:1
 msgid "ADS Tourism kept this record in review because it must be verified before publication."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Maintenance/MaintenancePage.php:1
+msgid "ADS Tourism Maintenance"
 msgstr ""
 
 #: ads-tourism.php:1
@@ -132,6 +148,10 @@ msgstr ""
 
 #: src/Infrastructure/WordPress/Multilingual/MultilingualSettings.php:1
 msgid "ADS Tourism stores language-neutral relationships and can resolve translated records through WPML or Polylang when either plugin is active."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Maintenance/PrivacyPolicyGuide.php:1
+msgid "ADS Tourism stores public destination and tourism-business information entered by site editors. Internal verification notes and import diagnostics are restricted to authorized administrators and are not published through the plugin REST API."
 msgstr ""
 
 #: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
@@ -334,7 +354,7 @@ msgstr ""
 msgid "Change URL bases carefully. ADS Tourism validates duplicates and reserved paths, then redirects previously configured bases."
 msgstr ""
 
-#: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
+#: src/Infrastructure/WordPress/Maintenance/MaintenancePage.php:1 src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
 msgid "Check"
 msgstr ""
 
@@ -398,6 +418,10 @@ msgstr ""
 msgid "Configured template slot"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Maintenance/MaintenanceSettings.php:1
+msgid "Confirmation phrase"
+msgstr ""
+
 #: src/Domain/Field/RecordFieldSchema.php:1
 msgid "Contact person"
 msgstr ""
@@ -454,12 +478,36 @@ msgstr ""
 msgid "Custom CSS"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
+msgid "Database migration state"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
+msgid "Database schema"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Maintenance/MaintenanceSettings.php:1
+msgid "Data deletion was not enabled. Enter %s exactly to confirm."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Maintenance/MaintenanceSettings.php:1
+msgid "Data lifecycle"
+msgstr ""
+
 #: src/Domain/Field/RecordFieldSchema.php:1
 msgid "Date collected"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Maintenance/MaintenanceSettings.php:1
+msgid "Deactivation always preserves tourism data. Destructive uninstall is disabled unless an administrator explicitly confirms it here before uninstalling."
+msgstr ""
+
 #: src/Infrastructure/WordPress/Media/MediaSettings.php:1
 msgid "Default images"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Maintenance/MaintenanceSettings.php:1
+msgid "Delete ADS Tourism records and plugin-owned data during uninstall."
 msgstr ""
 
 #: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1
@@ -524,6 +572,14 @@ msgstr ""
 
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
 msgid "Duplicate external ID"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Maintenance/MaintenancePage.php:1
+msgid "Duplicate external IDs"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Maintenance/MaintenancePage.php:1
+msgid "Duplicate external IDs require an editor to choose the correct identifier and are never changed automatically."
 msgstr ""
 
 #: src/Domain:1
@@ -658,6 +714,10 @@ msgstr ""
 msgid "Featured image"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Database/MigrationRunner.php:1
+msgid "Features that depend on plugin tables may be unavailable until the update succeeds."
+msgstr ""
+
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
 msgid "File"
 msgstr ""
@@ -782,6 +842,10 @@ msgstr ""
 msgid "Inclusions"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
+msgid "Incomplete — administrator action required"
+msgstr ""
+
 #: src/Infrastructure/WordPress/Workflow/WorkflowColumns.php:1
 msgid "In Review"
 msgstr ""
@@ -790,12 +854,28 @@ msgstr ""
 msgid "Insert into %s"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
+msgid "Installed %1$d / required %2$d"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Maintenance/MaintenancePage.php:1
+msgid "Integrity scan"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Maintenance/MaintenancePage.php:1
+msgid "Invalid media links"
+msgstr ""
+
 #: src/Infrastructure/WordPress/Relationship/RelationshipSearchController.php:1
 msgid "Invalid relationship search."
 msgstr ""
 
 #: src/Infrastructure/WordPress/Integration/WooCommerce/CommerceSettings.php:1
 msgid "Invalid WooCommerce-mode fallback"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Maintenance/MaintenancePage.php:1
+msgid "Issues"
 msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1 src/Domain:1
@@ -856,6 +936,10 @@ msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
 msgid "Longitude"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Maintenance/MaintenancePage.php:1
+msgid "Maintenance"
 msgstr ""
 
 #: src/Domain/Relationship/RelationType.php:1
@@ -1038,6 +1122,10 @@ msgstr ""
 msgid "No CSV imports have been started."
 msgstr ""
 
+#: src/Infrastructure/WordPress/Maintenance/MaintenancePage.php:1
+msgid "No integrity issues were found."
+msgstr ""
+
 #: src/Infrastructure/WordPress/Map/MapAssets.php:1
 msgid "No mapped tourism records are available."
 msgstr ""
@@ -1118,6 +1206,10 @@ msgstr ""
 msgid "Optional administrator CSS, limited to 50 KB. Unsafe style and script constructs are removed."
 msgstr ""
 
+#: src/Infrastructure/WordPress/Maintenance/MaintenancePage.php:1
+msgid "Orphaned relationships"
+msgstr ""
+
 #: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/Shortcode/InteractiveShortcodes.php:1
 msgid "Package"
 msgstr ""
@@ -1152,6 +1244,10 @@ msgstr ""
 
 #: src/Domain/Relationship/RelationType.php:1
 msgid "Packages including this stay"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Maintenance/MaintenancePage.php:1
+msgid "Packages mapped to missing Products"
 msgstr ""
 
 #: src/Domain/Relationship/RelationType.php:1
@@ -1294,6 +1390,10 @@ msgstr ""
 msgid "Processed"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Maintenance/MaintenancePage.php:1
+msgid "Products mapped to missing Packages"
+msgstr ""
+
 #: src/Domain/Relationship/RelationType.php:1
 msgid "Provided activities"
 msgstr ""
@@ -1320,6 +1420,10 @@ msgstr ""
 
 #: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
 msgid "Rank Math SEO"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
+msgid "Ready"
 msgstr ""
 
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
@@ -1354,12 +1458,20 @@ msgstr ""
 msgid "Remove the stored Google Maps key"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Maintenance/MaintenancePage.php:1
+msgid "Repair safe issues"
+msgstr ""
+
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
 msgid "Report"
 msgstr ""
 
 #: src/Infrastructure/WordPress/Workflow/WorkflowSettings.php:1
 msgid "Require a verified status before a tourism record can be published."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Database/MigrationRunner.php:1
+msgid "Retry database update"
 msgstr ""
 
 #: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1
@@ -1456,6 +1568,10 @@ msgstr ""
 
 #: src/Infrastructure/WordPress/Workflow/WorkflowSettings.php:1
 msgid "Settings"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Maintenance/MaintenanceSettings.php:1
+msgid "Shared Media Library attachments and WooCommerce Products are never deleted. This action cannot be undone."
 msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
@@ -1562,6 +1678,10 @@ msgstr ""
 msgid "Temporary-file retention (hours)"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Maintenance/PrivacyPolicyGuide.php:1
+msgid "Temporary CSV import files and diagnostic rows are removed according to the configured transfer-retention period. If WooCommerce is enabled, WooCommerce separately controls customer, cart, checkout, order, and payment information under its own privacy settings."
+msgstr ""
+
 #: src/Infrastructure/WordPress/Presentation/PresentationSettings.php:1
 msgid "The bundled styles are deliberately minimal. Disable them when your theme or builder supplies all presentation."
 msgstr ""
@@ -1588,6 +1708,10 @@ msgstr ""
 
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
 msgid "The request failed. Try again or check the server logs."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Maintenance/MaintenancePage.php:1
+msgid "The scan reports orphaned plugin-owned rows, stale WooCommerce mappings, and duplicate external IDs. Repairs never delete tourism posts, Media Library attachments, or WooCommerce Products."
 msgstr ""
 
 #: src/Infrastructure/WordPress/Integration/WooCommerce/PackageCommerceMetaBox.php:1
@@ -1628,6 +1752,10 @@ msgstr ""
 
 #: src/Domain:1
 msgid "Title Z–A"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Maintenance/MaintenancePage.php:1
+msgid "Total issues found: %d"
 msgstr ""
 
 #: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1
@@ -1724,6 +1852,10 @@ msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
 msgid "Typical duration"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Maintenance/MaintenanceSettings.php:1
+msgid "Uninstall behavior"
 msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1 src/Domain:1
@@ -1902,6 +2034,10 @@ msgstr ""
 msgid "You do not have permission to import tourism records."
 msgstr ""
 
+#: src/Infrastructure/WordPress/Maintenance/MaintenancePage.php:1
+msgid "You do not have permission to maintain ADS Tourism data."
+msgstr ""
+
 #: src/Infrastructure/WordPress/Workflow/WorkflowSettings.php:1
 msgid "You do not have permission to manage ADS Tourism settings."
 msgstr ""
@@ -1910,8 +2046,16 @@ msgstr ""
 msgid "You do not have permission to manage WooCommerce integration settings."
 msgstr ""
 
+#: src/Infrastructure/WordPress/Maintenance/MaintenancePage.php:1
+msgid "You do not have permission to repair ADS Tourism data."
+msgstr ""
+
 #: src/Infrastructure/WordPress/ImportExport/CsvDownloadController.php:1 src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
 msgid "You do not have permission to transfer tourism records."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Database/MigrationRunner.php:1
+msgid "You do not have permission to update ADS Tourism."
 msgstr ""
 
 #: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
