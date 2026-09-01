@@ -117,6 +117,8 @@ foreach ($messages as $message => $references) {
     $pot .= 'msgstr ""' . "\n\n";
 }
 
+$pot = rtrim($pot) . PHP_EOL;
+
 $outputPath = $projectRoot . '/languages/ads-tourism.pot';
 
 if (($argv[1] ?? '') === '--check') {
