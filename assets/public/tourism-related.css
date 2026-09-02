@@ -1,0 +1,13 @@
+/* Related records: taxonomy and relationship list hooks. */
+.ads-tourism-related,
+.ads-tourism-taxonomies {
+    /* Customize related-record and taxonomy presentation here. */
+    margin-block-start: var(--ads-tourism-space-md);
+}
+
+.ads-tourism-related__group ul,
+.ads-tourism-taxonomies__group ul {
+    /* Customize related links and taxonomy chips here. */
+    list-style: none;
+    padding-inline-start: 0;
+}

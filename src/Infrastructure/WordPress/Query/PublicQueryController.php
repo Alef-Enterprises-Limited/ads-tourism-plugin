@@ -46,6 +46,8 @@ final readonly class PublicQueryController
             $query = $this->queries->create($input);
             $result = $this->queryService->execute($query);
             $columns = $this->columns($request->get_param('columns'));
+            $primaryMarkers = $this->markers->forPosts($result->postIds);
+            $allMarkers = $this->markers->forPosts($result->postIds, 100, true);
 
             return rest_ensure_response([
                 'context' => $query->context->value,
@@ -57,7 +59,11 @@ final readonly class PublicQueryController
                 'state' => $query->normalizedState(),
                 'markers' => array_map(
                     static fn(MapMarker $marker): array => $marker->toArray(),
-                    $this->markers->forPosts($result->postIds),
+                    $primaryMarkers,
+                ),
+                'markers_all' => array_map(
+                    static fn(MapMarker $marker): array => $marker->toArray(),
+                    $allMarkers,
                 ),
             ]);
         } catch (InvalidArgumentException $exception) {

@@ -84,10 +84,12 @@ final readonly class GoogleMapsProvider implements MapProviderInterface
             . ($view->cssClass === '' ? '' : ' ' . esc_attr($view->cssClass)) . '"'
             . ' data-ads-tourism-map data-ads-tourism-provider="' . esc_attr($this->key()) . '"'
             . ($view->context === null ? '' : ' data-ads-tourism-context="' . esc_attr($view->context) . '"')
+            . ' data-ads-tourism-map-locations="' . esc_attr($view->locationMode) . '"'
             . ' data-markers="' . esc_attr(is_string($data) ? $data : '[]') . '" data-zoom="'
             . esc_attr((string) $view->zoom) . '" style="--ads-tourism-map-height:'
             . esc_attr((string) $view->height) . 'px" aria-label="' . esc_attr($view->accessibleLabel) . '">'
             . '<div class="ads-tourism-map__canvas"></div>'
+            . '<p class="ads-tourism-map__attribution">' . esc_html($this->attribution()) . '</p>'
             . '<p class="screen-reader-text" aria-live="polite" aria-atomic="true"></p></section>';
     }
 }

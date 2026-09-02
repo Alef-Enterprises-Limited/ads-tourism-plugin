@@ -8,6 +8,16 @@ The project follows [Semantic Versioning](https://semver.org/) and the structure
 
 No unreleased changes.
 
+## [1.2.0] - 2026-09-02
+
+### Added
+
+- Accessible tabbed navigation from Tags & Categories into all nine native WordPress taxonomy screens.
+- Commented, editable global, content-type, shortcode/widget boilerplate CSS with administrator-only scoped customization and a confirmed CSS reset action.
+- Repeatable labeled GPS locations for all five tourism record types, with migration from legacy coordinates, REST exposure, editor fields, primary/all map modes, marker labels, and AJAX-aware map updates.
+- Dedicated locations CSV template, export, and validated import workflow.
+- Help documentation for Tourism locations, Google Maps, Media Library galleries, and reusable gallery associations.
+
 ## [1.1.0] - 2026-09-02
 
 ### Added

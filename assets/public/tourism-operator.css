@@ -1,0 +1,11 @@
+/* Tour Operators: content-type hooks for single records and listing cards. */
+.ads-tourism-record--ads-operator .ads-tourism-record__header,
+.ads-tourism-card--ads-operator {
+    /* Customize Operator-specific presentation here. */
+    border-color: color-mix(in srgb, var(--ads-tourism-border-color) 30%, transparent);
+}
+
+.ads-tourism-card--ads-operator .ads-tourism-card__title {
+    /* Operator card title styles. */
+    margin-block-start: 0;
+}

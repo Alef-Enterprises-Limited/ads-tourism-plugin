@@ -1,0 +1,11 @@
+/* Galleries: grid, image, caption, and lightbox hooks. */
+.ads-tourism-gallery__grid {
+    /* Customize gallery columns and gaps here. */
+    align-items: start;
+}
+
+.ads-tourism-gallery__image,
+.ads-tourism-gallery__caption {
+    /* Customize gallery image and caption presentation here. */
+    width: 100%;
+}

@@ -14,6 +14,8 @@ final class AdminMenu
 
     public function register(): void
     {
+        add_action('admin_notices', [$this, 'renderNativeTaxonomyTabs'], 5);
+
         add_menu_page(
             __('ADS Tourism', 'ads-tourism'),
             __('ADS Tourism', 'ads-tourism'),
@@ -69,19 +71,35 @@ final class AdminMenu
             'Manage the taxonomy terms used to classify places, activities, accommodation, operators, and packages.',
             'ads-tourism',
         ) . '</p>';
-        echo '<ul>';
+        $this->renderTaxonomyTabs();
+        echo '<p>' . esc_html__(
+            'Choose a tab to open the native WordPress term-management screen for that taxonomy.',
+            'ads-tourism',
+        ) . '</p>';
+        echo '</div>';
+    }
 
-        foreach ($this->taxonomyManagementItems() as $item) {
-            echo '<li><a href="' . esc_url(admin_url($item['url'])) . '">'
-                . esc_html($item['label']) . '</a></li>';
+    public function renderNativeTaxonomyTabs(): void
+    {
+        if (($GLOBALS['pagenow'] ?? '') !== 'edit-tags.php') {
+            return;
         }
 
-        echo '</ul>';
+        $taxonomy = isset($_GET['taxonomy']) && is_scalar($_GET['taxonomy'])
+            ? sanitize_key((string) wp_unslash($_GET['taxonomy']))
+            : '';
+
+        if (TourismTaxonomy::tryFrom($taxonomy) === null || !current_user_can('manage_categories')) {
+            return;
+        }
+
+        echo '<div class="ads-tourism-taxonomy-tabs-native">';
+        $this->renderTaxonomyTabs($taxonomy);
         echo '</div>';
     }
 
     /**
-     * @return list<array{label: string, url: string}>
+     * @return list<array{taxonomy: string, label: string, url: string}>
      */
     private function taxonomyManagementItems(): array
     {
@@ -89,12 +107,28 @@ final class AdminMenu
 
         foreach (TourismTaxonomy::cases() as $taxonomy) {
             $items[] = [
+                'taxonomy' => $taxonomy->value,
                 'label' => $this->taxonomyLabel($taxonomy),
                 'url' => $this->taxonomyManagementUrl($taxonomy),
             ];
         }
 
         return $items;
+    }
+
+    private function renderTaxonomyTabs(?string $activeTaxonomy = null): void
+    {
+        echo '<nav class="nav-tab-wrapper ads-tourism-taxonomy-tabs" aria-label="'
+            . esc_attr__('Tourism taxonomies', 'ads-tourism') . '">';
+
+        foreach ($this->taxonomyManagementItems() as $item) {
+            $active = $item['taxonomy'] === $activeTaxonomy;
+            echo '<a class="nav-tab' . ($active ? ' nav-tab-active' : '') . '" href="'
+                . esc_url(admin_url($item['url'])) . '"' . ($active ? ' aria-current="page"' : '') . '>'
+                . esc_html($item['label']) . '</a>';
+        }
+
+        echo '</nav>';
     }
 
     private function taxonomyManagementUrl(TourismTaxonomy $taxonomy): string

@@ -15,7 +15,7 @@ final class CustomCssSanitizer
         '/expression\s*\(/i',
         '/javascript\s*:/i',
         '/@import\b/i',
-        '/behavior\s*:/i',
+        '/(?:^|[;{}])\s*behavior\s*:/i',
         '/-moz-binding\s*:/i',
     ];
 

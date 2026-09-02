@@ -33,11 +33,12 @@ Show the current tourism record:
 [ads_tourism_map]
 ```
 
-Show one record, several records, or a safe directions fallback:
+Show one record, several records, all visible locations, or a safe directions fallback:
 
 ```text
 [ads_tourism_map id="42" zoom="14" height="480"]
 [ads_tourism_map ids="42,57,91" marker_limit="50"]
+[ads_tourism_map id="42" locations="all"]
 [ads_tourism_map id="42" fallback="directions"]
 ```
 
@@ -50,7 +51,7 @@ Join a map to a results context:
 
 Use the same `context`, `type`, query defaults, and page size on the map and results components. The initial server render uses those attributes; subsequent AJAX searches, filters, and sorting send the current result markers to the map automatically. Invalid or missing coordinates are omitted. Marker limits are bounded to 100.
 
-Supported map attributes are `id`, `ids`, `context`, `type`, `query`, `per_page`, `sort`, `zoom`, `height`, `marker_limit`, `fallback`, and `class`.
+Supported map attributes are `id`, `ids`, `context`, `type`, `query`, `per_page`, `sort`, `locations` (`primary` or `all`), `zoom`, `height`, `marker_limit`, `fallback`, and `class`. The default is one visible primary location per record. `locations="all"` displays every visible location point up to the marker limit, including its label in the information window.
 
 ## Multilingual integration
 

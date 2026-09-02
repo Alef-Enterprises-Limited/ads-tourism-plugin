@@ -80,6 +80,7 @@ final readonly class ImportExportAdminPage
             'Use versioned CSV templates to validate data before writing. New records are always Draft and Unverified.',
             'ads-tourism',
         ) . '</p>';
+        $this->renderLocationNotice();
         $this->renderImport();
         $this->renderExport();
         $this->renderHistory();
@@ -113,6 +114,22 @@ final readonly class ImportExportAdminPage
         }
 
         echo '</div>';
+        $locationsTemplateUrl = wp_nonce_url(add_query_arg([
+            'action' => CsvDownloadController::ACTION_LOCATIONS_TEMPLATE,
+        ], admin_url('admin-post.php')), CsvDownloadController::NONCE_ACTION);
+        echo '<p><a class="button button-small" href="' . esc_url($locationsTemplateUrl) . '">'
+            . esc_html__('Locations CSV template', 'ads-tourism') . '</a></p>';
+        echo '<p class="description">' . esc_html__(
+            'Locations are transferred in their own CSV. The external_id and record_type identify the existing record; importing rows replaces all locations for each record included in the file.',
+            'ads-tourism',
+        ) . '</p>';
+        echo '<form method="post" action="' . esc_url(admin_url('admin-post.php')) . '" enctype="multipart/form-data">';
+        echo '<input type="hidden" name="action" value="' . esc_attr(LocationCsvImportController::ACTION) . '">';
+        wp_nonce_field(LocationCsvImportController::NONCE_ACTION);
+        echo '<label><span>' . esc_html__('Locations CSV file', 'ads-tourism') . '</span> '
+            . '<input type="file" name="locations_csv" accept=".csv,text/csv" required></label> ';
+        echo '<button type="submit" class="button">' . esc_html__('Import locations', 'ads-tourism') . '</button>';
+        echo '</form>';
         echo '<form id="ads-tourism-import-upload" enctype="multipart/form-data">';
         echo '<label><span>' . esc_html__('Record type', 'ads-tourism') . '</span>';
         echo '<select name="record_type" required>';
@@ -162,6 +179,24 @@ final readonly class ImportExportAdminPage
         echo '<div id="ads-tourism-preview-results" aria-live="polite"></div>';
         echo '<div id="ads-tourism-import-progress" aria-live="polite"></div>';
         echo '</section>';
+    }
+
+    private function renderLocationNotice(): void
+    {
+        $status = isset($_GET['ads_tourism_locations']) && is_scalar($_GET['ads_tourism_locations'])
+            ? sanitize_key((string) wp_unslash($_GET['ads_tourism_locations']))
+            : '';
+
+        if ($status !== 'success') {
+            return;
+        }
+
+        $count = isset($_GET['count']) && is_scalar($_GET['count']) ? absint($_GET['count']) : 0;
+        echo '<div class="notice notice-success is-dismissible"><p>' . esc_html(sprintf(
+            /* translators: %d is the number of imported location rows. */
+            _n('%d location row imported.', '%d location rows imported.', $count, 'ads-tourism'),
+            $count,
+        )) . '</p></div>';
     }
 
     private function renderExport(): void

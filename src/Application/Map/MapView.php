@@ -12,5 +12,6 @@ final readonly class MapView
         public string $cssClass,
         public string $accessibleLabel,
         public ?string $context = null,
+        public string $locationMode = 'primary',
     ) {}
 }

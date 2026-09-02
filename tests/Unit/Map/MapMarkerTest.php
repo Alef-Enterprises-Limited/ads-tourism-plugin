@@ -29,6 +29,8 @@ final class MapMarkerTest extends TestCase
             'url' => 'https://example.com/places/kokopo/',
             'content_type' => 'ads_place',
             'summary' => 'A coastal destination.',
+            'location_label' => '',
+            'location_role' => 'primary',
         ], $marker->toArray());
     }
 }

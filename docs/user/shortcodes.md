@@ -72,6 +72,7 @@ When pagination appears before results in the page source, give it the same `typ
 ```text
 [ads_tourism_results context="discover" type="place,stay" per_page="24"]
 [ads_tourism_map context="discover" type="place,stay" per_page="24" height="480"]
+[ads_tourism_map context="discover" type="place,stay" locations="all" height="480"]
 ```
 
 The map follows AJAX filter, search, and sort updates for `discover`. See [SEO, maps, and languages](seo-maps-and-languages.md) for provider setup, every map attribute, safe fallbacks, and privacy guidance.
@@ -97,6 +98,8 @@ Record components use the current tourism record unless an `id` is supplied:
 
 The gallery accepts optional `limit` (`0` through `100`), `columns` (`1` through `6`), `role`, `order` (`manual`, `newest`, `oldest`, or `random`), WordPress image `size`, and Boolean `captions`, `credits`, and `lightbox` overrides. Empty attributes inherit the record's gallery settings. A `class` override is sanitized and added to the gallery section.
 
+The **Tourism gallery** panel on every record is the authoring workflow for galleries. Select multiple Media Library attachments, set their order and primary image, choose roles, and add captions, credits, alt text, and rights notices. The same attachment may be associated with multiple records. Detaching it from a record removes only the association, never the Media Library file. The `ads_tourism_gallery` shortcode uses those normalized associations and supports the overrides above.
+
 Commerce controls accept `id`, `class`, and `action` (`configured`, `add_to_cart`, `buy_now`, or `both`). Catalogue and Enquiry modes never render cart actions. On a linked WooCommerce Product page, record components without an explicit `id` automatically use the linked Package. See [WooCommerce for Packages](woocommerce.md).
 
 ## URL state and no-JavaScript behavior
@@ -107,4 +110,4 @@ Search and filter controls are ordinary GET forms, and pagination is made of nor
 
 ## Styling
 
-Shortcodes enqueue the same minimal `ads-tourism-` component stylesheet used by fallback templates, even when placed on a normal Page. Disable that stylesheet under **ADS Tourism → Settings → Frontend presentation** if the theme or builder owns all styling. Use the `class` attribute or stable `ads-tourism-` classes for scoped custom CSS.
+Shortcodes enqueue the same bundled, commented `ads-tourism-` component styles used by fallback templates, even when placed on a normal Page. Edit the global, content-type, and widget boilerplate under **ADS Tourism → Settings → Frontend presentation**. The Reset ADS Tourism CSS control removes only saved plugin CSS after an explicit confirmation and restores the current bundled defaults. Use the `class` attribute or stable `ads-tourism-` classes for scoped custom CSS.

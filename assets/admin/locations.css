@@ -1,0 +1,30 @@
+.ads-tourism-locations__list {
+    display: grid;
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.ads-tourism-locations__item {
+    display: grid;
+    gap: 0.5rem;
+    padding: 1rem;
+    border: 1px solid #dcdcde;
+    background: #f6f7f7;
+}
+
+.ads-tourism-locations__fields {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(12rem, 1fr));
+    gap: 0.75rem;
+}
+
+.ads-tourism-locations__fields label {
+    display: grid;
+    gap: 0.25rem;
+}
+
+@media (max-width: 782px) {
+    .ads-tourism-locations__fields {
+        grid-template-columns: 1fr;
+    }
+}

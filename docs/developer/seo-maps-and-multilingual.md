@@ -34,9 +34,11 @@ The Google adapter registers only a browser JavaScript key. The two options are 
 - `ads_tourism_map_provider`
 - `ads_tourism_google_maps_browser_key`
 
-The public map payload contains only published record IDs, coordinates, titles, public URLs, content types, and short resolved summaries. The marker factory rejects invalid coordinates and caps each map at 100 markers.
+The public map payload contains only published record IDs, coordinates, titles, public URLs, content types, short resolved summaries, and the sanitized location label/role. The marker factory rejects invalid coordinates and caps each map at 100 location points.
 
-`[ads_tourism_map context="name"]` registers `map` in the same strict context registry as search, filters, sorting, results, and pagination. The REST query response includes markers for the returned records. The listing script dispatches `ads-tourism:results-updated`; the map script replaces markers belonging to the matching context and announces the change through a live region.
+`[ads_tourism_map context="name"]` registers `map` in the same strict context registry as search, filters, sorting, results, and pagination. Its `locations` attribute defaults to `primary`; `locations="all"` opts into all visible location points. The REST query response includes both primary and all-location marker arrays for returned records. The listing script dispatches `ads-tourism:results-updated`; the map script selects the configured marker array, replaces markers belonging to the matching context, and announces the change through a live region.
+
+Repeatable locations are stored in the plugin-owned `ads_tourism_locations` table and exposed as the `ads_tourism_locations` REST field. Legacy Place, Stay, Operator, and Package meeting-point coordinate metadata is migrated to a primary point; existing metadata remains readable for compatibility. Google Maps uses a browser-restricted key, renders provider attribution, and safely omits invalid or hidden points.
 
 A third-party provider implements the interface, registers itself with `ads_tourism_map_providers`, and adds its label through `ads_tourism_map_provider_labels`. It should enqueue assets only when available, preserve the public marker contract for AJAX updates, escape markup at output, and document its own attribution and privacy requirements.
 

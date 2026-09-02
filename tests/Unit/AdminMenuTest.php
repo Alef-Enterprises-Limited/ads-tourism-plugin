@@ -56,4 +56,22 @@ final class AdminMenuTest extends TestCase
             );
         }
     }
+
+    public function testNativeTaxonomyScreenHighlightsTheCurrentTab(): void
+    {
+        $GLOBALS['pagenow'] = 'edit-tags.php';
+        $_GET['taxonomy'] = 'ads_tourism_tag';
+
+        ob_start();
+        (new AdminMenu())->renderNativeTaxonomyTabs();
+        $markup = (string) ob_get_clean();
+
+        self::assertStringContainsString(
+            'class="nav-tab nav-tab-active"',
+            $markup,
+        );
+        self::assertStringContainsString('aria-current="page"', $markup);
+
+        unset($_GET['taxonomy'], $GLOBALS['pagenow']);
+    }
 }

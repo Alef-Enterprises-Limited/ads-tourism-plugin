@@ -272,7 +272,12 @@
             const append = ['load_more', 'infinite'].includes(state.pagination) && Number(state.page) > 1;
             replaceResults(context, payload, append);
             document.dispatchEvent(new CustomEvent('ads-tourism:results-updated', {
-                detail: {context, markers: payload.markers || [], state: payload.state || state},
+                detail: {
+                    context,
+                    markers: payload.markers || [],
+                    markers_all: payload.markers_all || [],
+                    state: payload.state || state,
+                },
             }));
             const refreshed = resultComponent(context);
             if (refreshed) refreshed.dataset.query = JSON.stringify(payload.state || state);

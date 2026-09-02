@@ -20,7 +20,7 @@ Phase 6 introduces an application-level query contract shared by server-rendered
 | `relationships` | JSON object keyed by tourism record type, containing positive record IDs |
 | price and duration bounds | Non-negative numbers or integers; a minimum cannot exceed its maximum |
 
-A successful response contains `context`, `html`, `pagination_html`, `total`, `total_pages`, `page`, and normalized `state`. Invalid input returns `ads_tourism_invalid_query` with HTTP 400. Unknown post types, taxonomies, relationship types, sorting values, and pagination values are rejected rather than passed into `WP_Query`.
+A successful response contains `context`, `html`, `pagination_html`, `total`, `total_pages`, `page`, normalized `state`, `markers` (one visible primary location per record), and `markers_all` (all visible location points, capped at 100). Marker objects include `location_label` and `location_role`. Invalid input returns `ads_tourism_invalid_query` with HTTP 400. Unknown post types, taxonomies, relationship types, sorting values, and pagination values are rejected rather than passed into `WP_Query`.
 
 The controller deliberately accepts no caller-provided post status, metadata key, raw taxonomy query, raw SQL fragment, template path, or arbitrary renderer. The endpoint is safe without authentication because its output contract is equivalent to a public archive.
 

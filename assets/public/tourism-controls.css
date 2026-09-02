@@ -1,0 +1,13 @@
+/* Controls: search, filters, sorting, and pagination hooks. */
+.ads-tourism-control {
+    /* Customize control spacing and layout here. */
+    max-width: 100%;
+}
+
+.ads-tourism-search,
+.ads-tourism-filters,
+.ads-tourism-sort,
+.ads-tourism-pagination {
+    /* Customize control surfaces here. */
+    min-width: 0;
+}

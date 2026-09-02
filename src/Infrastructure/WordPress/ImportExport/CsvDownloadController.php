@@ -9,6 +9,7 @@ use AlefDigitalSolutions\ADSTourism\Domain\ImportExport\CsvSchema;
 use AlefDigitalSolutions\ADSTourism\Domain\ImportExport\CsvSecurity;
 use AlefDigitalSolutions\ADSTourism\Domain\ImportExport\ExportRequest;
 use AlefDigitalSolutions\ADSTourism\Domain\ImportExport\ImportRunRepository;
+use AlefDigitalSolutions\ADSTourism\Domain\ImportExport\LocationCsvSchema;
 use RuntimeException;
 use Throwable;
 
@@ -20,6 +21,8 @@ final readonly class CsvDownloadController
 
     public const ACTION_TEMPLATE = 'ads_tourism_csv_template';
 
+    public const ACTION_LOCATIONS_TEMPLATE = 'ads_tourism_locations_template';
+
     public const NONCE_ACTION = 'ads_tourism_csv_download';
 
     public function __construct(
@@ -28,6 +31,7 @@ final readonly class CsvDownloadController
         private CsvExportService $exports,
         private ImportRunRepository $runs,
         private TransferFileManager $files,
+        private LocationCsvSchema $locationsSchema,
     ) {}
 
     public function template(): void
@@ -52,6 +56,28 @@ final readonly class CsvDownloadController
         fputcsv(
             $handle,
             array_map($this->security->escapeForSpreadsheet(...), $this->schema->headers($contentType)),
+            ',',
+            '"',
+            '',
+        );
+        fclose($handle);
+        exit;
+    }
+
+    public function locationsTemplate(): void
+    {
+        $this->authorize();
+        $this->csvHeaders('ads-tourism-locations-template-v' . LocationCsvSchema::VERSION . '.csv');
+        $handle = fopen('php://output', 'wb');
+
+        if ($handle === false) {
+            wp_die(esc_html__('The locations CSV template could not be generated.', 'ads-tourism'));
+        }
+
+        fwrite($handle, "\xEF\xBB\xBF");
+        fputcsv(
+            $handle,
+            array_map($this->security->escapeForSpreadsheet(...), $this->locationsSchema->headers()),
             ',',
             '"',
             '',

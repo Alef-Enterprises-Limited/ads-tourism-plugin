@@ -84,7 +84,7 @@ foreach ($taxonomies as $taxonomy) {
     }
 }
 
-foreach (['relations', 'media_links', 'import_runs'] as $table) {
+foreach (['relations', 'media_links', 'locations', 'import_runs'] as $table) {
     $tableName = $wpdb->prefix . 'ads_tourism_' . $table;
     $wpdb->query("DROP TABLE IF EXISTS {$tableName}");
 }
@@ -105,6 +105,7 @@ $options = [
     'ads_tourism_permalink_bases',
     'ads_tourism_permalink_base_redirects',
     'ads_tourism_custom_css',
+    'ads_tourism_scoped_css',
     'ads_tourism_load_frontend_styles',
     'ads_tourism_query_cache_generation',
     'ads_tourism_schema_mode',

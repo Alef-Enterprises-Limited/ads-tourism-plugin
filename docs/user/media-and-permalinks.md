@@ -22,7 +22,7 @@ Linked media rules:
 - ADS Tourism does not download or sideload linked files.
 - Invalid or missing sources are omitted rather than rendered as broken images.
 
-Each record also has gallery display defaults in **Tourism details**, including maximum images, columns, order, role filter, WordPress image size, captions, credits, lightbox behavior, featured-image inclusion, and pagination mode. Front-end components added in later phases will use these defaults and allow local overrides.
+Each record also has gallery display defaults in **Tourism details**, including maximum images, columns, order, role filter, WordPress image size, captions, credits, lightbox behavior, featured-image inclusion, and pagination mode. The `[ads_tourism_gallery]` shortcode uses these defaults and allows local attribute overrides in fallback templates, the block editor, Divi Code/Text modules, or another shortcode-capable builder.
 
 ## Default images
 

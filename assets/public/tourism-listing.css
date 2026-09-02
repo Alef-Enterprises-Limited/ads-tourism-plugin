@@ -1,0 +1,10 @@
+/* Listings: grid and results-container hooks. */
+.ads-tourism-listing .ads-tourism-grid {
+    /* Customize listing grid gap, width, and columns here. */
+    align-items: stretch;
+}
+
+.ads-tourism-listing .ads-tourism-results {
+    /* Customize the listing results wrapper here. */
+    min-width: 0;
+}

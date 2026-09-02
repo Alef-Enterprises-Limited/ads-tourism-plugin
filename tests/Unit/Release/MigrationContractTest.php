@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace AlefDigitalSolutions\ADSTourism\Tests\Unit\Release;
 
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Database\ImportRunTableMigration;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Database\LocationTableMigration;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Database\MediaLinkTableMigration;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Database\MigrationRunner;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Database\RelationshipTableMigration;
@@ -19,6 +20,7 @@ final class MigrationContractTest extends TestCase
         $runner = new MigrationRunner(
             new RelationshipTableMigration($database),
             new MediaLinkTableMigration($database),
+            new LocationTableMigration($database),
             new ImportRunTableMigration($database),
         );
 

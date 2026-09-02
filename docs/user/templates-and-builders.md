@@ -36,7 +36,7 @@ To override one Place, add another Theme Builder template and choose that specif
 
 ADS Tourism adds all tourism post types to Divi's supported post-type filters. Check **ADS Tourism → System Status** to confirm detection and integration status. If a type does not appear after changing themes or updating Divi, clear Divi's static CSS/cache and resave **Settings → Permalinks**.
 
-Structured scalar fields are registered WordPress post meta and exposed through REST. Builders that support WordPress custom-field dynamic content can use keys such as `ads_tourism_summary`, `ads_tourism_latitude`, `ads_tourism_phone`, or the type-specific price and duration keys. Complex internal arrays and administrator-only notes are intentionally not part of the builder contract.
+Structured scalar fields are registered WordPress post meta and exposed through REST. Builders that support WordPress custom-field dynamic content can use keys such as `ads_tourism_summary`, `ads_tourism_latitude`, `ads_tourism_phone`, or the type-specific price and duration keys. Repeatable locations are exposed as the REST field `ads_tourism_locations` and are rendered by the map shortcode; use the shortcode in a builder when a builder cannot expose repeatable REST fields as dynamic values. Complex internal arrays and administrator-only notes are intentionally not part of the scalar builder contract.
 
 ## Theme template overrides
 
@@ -67,14 +67,15 @@ Keep override files in a child theme so a parent-theme update cannot replace the
 
 ## Styling
 
-The fallback stylesheet supplies only responsive grids, spacing, media sizing, and basic accessible structure. It does not set a font or brand palette.
+The fallback stylesheet supplies responsive grids, spacing, media sizing, map/gallery/listing hooks, CSS variables, and basic accessible structure. It does not set a font or brand palette.
 
 Under **ADS Tourism → Settings → Frontend presentation**, administrators can:
 
 - disable the bundled stylesheet when a theme or builder owns all CSS; and
-- add up to 50 KB of optional custom CSS.
+- edit valid commented boilerplate for global CSS, each of the five content types, and listing/card/control/gallery/map/related shortcode widgets; and
+- add up to 50 KB of optional custom CSS per editor scope.
 
-Custom CSS loads only on tourism singles, archives, and taxonomy pages. Unsafe style/script constructs are removed when the setting is saved. Prefer a child-theme stylesheet for large or version-controlled designs.
+Custom CSS loads on tourism singles, archives, taxonomy pages, and pages containing ADS Tourism shortcodes. Unsafe style/script constructs are removed when the setting is saved. The reset action removes only saved ADS Tourism CSS and re-enables the bundled fallback files. Prefer a child-theme stylesheet for large or version-controlled designs.
 
 ## Divi smoke test
 

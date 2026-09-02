@@ -32,6 +32,7 @@ final readonly class MapAssets
         wp_localize_script(self::SCRIPT_HANDLE, 'adsTourismMaps', [
             'emptyMessage' => __('No mapped tourism records are available.', 'ads-tourism'),
             'updatedMessage' => __('Tourism map updated.', 'ads-tourism'),
+            'unavailableMessage' => __('The configured map provider could not be loaded.', 'ads-tourism'),
         ]);
     }
 }

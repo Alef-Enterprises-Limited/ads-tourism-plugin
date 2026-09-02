@@ -1,11 +1,19 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: ADS Tourism 1.1.0\n"
+"Project-Id-Version: ADS Tourism 1.2.0\n"
 "Report-Msgid-Bugs-To: https://github.com/Alef-Enterprises-Limited/ads-tourism-plugin/issues\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Domain: ads-tourism\n"
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "%d location row imported."
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "%d location rows imported."
+msgstr ""
+
 #: src/Infrastructure/WordPress/Maintenance/MaintenancePage.php:1
 msgid "%d safe integrity issues were repaired."
 msgstr ""
@@ -90,12 +98,20 @@ msgstr ""
 msgid "Add linked image"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Location/LocationMetaBox.php:1
+msgid "Add location"
+msgstr ""
+
 #: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1
 msgid "Add New"
 msgstr ""
 
 #: src/Infrastructure/WordPress/ContentTypeRegistrar.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
 msgid "Add New %s"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Location/LocationMetaBox.php:1
+msgid "Add one or more valid GPS locations for this record. The first primary location is used by default on maps."
 msgstr ""
 
 #: src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
@@ -132,6 +148,10 @@ msgstr ""
 
 #: src/Infrastructure/WordPress/SEO/SeoSettings.php:1
 msgid "ADS Tourism can emit focused tourism schema itself or contribute it through a compatible SEO plugin."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/PresentationSettings.php:1
+msgid "ADS Tourism CSS has been reset to the current bundled defaults."
 msgstr ""
 
 #: src/Infrastructure/WordPress/Database/MigrationRunner.php:1
@@ -386,6 +406,14 @@ msgstr ""
 msgid "Choose a default image"
 msgstr ""
 
+#: src/Infrastructure/WordPress/ImportExport/LocationCsvImportController.php:1
+msgid "Choose a locations CSV file to import."
+msgstr ""
+
+#: src/Infrastructure/WordPress/AdminMenu.php:1
+msgid "Choose a tab to open the native WordPress term-management screen for that taxonomy."
+msgstr ""
+
 #: src/Infrastructure/WordPress/Integration/WooCommerce/CommerceShortcodes.php:1
 msgid "Choose a valid commerce control action."
 msgstr ""
@@ -442,12 +470,24 @@ msgstr ""
 msgid "Confirmation phrase"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Presentation/PresentationSettings.php:1
+msgid "Confirm the CSS reset before continuing."
+msgstr ""
+
 #: src/Domain/Field/RecordFieldSchema.php:1
 msgid "Contact person"
 msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
 msgid "Contact provider"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/PresentationSettings.php:1
+msgid "Content type and widget CSS"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/PresentationSettings.php:1
+msgid "Content types"
 msgstr ""
 
 #: src/Infrastructure/WordPress/Workflow/WorkflowSettings.php:1
@@ -504,10 +544,6 @@ msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
 msgid "Custom content position"
-msgstr ""
-
-#: src/Infrastructure/WordPress/Presentation/PresentationSettings.php:1
-msgid "Custom CSS"
 msgstr ""
 
 #: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
@@ -574,6 +610,10 @@ msgstr ""
 msgid "Display fallback overrides"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Location/LocationMetaBox.php:1
+msgid "Display order"
+msgstr ""
+
 #: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
 msgid "Divi detected"
 msgstr ""
@@ -628,6 +668,10 @@ msgstr ""
 
 #: src/Infrastructure/WordPress/Shortcode/InteractiveShortcodes.php:1
 msgid "Duration in days"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/PresentationSettings.php:1
+msgid "Each editor starts with valid boilerplate CSS. The selectors are grouped by content type and shortcode widget so you can see what to customize."
 msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
@@ -692,6 +736,10 @@ msgstr ""
 
 #: src/Infrastructure/WordPress/HelpAdminPage.php:1
 msgid "Every shortcode below uses the ads_tourism_ prefix. Attributes not listed for a shortcode are ignored. Use quoted values for text and comma-separated values where shown."
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Every tourism record has a Tourism locations panel for one or more GPS points. Enter a label, valid latitude and longitude, role, primary status, map visibility, and order. Existing legacy coordinates are migrated as the primary location."
 msgstr ""
 
 #: src/Infrastructure/WordPress/HelpAdminPage.php:1
@@ -834,6 +882,10 @@ msgstr ""
 msgid "Getting started"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Presentation/PresentationSettings.php:1
+msgid "Global CSS"
+msgstr ""
+
 #: src/Infrastructure/WordPress/Media/MediaSettings.php:1
 msgid "Global tourism default"
 msgstr ""
@@ -868,6 +920,10 @@ msgstr ""
 
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
 msgid "Import complete."
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Import locations"
 msgstr ""
 
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
@@ -934,6 +990,10 @@ msgstr ""
 msgid "Itinerary"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Presentation/PresentationSettings.php:1
+msgid "I understand that my saved ADS Tourism CSS will be removed."
+msgstr ""
+
 #: src/Domain/Field/RecordFieldSchema.php:1 src/Domain:1
 msgid "Landscape"
 msgstr ""
@@ -946,7 +1006,7 @@ msgstr ""
 msgid "Last verified at"
 msgstr ""
 
-#: src/Domain/Field/RecordFieldSchema.php:1
+#: src/Domain/Field/RecordFieldSchema.php:1 src/Infrastructure/WordPress/Location/LocationMetaBox.php:1
 msgid "Latitude"
 msgstr ""
 
@@ -990,7 +1050,27 @@ msgstr ""
 msgid "Located stays"
 msgstr ""
 
-#: src/Domain/Field/RecordFieldSchema.php:1
+#: src/Infrastructure/WordPress/Location/LocationMetaBox.php:1
+msgid "Location label"
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Locations, maps, and galleries"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Locations are transferred in their own CSV. The external_id and record_type identify the existing record; importing rows replaces all locations for each record included in the file."
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Locations CSV file"
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
+msgid "Locations CSV template"
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1 src/Infrastructure/WordPress/Location/LocationMetaBox.php:1
 msgid "Longitude"
 msgstr ""
 
@@ -1078,7 +1158,7 @@ msgstr ""
 msgid "Meeting-point longitude"
 msgstr ""
 
-#: src/Domain/Field/RecordFieldSchema.php:1
+#: src/Domain/Field/RecordFieldSchema.php:1 src/Infrastructure/WordPress/Location/LocationMetaBox.php:1 src/Infrastructure/WordPress/Map/MapMarkerFactory.php:1
 msgid "Meeting point"
 msgstr ""
 
@@ -1254,6 +1334,10 @@ msgstr ""
 msgid "Opening hours or visitor access"
 msgstr ""
 
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Open the full ADS Tourism shortcode and builder documentation on GitHub."
+msgstr ""
+
 #: src/Domain/Field/RecordFieldSchema.php:1
 msgid "Operating hours"
 msgstr ""
@@ -1264,10 +1348,6 @@ msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1 src/Domain:1
 msgid "Operator logo"
-msgstr ""
-
-#: src/Infrastructure/WordPress/Presentation/PresentationSettings.php:1
-msgid "Optional administrator CSS, limited to 50 KB. Unsafe style and script constructs are removed."
 msgstr ""
 
 #: src/Infrastructure/WordPress/HelpAdminPage.php:1
@@ -1462,6 +1542,10 @@ msgstr ""
 msgid "Primary"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Location/LocationMetaBox.php:1 src/Infrastructure/WordPress/Map/MapMarkerFactory.php:1
+msgid "Primary location"
+msgstr ""
+
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
 msgid "Private"
 msgstr ""
@@ -1542,6 +1626,10 @@ msgstr ""
 msgid "Remove featured image"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Location/LocationMetaBox.php:1
+msgid "Remove location"
+msgstr ""
+
 #: src/Infrastructure/WordPress/Map/MapSettings.php:1
 msgid "Remove the stored Google Maps key"
 msgstr ""
@@ -1614,12 +1702,28 @@ msgstr ""
 msgid "Repair safe issues"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Location/LocationRestFields.php:1
+msgid "Repeatable tourism record locations."
+msgstr ""
+
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
 msgid "Report"
 msgstr ""
 
 #: src/Infrastructure/WordPress/Workflow/WorkflowSettings.php:1
 msgid "Require a verified status before a tourism record can be published."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/PresentationSettings.php:1
+msgid "Reset ADS Tourism CSS"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/PresentationSettings.php:1
+msgid "Reset all ADS Tourism CSS to the bundled defaults? This cannot be undone."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/PresentationSettings.php:1
+msgid "Reset CSS"
 msgstr ""
 
 #: src/Infrastructure/WordPress/Database/MigrationRunner.php:1
@@ -1630,7 +1734,7 @@ msgstr ""
 msgid "Rights notice"
 msgstr ""
 
-#: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1
+#: src/Infrastructure/WordPress/Location/LocationMetaBox.php:1 src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1
 msgid "Role"
 msgstr ""
 
@@ -1738,6 +1842,10 @@ msgstr ""
 msgid "Shortcode rules and field names"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Presentation/PresentationSettings.php:1
+msgid "Shortcode widgets"
+msgstr ""
+
 #: src/Infrastructure/WordPress/HelpAdminPage.php:1
 msgid "Show a mixed catalogue listing."
 msgstr ""
@@ -1768,6 +1876,14 @@ msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
 msgid "Show gallery credits"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Location/LocationMetaBox.php:1
+msgid "Show on maps"
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "shows one primary marker per record. Use locations=\"all\" to show every visible location; marker labels appear in the information window. Maps require an available configured provider."
 msgstr ""
 
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
@@ -1850,6 +1966,10 @@ msgstr ""
 msgid "Supported attributes"
 msgstr ""
 
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "supports id, limit, columns, role, order, size, captions, credits, lightbox, and class overrides."
+msgstr ""
+
 #: src/Infrastructure/WordPress/Integration/WooCommerce/PackageCommerceMetaBox.php:1
 msgid "Sync tourism details"
 msgstr ""
@@ -1878,8 +1998,8 @@ msgstr ""
 msgid "Temporary CSV import files and diagnostic rows are removed according to the configured transfer-retention period. If WooCommerce is enabled, WooCommerce separately controls customer, cart, checkout, order, and payment information under its own privacy settings."
 msgstr ""
 
-#: src/Infrastructure/WordPress/Presentation/PresentationSettings.php:1
-msgid "The bundled styles are deliberately minimal. Disable them when your theme or builder supplies all presentation."
+#: src/Infrastructure/WordPress/Map/MapAssets.php:1
+msgid "The configured map provider could not be loaded."
 msgstr ""
 
 #: src/Infrastructure/WordPress/ImportExport/CsvDownloadController.php:1
@@ -1896,6 +2016,10 @@ msgstr ""
 
 #: src/Infrastructure/WordPress/Map/MapSettings.php:1
 msgid "The Google Maps browser key contains unsupported characters."
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/CsvDownloadController.php:1
+msgid "The locations CSV template could not be generated."
 msgstr ""
 
 #: src/Infrastructure/WordPress/ImportExport/CsvDownloadController.php:1
@@ -1924,6 +2048,10 @@ msgstr ""
 
 #: src/Infrastructure/WordPress/Integration/WooCommerce/CommerceSettings.php:1
 msgid "These settings apply only to Packages in WooCommerce mode with a valid linked product."
+msgstr ""
+
+#: src/Infrastructure/WordPress/ImportExport/LocationCsvImportController.php:1
+msgid "The uploaded locations CSV file is invalid."
 msgstr ""
 
 #: src/Infrastructure/WordPress/Integration/WooCommerce/PackageCommerceMetaBox.php:1
@@ -1982,6 +2110,10 @@ msgstr ""
 msgid "Tourism gallery"
 msgstr ""
 
+#: src/Infrastructure/WordPress/Location/LocationMetaBox.php:1
+msgid "Tourism locations"
+msgstr ""
+
 #: src/Infrastructure/WordPress/Map/MapShortcodes.php:1
 msgid "Tourism map"
 msgstr ""
@@ -2016,6 +2148,10 @@ msgstr ""
 
 #: src/Infrastructure/WordPress/AdminMenu.php:1 src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1 src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
 msgid "Tourism Tags"
+msgstr ""
+
+#: src/Infrastructure/WordPress/AdminMenu.php:1
+msgid "Tourism taxonomies"
 msgstr ""
 
 #: src/Infrastructure/WordPress/Permalink/PermalinkSettings.php:1
@@ -2102,12 +2238,20 @@ msgstr ""
 msgid "Use Tags & Categories to create reusable taxonomy terms, then assign them while editing records."
 msgstr ""
 
+#: src/Infrastructure/WordPress/Presentation/PresentationSettings.php:1
+msgid "Use the bundled CSS as a commented starting point, then customize global, content-type, and widget presentation. Disable fallback styles only when your theme or builder supplies all presentation."
+msgstr ""
+
 #: src/Infrastructure/WordPress/AdminMenu.php:1
 msgid "Use the native content screens to add structured details, connect related records, and manage verification before publication."
 msgstr ""
 
 #: src/Infrastructure/WordPress/Multilingual/MultilingualSettings.php:1
 msgid "Use the original-language record when no translated equivalent exists."
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Use the Tourism gallery panel on each record to select multiple Media Library images, reorder them, set a primary image, role, caption, credit, alt text, and rights notice. Detaching an association never deletes the underlying Media Library file, and one attachment can be reused by multiple records."
 msgstr ""
 
 #: src/Infrastructure/WordPress/HelpAdminPage.php:1
@@ -2168,6 +2312,10 @@ msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
 msgid "Visitor advice"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/PresentationSettings.php:1
+msgid "Warning: this removes all saved ADS Tourism global, content-type, and widget CSS and re-enables the bundled stylesheet. Theme and builder CSS will not be changed."
 msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
@@ -2246,6 +2394,10 @@ msgstr ""
 msgid "You do not have permission to access ADS Tourism."
 msgstr ""
 
+#: src/Infrastructure/WordPress/ImportExport/LocationCsvImportController.php:1
+msgid "You do not have permission to import tourism locations."
+msgstr ""
+
 #: src/Infrastructure/WordPress/ImportExport/CsvImportController.php:1
 msgid "You do not have permission to import tourism records."
 msgstr ""
@@ -2268,6 +2420,10 @@ msgstr ""
 
 #: src/Infrastructure/WordPress/Maintenance/MaintenancePage.php:1
 msgid "You do not have permission to repair ADS Tourism data."
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/PresentationSettings.php:1
+msgid "You do not have permission to reset ADS Tourism CSS."
 msgstr ""
 
 #: src/Infrastructure/WordPress/ImportExport/CsvDownloadController.php:1 src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1

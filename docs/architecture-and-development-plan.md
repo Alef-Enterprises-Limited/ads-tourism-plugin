@@ -618,6 +618,10 @@ Gallery display controls must be available as record defaults and shortcode/modu
 - Credits on/off
 - Lightbox on/off
 - Include/exclude the featured image
+
+### 11.6 Repeatable Locations
+
+All five tourism record types use the plugin-owned locations table for repeatable GPS points. Each point has a label, latitude, longitude, role, primary flag, map visibility, and manual order. Legacy Place, Stay, Operator, and Package meeting-point coordinate metadata is migrated to a primary point while the original metadata remains readable. The normalized points are exposed through REST, a dedicated `locations.csv`, the record editor, and map shortcodes.
 - Numbered pagination, Load More or no pagination
 
 ### 11.5 Safe Rendering
@@ -1085,6 +1089,8 @@ apply_filters( 'ads_tourism_map_providers', $providers );
 - Listing-context map that responds to filters
 - Marker click opens the record or a configured preview card
 - Configurable height, zoom, marker limit and clustering when supported
+
+The default location mode is `primary`, producing at most one visible marker per record. `locations="all"` opts into all visible points, retaining their labels and roles in marker payloads. Invalid coordinates and hidden points are omitted, and context maps receive both primary and all-location marker arrays during AJAX updates.
 
 If no provider, key or valid coordinates exists, render nothing or a configured directions link. Core content must remain functional.
 

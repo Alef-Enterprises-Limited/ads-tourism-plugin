@@ -1,10 +1,12 @@
 :root {
     --ads-tourism-space-xs: 0.5rem;
+    --ads-tourism-space-1: 0.5rem;
     --ads-tourism-space-sm: 0.875rem;
     --ads-tourism-space-md: 1.5rem;
     --ads-tourism-space-lg: 2.5rem;
     --ads-tourism-border-color: currentColor;
     --ads-tourism-border-opacity: 0.18;
+    --ads-tourism-muted: #5f6368;
     --ads-tourism-radius: 0.5rem;
     --ads-tourism-grid-min: 16rem;
 }

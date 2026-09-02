@@ -33,6 +33,7 @@ final readonly class HelpAdminPage
         ) . '</p>';
         $this->renderQuickStart();
         $this->renderShortcodeReference();
+        $this->renderLocationAndGalleryHelp();
         $this->renderAdminReferences();
         echo '</div>';
     }
@@ -78,6 +79,12 @@ final readonly class HelpAdminPage
             'Every shortcode below uses the ads_tourism_ prefix. Attributes not listed for a shortcode are ignored. Use quoted values for text and comma-separated values where shown.',
             'ads-tourism',
         ) . '</p>';
+        echo '<p><a href="' . esc_url(
+            'https://github.com/Alef-Enterprises-Limited/ads-tourism-plugin/tree/main/docs/user',
+        ) . '" target="_blank" rel="noopener noreferrer">' . esc_html__(
+            'Open the full ADS Tourism shortcode and builder documentation on GitHub.',
+            'ads-tourism',
+        ) . '</a></p>';
 
         foreach ($this->shortcodeReferences() as $group => $references) {
             echo '<h3>' . esc_html($group) . '</h3>';
@@ -133,6 +140,25 @@ final readonly class HelpAdminPage
         }
 
         echo '</ul>';
+    }
+
+    private function renderLocationAndGalleryHelp(): void
+    {
+        echo '<h2>' . esc_html__('Locations, maps, and galleries', 'ads-tourism') . '</h2>';
+        echo '<p>' . esc_html__(
+            'Every tourism record has a Tourism locations panel for one or more GPS points. Enter a label, valid latitude and longitude, role, primary status, map visibility, and order. Existing legacy coordinates are migrated as the primary location.',
+            'ads-tourism',
+        ) . '</p>';
+        echo '<p><code>' . esc_html('[ads_tourism_map locations="primary"]') . '</code> ' . esc_html__(
+            'shows one primary marker per record. Use locations="all" to show every visible location; marker labels appear in the information window. Maps require an available configured provider.',
+            'ads-tourism',
+        ) . '</p>';
+        echo '<p>' . esc_html__(
+            'Use the Tourism gallery panel on each record to select multiple Media Library images, reorder them, set a primary image, role, caption, credit, alt text, and rights notice. Detaching an association never deletes the underlying Media Library file, and one attachment can be reused by multiple records.',
+            'ads-tourism',
+        ) . '</p>';
+        echo '<p><code>' . esc_html('[ads_tourism_gallery columns="3" captions="true" lightbox="true"]') . '</code> '
+            . esc_html__('supports id, limit, columns, role, order, size, captions, credits, lightbox, and class overrides.', 'ads-tourism') . '</p>';
     }
 
     /**
@@ -275,7 +301,7 @@ final readonly class HelpAdminPage
                     'shortcode' => 'ads_tourism_map',
                     'purpose' => __('Render one or more tourism map markers.', 'ads-tourism'),
                     'syntax' => '[ads_tourism_map type="place,stay" height="480"]',
-                    'attributes' => 'id, ids, context, type, query, per_page, sort, zoom (0–22), height (200–1000), marker_limit (1–100), fallback (none/directions), class',
+                    'attributes' => 'id, ids, context, type, query, per_page, sort, locations (primary/all), zoom (0–22), height (200–1000), marker_limit (1–100), fallback (none/directions), class',
                 ],
             ],
             __('Optional commerce', 'ads-tourism') => [

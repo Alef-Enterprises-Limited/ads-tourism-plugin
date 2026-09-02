@@ -1,0 +1,23 @@
+/* Maps: map container and directions fallback hooks. */
+.ads-tourism-map,
+.ads-tourism-map__canvas {
+    /* Customize map size, radius, and surrounding layout here. */
+}
+
+/* Label for a repeatable location inside a marker information window. */
+.ads-tourism-map__location-label {
+    display: block;
+    margin-top: var(--ads-tourism-space-1);
+    color: var(--ads-tourism-muted);
+    font-size: 0.875rem;
+}
+
+.ads-tourism-map__attribution {
+    margin-block: var(--ads-tourism-space-1);
+    color: var(--ads-tourism-muted);
+    font-size: 0.75rem;
+}
+
+.ads-tourism-map-directions {
+    /* Customize the no-provider directions link here. */
+}

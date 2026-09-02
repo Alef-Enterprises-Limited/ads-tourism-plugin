@@ -19,6 +19,8 @@ $GLOBALS['ads_tourism_test_menu_pages'] = [];
 $GLOBALS['ads_tourism_test_term_meta'] = [];
 /** @var list<array{taxonomy: string, meta_key: string, arguments: array<string, mixed>}> */
 $GLOBALS['ads_tourism_test_registered_term_meta'] = [];
+/** @var list<array{post_type: string, field: string, arguments: array<string, mixed>}> */
+$GLOBALS['ads_tourism_test_registered_rest_fields'] = [];
 define('WC_VERSION', '10.0.0');
 
 class WooCommerce {}
@@ -467,6 +469,11 @@ function esc_html__(string $text, string $domain = 'default'): string
     return $text;
 }
 
+function esc_js(string $text): string
+{
+    return addslashes($text);
+}
+
 function esc_textarea(string $text): string
 {
     return $text;
@@ -729,6 +736,18 @@ function register_term_meta(string $taxonomy, string $metaKey, array $arguments)
     $GLOBALS['ads_tourism_test_registered_term_meta'][] = [
         'taxonomy' => $taxonomy,
         'meta_key' => $metaKey,
+        'arguments' => $arguments,
+    ];
+
+    return true;
+}
+
+/** @param array<string, mixed> $arguments */
+function register_rest_field(string $postType, string $fieldName, array $arguments): bool
+{
+    $GLOBALS['ads_tourism_test_registered_rest_fields'][] = [
+        'post_type' => $postType,
+        'field' => $fieldName,
         'arguments' => $arguments,
     ];
 
@@ -1072,7 +1091,7 @@ function wp_nonce_field(
     bool $referer = true,
     bool $display = true,
 ): string {
-    return '';
+    return '<input type="hidden" name="' . esc_attr($name) . '" value="nonce">';
 }
 
 function wp_nonce_url(string $actionUrl, int|string $action = -1, string $name = '_wpnonce'): string

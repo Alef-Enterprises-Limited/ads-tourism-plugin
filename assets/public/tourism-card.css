@@ -1,0 +1,15 @@
+/* Cards: reusable card hooks. */
+.ads-tourism-card {
+    /* Customize card background, border, radius, and shadow here. */
+    height: 100%;
+}
+
+.ads-tourism-card__media img {
+    /* Customize card image ratio and crop here. */
+    object-fit: cover;
+}
+
+.ads-tourism-card__title,
+.ads-tourism-card__summary {
+    /* Customize card typography here. */
+}

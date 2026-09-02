@@ -24,6 +24,7 @@ final class MigrationRunner
     public function __construct(
         private RelationshipTableMigration $relationships,
         private MediaLinkTableMigration $mediaLinks,
+        private LocationTableMigration $locations,
         private ImportRunTableMigration $importRuns,
     ) {}
 
@@ -40,6 +41,7 @@ final class MigrationRunner
         try {
             $this->relationships->up();
             $this->mediaLinks->up();
+            $this->locations->up();
             $this->importRuns->up();
             update_option(self::SCHEMA_OPTION, Plugin::SCHEMA_VERSION, false);
 

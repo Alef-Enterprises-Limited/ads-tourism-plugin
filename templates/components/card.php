@@ -10,11 +10,13 @@ if (!isset($postId, $renderer) || !is_int($postId) || !$renderer instanceof Fron
 
 $url = apply_filters('ads_tourism_record_url', get_permalink($postId), $postId);
 $summary = apply_filters('ads_tourism_resolved_field', null, $postId, 'ads_tourism_summary');
+$contentTypeClass = sanitize_html_class(str_replace('_', '-', (string) get_post_type($postId)));
 ob_start();
 $renderer->renderFeaturedMedia($postId, 'medium_large', 'ads-tourism-card__media');
 $mediaMarkup = (string) ob_get_clean();
 
-echo '<article class="ads-tourism-card" role="listitem">';
+echo '<article class="ads-tourism-card' . ($contentTypeClass === '' ? '' : ' ads-tourism-card--' . esc_attr($contentTypeClass))
+    . '" role="listitem">';
 
 if (is_string($url) && $mediaMarkup !== '') {
     echo '<a class="ads-tourism-card__media-link" href="' . esc_url($url) . '" tabindex="-1" aria-hidden="true">';

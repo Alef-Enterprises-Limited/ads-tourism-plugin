@@ -33,6 +33,7 @@ Relationship import remains deferred by design. External IDs and the normalized 
 `CsvExportService` queries WordPress records using explicit filters and emits:
 
 - one versioned CSV per selected record type;
+- a dedicated `locations.csv` for repeatable GPS points, keyed by record type and external ID;
 - normalized taxonomy term definitions;
 - canonical relationship rows keyed by external IDs;
 - normalized media rows;

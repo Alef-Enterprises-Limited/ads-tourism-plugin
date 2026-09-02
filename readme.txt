@@ -4,7 +4,7 @@ Tags: tourism, destinations, accommodation, activities, tour packages
 Requires at least: 6.6
 Tested up to: 6.8
 Requires PHP: 8.2
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: Apache-2.0
 License URI: https://www.apache.org/licenses/LICENSE-2.0
 
@@ -14,7 +14,7 @@ A WordPress-native tourism content and discovery foundation for places, activiti
 
 ADS Tourism provides connected content types for a tourism website while preserving WordPress templates, taxonomies, media, revisions, REST APIs, and page-builder compatibility.
 
-Version 1.0 provides the core content model, structured fields, connected records, a verification-first editorial workflow, reusable media galleries, fallback resolution, configurable tourism permalinks, secure CSV transfer, interactive discovery shortcodes, tourism SEO/schema integration, optional Google Maps, multilingual readiness, and optional WooCommerce Package commerce.
+Version 1.2 provides the core content model, structured fields, connected records, a verification-first editorial workflow, reusable media galleries, repeatable GPS locations, fallback resolution, configurable tourism permalinks, secure CSV transfer, editable scoped boilerplate CSS, interactive discovery shortcodes, tourism SEO/schema integration, optional Google Maps, multilingual readiness, and optional WooCommerce Package commerce.
 
 Editors can use native WordPress screens to maintain tourism details, search for related records, order those relationships, and verify content before publication. Administrators may relax the verification publication gate under ADS Tourism > Settings.
 

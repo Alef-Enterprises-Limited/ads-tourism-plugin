@@ -13,6 +13,8 @@ final readonly class MapMarker
         public string $url,
         public string $contentType,
         public string $summary = '',
+        public string $locationLabel = '',
+        public string $locationRole = 'primary',
     ) {}
 
     /** @return array<string, int|float|string> */
@@ -26,6 +28,8 @@ final readonly class MapMarker
             'url' => $this->url,
             'content_type' => $this->contentType,
             'summary' => $this->summary,
+            'location_label' => $this->locationLabel,
+            'location_role' => $this->locationRole,
         ];
     }
 }

@@ -51,6 +51,7 @@ The export form can select all records, one record type, a WordPress status, a v
 - `taxonomies.csv` — term definitions and hierarchy;
 - `relationships.csv` — stable external IDs, relation keys, primary flags, order, and metadata;
 - `media.csv` — normalized attachment and linked-media associations;
+- `locations.csv` — one row per GPS point, identified by `record_type` and `external_id`;
 - `manifest.json` — schema/plugin versions, timestamp, filters, counts, and SHA-256 file checksums.
 
 Values beginning with spreadsheet formula characters are prefixed with an apostrophe on export. Remove that protective apostrophe only if you are certain the cell is ordinary data.
@@ -58,3 +59,11 @@ Values beginning with spreadsheet formula characters are prefixed with an apostr
 ## Limits and cleanup
 
 Administrators can set the maximum upload size, AJAX batch size, temporary-file retention, and whether term creation may be offered. Uploaded CSVs and generated reports live in a protected uploads subdirectory and are removed automatically after the retention period. Import history retains only operational metadata until the same expiry cleanup.
+
+## Locations CSV
+
+Download the **Locations CSV template** from the import screen. Its columns are:
+
+`record_type`, `external_id`, `label`, `latitude`, `longitude`, `role`, `is_primary`, `show_on_map`, `sort_order`.
+
+Use the exact WordPress record type (`ads_place`, `ads_activity`, `ads_stay`, `ads_operator`, or `ads_package`) and the record's existing `external_id`. Valid roles are `primary`, `entrance`, `meeting_point`, `viewpoint`, `waypoint`, and `other`. Coordinates must be decimal degrees within latitude -90 to 90 and longitude -180 to 180. Importing a locations file replaces all locations for each record represented in that file; records omitted from the file are unchanged.

@@ -15,7 +15,6 @@ final class FrontendAssets
     private bool $enqueued = false;
 
     public function __construct(
-        private string $pluginFile,
         private PresentationSettings $settings,
     ) {}
 
@@ -36,22 +35,23 @@ final class FrontendAssets
 
         $this->enqueued = true;
 
-        $customCss = $this->settings->customCss();
+        $styleHandles = [];
 
         if ($this->settings->loadStyles()) {
-            wp_enqueue_style(
-                self::STYLE_HANDLE,
-                plugin_dir_url($this->pluginFile) . 'assets/public/tourism.css',
-                [],
-                Plugin::VERSION,
-            );
-        } elseif ($customCss !== '') {
-            wp_register_style(self::STYLE_HANDLE, false, [], Plugin::VERSION);
-            wp_enqueue_style(self::STYLE_HANDLE);
+            foreach ($this->settings->scopes() as $scope => $definition) {
+                $handle = self::STYLE_HANDLE . '-' . sanitize_key($scope);
+                wp_enqueue_style($handle, $this->settings->assetUrl($scope), [], Plugin::VERSION);
+                $styleHandles[] = $handle;
+            }
         }
 
-        if ($customCss !== '') {
-            wp_add_inline_style(self::STYLE_HANDLE, $customCss);
+        $customCss = $this->settings->customCssByScope();
+
+        if ($customCss !== []) {
+            $overrideHandle = self::STYLE_HANDLE . '-custom';
+            wp_register_style($overrideHandle, false, $styleHandles, Plugin::VERSION);
+            wp_enqueue_style($overrideHandle);
+            wp_add_inline_style($overrideHandle, implode("\n\n", $customCss));
         }
     }
 

@@ -89,7 +89,9 @@ final readonly class FrontendRenderer
         );
 
         do_action('ads_tourism_before_record', $postId, $layout->value);
-        echo '<article class="ads-tourism-record ads-tourism-record--' . esc_attr($layout->value) . '">';
+        echo '<article class="ads-tourism-record ads-tourism-record--' . esc_attr($layout->value)
+            . ' ads-tourism-record--' . esc_attr($contentType->value)
+            . ' ads-tourism-record--layout-' . esc_attr($layout->value) . '">';
 
         if ($layout === LayoutMode::FULL_CUSTOM) {
             $this->renderCustomContent($postId);

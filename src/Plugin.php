@@ -13,10 +13,14 @@ use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\HelpAdminPage;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\CsvDownloadController;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\CsvImportController;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\ImportExportAdminPage;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\LocationCsvImportController;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\TransferMaintenance;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\TransferSettings;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Integration\Divi\DiviCompatibility;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Integration\WooCommerce\WooCommerceIntegration;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Location\LocationCleanup;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Location\LocationMetaBox;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Location\LocationRestFields;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Maintenance\MaintenancePage;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Maintenance\MaintenanceSettings;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Maintenance\PrivacyPolicyGuide;
@@ -57,9 +61,9 @@ use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Workflow\WorkflowSe
 
 final readonly class Plugin
 {
-    public const SCHEMA_VERSION = 4;
+    public const SCHEMA_VERSION = 5;
 
-    public const VERSION = '1.1.0';
+    public const VERSION = '1.2.0';
 
     public function __construct(
         private ContentTypeRegistrar $contentTypes,
@@ -84,6 +88,9 @@ final readonly class Plugin
         private VerificationHistoryMetaBox $verificationHistoryMetaBox,
         private MediaLinkMetaBox $mediaEditor,
         private MediaCleanup $mediaCleanup,
+        private LocationMetaBox $locationEditor,
+        private LocationCleanup $locationCleanup,
+        private LocationRestFields $locationRestFields,
         private MediaSettings $mediaSettings,
         private PermalinkSettings $permalinkSettings,
         private PermalinkRedirector $permalinkRedirector,
@@ -91,6 +98,7 @@ final readonly class Plugin
         private FallbackHooks $fallbacks,
         private ImportExportAdminPage $importExportPage,
         private CsvImportController $csvImport,
+        private LocationCsvImportController $locationCsvImport,
         private CsvDownloadController $csvDownloads,
         private TransferSettings $transferSettings,
         private TransferMaintenance $transferMaintenance,
@@ -132,6 +140,7 @@ final readonly class Plugin
         add_action('admin_init', [$this->permalinkSettings, 'registerSettings']);
         add_action('admin_init', [$this->transferSettings, 'registerSettings']);
         add_action('admin_init', [$this->presentationSettings, 'registerSettings']);
+        add_action('admin_post_' . PresentationSettings::ACTION_RESET_CSS, [$this->presentationSettings, 'resetCss']);
         add_action('admin_init', [$this->mapSettings, 'registerSettings']);
         add_action('admin_init', [$this->seoSettings, 'registerSettings']);
         add_action('admin_init', [$this->multilingualSettings, 'registerSettings']);
@@ -139,20 +148,25 @@ final readonly class Plugin
         add_action('add_meta_boxes', [$this->relationshipEditor, 'register']);
         add_action('add_meta_boxes', [$this->verificationHistoryMetaBox, 'register']);
         add_action('add_meta_boxes', [$this->mediaEditor, 'register']);
+        add_action('add_meta_boxes', [$this->locationEditor, 'register']);
         add_action('admin_enqueue_scripts', [$this->relationshipEditor, 'enqueueAssets']);
         add_action('admin_enqueue_scripts', [$this->mediaEditor, 'enqueueAssets']);
         add_action('admin_enqueue_scripts', [$this->mediaSettings, 'enqueueAssets']);
         add_action('admin_enqueue_scripts', [$this->importExportPage, 'enqueueAssets']);
         add_action('admin_enqueue_scripts', [$this->taxonomyColors, 'enqueueAssets']);
+        add_action('admin_enqueue_scripts', [$this->locationEditor, 'enqueueAssets']);
         add_action('save_post', [$this->recordDetails, 'save'], 10);
         add_action('save_post', [$this->relationshipEditor, 'save'], 20);
+        add_action('save_post', [$this->locationEditor, 'save'], 24);
         add_action('save_post', [$this->mediaEditor, 'save'], 25);
         add_action('save_post', [$this->verificationHistory, 'recordCurrentState'], 30);
         add_action('wp_ajax_' . RelationshipSearchController::ACTION, [$this->relationshipSearch, 'search']);
         add_action('wp_ajax_' . CsvImportController::ACTION_UPLOAD, [$this->csvImport, 'upload']);
         add_action('wp_ajax_' . CsvImportController::ACTION_PREVIEW, [$this->csvImport, 'preview']);
         add_action('wp_ajax_' . CsvImportController::ACTION_BATCH, [$this->csvImport, 'batch']);
+        add_action('admin_post_' . LocationCsvImportController::ACTION, [$this->locationCsvImport, 'import']);
         add_action('admin_post_' . CsvDownloadController::ACTION_TEMPLATE, [$this->csvDownloads, 'template']);
+        add_action('admin_post_' . CsvDownloadController::ACTION_LOCATIONS_TEMPLATE, [$this->csvDownloads, 'locationsTemplate']);
         add_action('admin_post_' . CsvDownloadController::ACTION_EXPORT, [$this->csvDownloads, 'export']);
         add_action('admin_post_' . CsvDownloadController::ACTION_REJECTED, [$this->csvDownloads, 'rejected']);
         add_action('admin_post_' . MaintenancePage::ACTION_REPAIR, [$this->maintenancePage, 'repair']);
@@ -160,6 +174,7 @@ final readonly class Plugin
         add_action(TransferMaintenance::HOOK, [$this->transferMaintenance, 'cleanup']);
         add_action('before_delete_post', [$this->relationshipCleanup, 'deleteForPost']);
         add_action('before_delete_post', [$this->mediaCleanup, 'deleteForPost']);
+        add_action('before_delete_post', [$this->locationCleanup, 'deleteForPost']);
         add_action('post_updated', [$this->slugHistory, 'record'], 10, 3);
         add_action(
             'update_option_' . PermalinkSettings::OPTION_BASES,
@@ -181,6 +196,7 @@ final readonly class Plugin
         add_filter('redirect_post_location', [$this->publishingGate, 'filterRedirect']);
         add_action('admin_notices', [$this->publishingGate, 'renderNotice']);
         add_action('admin_notices', [$this->migrations, 'renderFailureNotice']);
+        add_action('admin_notices', [$this->presentationSettings, 'renderResetNotice']);
         add_action('restrict_manage_posts', [$this->workflowColumns, 'renderFilter']);
         add_action('pre_get_posts', [$this->workflowColumns, 'applyFilter']);
         $this->taxonomyColors->register();
@@ -203,6 +219,7 @@ final readonly class Plugin
         $this->contentTypes->register();
         $this->taxonomies->register();
         $this->taxonomyColors->registerMeta();
+        $this->locationRestFields->register();
         $this->metadata->register();
     }
 

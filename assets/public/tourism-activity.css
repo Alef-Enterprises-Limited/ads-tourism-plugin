@@ -1,0 +1,11 @@
+/* Things to Do: content-type hooks for single records and listing cards. */
+.ads-tourism-record--ads-activity .ads-tourism-record__header,
+.ads-tourism-card--ads-activity {
+    /* Customize Activity-specific presentation here. */
+    border-color: color-mix(in srgb, var(--ads-tourism-border-color) 30%, transparent);
+}
+
+.ads-tourism-card--ads-activity .ads-tourism-card__title {
+    /* Activity card title styles. */
+    margin-block-start: 0;
+}

@@ -1,0 +1,11 @@
+/* Packages: content-type hooks for single records and listing cards. */
+.ads-tourism-record--ads-package .ads-tourism-record__header,
+.ads-tourism-card--ads-package {
+    /* Customize Package-specific presentation here. */
+    border-color: color-mix(in srgb, var(--ads-tourism-border-color) 30%, transparent);
+}
+
+.ads-tourism-card--ads-package .ads-tourism-card__title {
+    /* Package card title styles. */
+    margin-block-start: 0;
+}

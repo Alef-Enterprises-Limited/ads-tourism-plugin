@@ -47,11 +47,19 @@
             });
             const summary = String(data.summary || '');
             const title = String(data.title || '');
+            const locationLabel = String(data.location_label || '');
             const url = String(data.url || '');
             const content = document.createElement('div');
             const heading = document.createElement('strong');
             heading.textContent = title;
             content.append(heading);
+
+            if (locationLabel) {
+                const location = document.createElement('span');
+                location.className = 'ads-tourism-map__location-label';
+                location.textContent = locationLabel;
+                content.append(location);
+            }
 
             if (summary) {
                 const paragraph = document.createElement('p');
@@ -107,17 +115,29 @@
     document.addEventListener('ads-tourism:results-updated', (event) => {
         const context = event.detail?.context;
         const markers = event.detail?.markers;
+        const allMarkers = event.detail?.markers_all;
         if (!context || !Array.isArray(markers)) return;
 
         document.querySelectorAll('[data-ads-tourism-map][data-ads-tourism-context]')
             .forEach((element) => {
                 if (element.dataset.adsTourismContext !== context) return;
-                element.dataset.markers = JSON.stringify(markers);
+                const markerData = element.dataset.adsTourismMapLocations === 'all' && Array.isArray(allMarkers)
+                    ? allMarkers
+                    : markers;
+                element.dataset.markers = JSON.stringify(markerData);
                 initialize(element);
                 renderMarkers(element, markers, true);
             });
     });
 
-    document.querySelectorAll('[data-ads-tourism-map][data-ads-tourism-provider="google"]')
-        .forEach(initialize);
+    const maps = document.querySelectorAll('[data-ads-tourism-map][data-ads-tourism-provider="google"]');
+
+    maps.forEach((element) => {
+        if (!window.google?.maps) {
+            announce(element, settings.unavailableMessage || 'The configured map provider could not be loaded.');
+            return;
+        }
+
+        initialize(element);
+    });
 })();

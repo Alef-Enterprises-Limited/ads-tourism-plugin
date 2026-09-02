@@ -1,0 +1,11 @@
+/* Places to Stay: content-type hooks for single records and listing cards. */
+.ads-tourism-record--ads-stay .ads-tourism-record__header,
+.ads-tourism-card--ads-stay {
+    /* Customize Stay-specific presentation here. */
+    border-color: color-mix(in srgb, var(--ads-tourism-border-color) 30%, transparent);
+}
+
+.ads-tourism-card--ads-stay .ads-tourism-card__title {
+    /* Stay card title styles. */
+    margin-block-start: 0;
+}

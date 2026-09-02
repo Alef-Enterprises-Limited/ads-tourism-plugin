@@ -1,0 +1,11 @@
+/* Places to Go: content-type hooks for single records and listing cards. */
+.ads-tourism-record--ads-place .ads-tourism-record__header,
+.ads-tourism-card--ads-place {
+    /* Customize Place-specific presentation here. */
+    border-color: color-mix(in srgb, var(--ads-tourism-border-color) 30%, transparent);
+}
+
+.ads-tourism-card--ads-place .ads-tourism-card__title {
+    /* Place card title styles. */
+    margin-block-start: 0;
+}

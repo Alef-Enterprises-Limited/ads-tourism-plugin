@@ -9,6 +9,7 @@ use AlefDigitalSolutions\ADSTourism\Application\Commerce\PackageProductService;
 use AlefDigitalSolutions\ADSTourism\Application\Fallback\FallbackResolver;
 use AlefDigitalSolutions\ADSTourism\Application\Fallback\MediaFallbackResolver;
 use AlefDigitalSolutions\ADSTourism\Application\ImportExport\CsvImportService;
+use AlefDigitalSolutions\ADSTourism\Application\Location\LocationService;
 use AlefDigitalSolutions\ADSTourism\Application\Media\MediaLinkService;
 use AlefDigitalSolutions\ADSTourism\Application\Presentation\CustomCssSanitizer;
 use AlefDigitalSolutions\ADSTourism\Application\Presentation\TemplateCandidateResolver;
@@ -23,11 +24,13 @@ use AlefDigitalSolutions\ADSTourism\Domain\ImportExport\CsvReader;
 use AlefDigitalSolutions\ADSTourism\Domain\ImportExport\CsvRowValidator;
 use AlefDigitalSolutions\ADSTourism\Domain\ImportExport\CsvSchema;
 use AlefDigitalSolutions\ADSTourism\Domain\ImportExport\CsvSecurity;
+use AlefDigitalSolutions\ADSTourism\Domain\ImportExport\LocationCsvSchema;
 use AlefDigitalSolutions\ADSTourism\Domain\Permalink\PermalinkBaseValidator;
 use AlefDigitalSolutions\ADSTourism\Domain\Workflow\PublicationPolicy;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\AdminMenu;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ContentTypeRegistrar;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Database\ImportRunTableMigration;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Database\LocationTableMigration;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Database\MediaLinkTableMigration;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Database\MigrationRunner;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Database\RelationshipTableMigration;
@@ -39,6 +42,7 @@ use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\CsvExp
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\CsvImportController;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\CsvRejectedRowWriter;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\ImportExportAdminPage;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\LocationCsvImportController;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\TransferFileManager;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\TransferMaintenance;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\ImportExport\TransferSettings;
@@ -59,6 +63,9 @@ use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Integration\WooComm
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Integration\WooCommerce\WooCommerceIntegration;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Integration\WooCommerce\WooCommerceProductGateway;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Integration\WooCommerce\WordPressPackageProductLinkStore;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Location\LocationCleanup;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Location\LocationMetaBox;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Location\LocationRestFields;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Maintenance\IntegrityScanner;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Maintenance\MaintenancePage;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Maintenance\MaintenanceSettings;
@@ -69,6 +76,7 @@ use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Map\MapMarkerFactor
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Map\MapProviderRegistry;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Map\MapSettings;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Map\MapShortcodes;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Map\WpdbLocationRepository;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\FeaturedMediaResolver;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\MediaCleanup;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Media\MediaLinkMetaBox;
@@ -84,6 +92,7 @@ use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Multilingual\WordPr
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Permalink\PermalinkRedirector;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Permalink\PermalinkSettings;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Permalink\SlugHistory;
+use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Presentation\BoilerplateStyles;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Presentation\BuilderMetaRegistry;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Presentation\FrontendAssets;
 use AlefDigitalSolutions\ADSTourism\Infrastructure\WordPress\Presentation\FrontendRenderer;
@@ -137,12 +146,17 @@ final class PluginFactory
             $recordTypes,
             new WordPressMediaAttachmentResolver(),
         );
+        $locationRepository = new WpdbLocationRepository($wpdb);
+        $locationService = new LocationService($locationRepository, $recordTypes);
         $permalinkSettings = new PermalinkSettings(new PermalinkBaseValidator());
         $mediaSettings = new MediaSettings($pluginFile);
         $featuredMedia = new FeaturedMediaResolver(new MediaFallbackResolver(), $mediaSettings);
-        $presentationSettings = new PresentationSettings(new CustomCssSanitizer());
+        $presentationSettings = new PresentationSettings(
+            new CustomCssSanitizer(),
+            new BoilerplateStyles($pluginFile),
+        );
         $divi = new DiviCompatibility();
-        $frontendAssets = new FrontendAssets($pluginFile, $presentationSettings);
+        $frontendAssets = new FrontendAssets($presentationSettings);
         $multilingualSettings = new MultilingualSettings();
         $translations = new TranslationResolver(new WordPressTranslationAdapter(), $multilingualSettings);
         $fallbackResolver = new FallbackResolver();
@@ -165,7 +179,7 @@ final class PluginFactory
             $recordImporter,
             new CsvRejectedRowWriter($csvSecurity),
         );
-        $csvExports = new CsvExportService($wpdb, $csvSchema, $csvSecurity, $mediaRepository);
+        $csvExports = new CsvExportService($wpdb, $csvSchema, $csvSecurity, $mediaRepository, $locationRepository);
         $frontendRenderer = new FrontendRenderer(
             $pluginFile,
             $fieldSchema,
@@ -185,7 +199,7 @@ final class PluginFactory
         $mapSettings = new MapSettings();
         $googleMaps = new GoogleMapsProvider($mapSettings);
         $mapProviders = new MapProviderRegistry([$googleMaps], $mapSettings);
-        $mapMarkers = new MapMarkerFactory($translations);
+        $mapMarkers = new MapMarkerFactory($translations, $locationService);
         $mapAssets = new MapAssets($pluginFile, $frontendAssets);
         $seoSettings = new SeoSettings();
         $seoPlugins = new SeoPluginCompatibility();
@@ -209,6 +223,7 @@ final class PluginFactory
         $migrations = new MigrationRunner(
             new RelationshipTableMigration($wpdb),
             new MediaLinkTableMigration($wpdb),
+            new LocationTableMigration($wpdb),
             new ImportRunTableMigration($wpdb),
         );
         $integrity = new IntegrityScanner($wpdb, $relationshipRepository, $mediaRepository);
@@ -236,6 +251,9 @@ final class PluginFactory
             new VerificationHistoryMetaBox(),
             new MediaLinkMetaBox($mediaService, $pluginFile),
             new MediaCleanup($mediaRepository),
+            new LocationMetaBox($locationService, $pluginFile),
+            new LocationCleanup($locationRepository),
+            new LocationRestFields($locationService),
             $mediaSettings,
             $permalinkSettings,
             new PermalinkRedirector($permalinkSettings),
@@ -253,12 +271,14 @@ final class PluginFactory
                 $transferFiles,
                 $transferSettings,
             ),
+            new LocationCsvImportController($csvReader, new LocationCsvSchema(), $locationService),
             new CsvDownloadController(
                 $csvSchema,
                 $csvSecurity,
                 $csvExports,
                 $importRuns,
                 $transferFiles,
+                new LocationCsvSchema(),
             ),
             $transferSettings,
             new TransferMaintenance($transferFiles, $transferSettings, $importRuns),

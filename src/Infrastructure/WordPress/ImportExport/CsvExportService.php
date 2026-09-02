@@ -9,6 +9,7 @@ use AlefDigitalSolutions\ADSTourism\Domain\ImportExport\CsvSchema;
 use AlefDigitalSolutions\ADSTourism\Domain\ImportExport\CsvSecurity;
 use AlefDigitalSolutions\ADSTourism\Domain\ImportExport\ExportBundle;
 use AlefDigitalSolutions\ADSTourism\Domain\ImportExport\ExportRequest;
+use AlefDigitalSolutions\ADSTourism\Domain\Map\LocationRepository;
 use AlefDigitalSolutions\ADSTourism\Domain\Media\MediaLink;
 use AlefDigitalSolutions\ADSTourism\Domain\Media\MediaLinkRepository;
 use AlefDigitalSolutions\ADSTourism\Domain\Media\MediaRole;
@@ -29,6 +30,7 @@ final readonly class CsvExportService
         private CsvSchema $schema,
         private CsvSecurity $security,
         private MediaLinkRepository $mediaLinks,
+        private LocationRepository $locations,
     ) {}
 
     public function createBundle(ExportRequest $request): ExportBundle
@@ -63,6 +65,7 @@ final readonly class CsvExportService
         $files['taxonomies.csv'] = count(TourismTaxonomy::cases());
         $files['relationships.csv'] = $this->writeRelationships($directory . '/relationships.csv', $postIds);
         $files['media.csv'] = $this->writeMedia($directory . '/media.csv', $posts);
+        $files['locations.csv'] = $this->writeLocations($directory . '/locations.csv', $posts);
         $this->writeManifest($directory . '/manifest.json', $request, $files, count($posts), $directory);
         $files['manifest.json'] = 1;
 
@@ -345,6 +348,47 @@ final readonly class CsvExportService
             $link->isPrimary ? '1' : '0',
             (string) $link->sortOrder,
         ]);
+    }
+
+    /** @param list<WP_Post> $posts */
+    private function writeLocations(string $path, array $posts): int
+    {
+        $handle = $this->openCsv($path);
+        $this->putRow($handle, [
+            'record_type',
+            'external_id',
+            'label',
+            'latitude',
+            'longitude',
+            'role',
+            'is_primary',
+            'show_on_map',
+            'sort_order',
+        ]);
+        $count = 0;
+
+        foreach ($posts as $post) {
+            $externalId = (string) get_post_meta($post->ID, 'ads_tourism_external_id', true);
+
+            foreach ($this->locations->findForEntity($post->ID) as $location) {
+                $this->putRow($handle, [
+                    $post->post_type,
+                    $externalId,
+                    $location->label,
+                    (string) $location->coordinates->latitude,
+                    (string) $location->coordinates->longitude,
+                    $location->role->value,
+                    $location->isPrimary ? '1' : '0',
+                    $location->showOnMap ? '1' : '0',
+                    (string) $location->sortOrder,
+                ]);
+                ++$count;
+            }
+        }
+
+        fclose($handle);
+
+        return $count;
     }
 
     /**

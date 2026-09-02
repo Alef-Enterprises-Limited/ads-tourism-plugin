@@ -46,6 +46,7 @@ final readonly class MapShortcodes
             'zoom' => 0,
             'height' => 420,
             'marker_limit' => 100,
+            'locations' => 'primary',
             'fallback' => 'none',
             'class' => '',
         ], $attributes, 'ads_tourism_map');
@@ -53,9 +54,10 @@ final readonly class MapShortcodes
         try {
             $contextValue = trim((string) $attributes['context']);
             $context = $contextValue === '' ? null : new ContextName($contextValue);
+            $allLocations = sanitize_key((string) $attributes['locations']) === 'all';
             $markers = $context === null
-                ? $this->explicitMarkers($attributes)
-                : $this->contextMarkers($context, $attributes);
+                ? $this->explicitMarkers($attributes, $allLocations)
+                : $this->contextMarkers($context, $attributes, $allLocations);
             $provider = $this->providers->selected();
 
             if ($provider === null) {
@@ -76,6 +78,7 @@ final readonly class MapShortcodes
                 $class,
                 __('Tourism map', 'ads-tourism'),
                 $context?->value,
+                $allLocations ? 'all' : 'primary',
             );
 
             return count($markers) === 1
@@ -91,7 +94,7 @@ final readonly class MapShortcodes
      *
      * @return list<MapMarker>
      */
-    private function explicitMarkers(array $attributes): array
+    private function explicitMarkers(array $attributes, bool $allLocations): array
     {
         $postIds = [];
         $singleId = absint($attributes['id']);
@@ -113,6 +116,7 @@ final readonly class MapShortcodes
         return $this->markers->forPosts(
             array_values(array_unique($postIds)),
             $this->boundedInteger($attributes['marker_limit'], 1, 100, 100),
+            $allLocations,
         );
     }
 
@@ -121,7 +125,7 @@ final readonly class MapShortcodes
      *
      * @return list<MapMarker>
      */
-    private function contextMarkers(ContextName $context, array $attributes): array
+    private function contextMarkers(ContextName $context, array $attributes, bool $allLocations): array
     {
         $registration = $this->contexts->register($context, ContextComponent::MAP);
 
@@ -153,6 +157,7 @@ final readonly class MapShortcodes
         return $this->markers->forPosts(
             $result->postIds,
             $this->boundedInteger($attributes['marker_limit'], 1, 100, 100),
+            $allLocations,
         );
     }
 
