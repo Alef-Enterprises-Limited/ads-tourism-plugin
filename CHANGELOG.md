@@ -6,7 +6,11 @@ The project follows [Semantic Versioning](https://semver.org/) and the structure
 
 ## [Unreleased]
 
-No unreleased changes.
+### Changed
+
+- Replaced the long project README with a brief, plain-English introduction and clear links to detailed guides.
+- Added documentation indexes plus guides for setup, relationships, troubleshooting, architecture, and extension points.
+- Added direct documentation links to the WordPress Help screen and the WordPress plugin readme.
 
 ## [1.2.0] - 2026-09-02
 

@@ -18,9 +18,9 @@ php bin/verify-release.php
 The build produces:
 
 ```text
-build/ads-tourism-1.0.0.zip
-build/ads-tourism-1.0.0.zip.sha256
-build/ads-tourism-1.0.0-manifest.json
+build/ads-tourism-X.Y.Z.zip
+build/ads-tourism-X.Y.Z.zip.sha256
+build/ads-tourism-X.Y.Z-manifest.json
 ```
 
 The ZIP contains one top-level `ads-tourism/` directory and only allowlisted production files. File modification times are normalized so identical source content produces reproducible archive bytes. The manifest records every shipped file's size and SHA-256 digest.

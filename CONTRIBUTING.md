@@ -15,6 +15,8 @@ To apply the repository's PHP-FIG PER Coding Style 3.0 rules:
 composer format
 ```
 
+Read the [developer documentation](docs/developer/README.md) before changing public behavior or extension points. The [testing guides](docs/testing/README.md) cover the manual checks used alongside the automated suite.
+
 ## Change workflow
 
 1. Create a focused branch from `main`.
@@ -32,3 +34,5 @@ Optional integrations must fail safely. The core plugin must continue working wh
 ## Releases
 
 Version numbers must agree in `ads-tourism.php`, `src/Plugin.php`, and `readme.txt`. A tag in the form `vX.Y.Z` triggers the release workflow, which verifies the version, runs the quality suite, builds an installable ZIP, and publishes it as a GitHub release asset.
+
+The complete process is documented in the [release guide](docs/developer/release-process.md).

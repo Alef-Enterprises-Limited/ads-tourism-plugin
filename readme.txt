@@ -36,7 +36,27 @@ Packages remain usable without WooCommerce. When WooCommerce is active, editors 
 
 Before uninstalling, export or back up the site. ADS Tourism preserves data by default. Destructive uninstall must be explicitly enabled and confirmed under ADS Tourism > Settings; shared Media Library attachments and WooCommerce Products are never deleted.
 
+== Documentation ==
+
+* Documentation home: https://github.com/Alef-Enterprises-Limited/ads-tourism-plugin/blob/main/docs/README.md
+* Five-minute setup: https://github.com/Alef-Enterprises-Limited/ads-tourism-plugin/blob/main/docs/user/getting-started.md
+* Shortcodes and interactive listings: https://github.com/Alef-Enterprises-Limited/ads-tourism-plugin/blob/main/docs/user/shortcodes.md
+* Templates, Divi, and page builders: https://github.com/Alef-Enterprises-Limited/ads-tourism-plugin/blob/main/docs/user/templates-and-builders.md
+* CSV import and export: https://github.com/Alef-Enterprises-Limited/ads-tourism-plugin/blob/main/docs/user/csv-import-export.md
+* SEO, maps, and languages: https://github.com/Alef-Enterprises-Limited/ads-tourism-plugin/blob/main/docs/user/seo-maps-and-languages.md
+* WooCommerce: https://github.com/Alef-Enterprises-Limited/ads-tourism-plugin/blob/main/docs/user/woocommerce.md
+* Troubleshooting: https://github.com/Alef-Enterprises-Limited/ads-tourism-plugin/blob/main/docs/user/troubleshooting.md
+
 == Changelog ==
+
+= 1.2.0 =
+
+* Added repeatable GPS locations, location CSV transfer, taxonomy management, and editable scoped CSS.
+* Expanded in-dashboard help for locations, maps, galleries, and documentation.
+
+= 1.1.0 =
+
+* Added the Help screen, shortcode reference, and optional taxonomy term colors.
 
 = 1.0.0 =
 

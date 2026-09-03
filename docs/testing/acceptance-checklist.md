@@ -1,4 +1,4 @@
-# ADS Tourism 1.0 acceptance checklist
+# ADS Tourism release acceptance checklist
 
 Record the test site URL, WordPress/PHP/theme versions, commit, tester, and date. Use synthetic content and a disposable WooCommerce test configuration.
 
