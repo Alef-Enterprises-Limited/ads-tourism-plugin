@@ -8,8 +8,8 @@ final readonly class HelpAdminPage
 {
     public const SLUG = 'ads-tourism-help';
 
-    private const DOCUMENTATION_BASE_URL =
-        'https://github.com/Alef-Enterprises-Limited/ads-tourism-plugin/blob/main/docs/';
+    private const DOCUMENTATION_BASE_URL
+        = 'https://github.com/Alef-Enterprises-Limited/ads-tourism-plugin/blob/main/docs/';
 
     public function registerMenu(): void
     {
