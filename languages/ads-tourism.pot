@@ -622,6 +622,14 @@ msgstr ""
 msgid "Divi post-type integration: %s"
 msgstr ""
 
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Documentation and guides"
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Documentation home"
+msgstr ""
+
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
 msgid "Download export ZIP"
 msgstr ""
@@ -824,6 +832,10 @@ msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
 msgid "Fitness requirements"
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Five-minute setup"
 msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
@@ -1078,6 +1090,10 @@ msgstr ""
 msgid "Maintenance"
 msgstr ""
 
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Maintenance and privacy"
+msgstr ""
+
 #: src/Domain/Relationship/RelationType.php:1
 msgid "Managed by operators"
 msgstr ""
@@ -1148,6 +1164,10 @@ msgstr ""
 
 #: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1
 msgid "Media Library image"
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Media, galleries, and permalinks"
 msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
@@ -1335,7 +1355,11 @@ msgid "Opening hours or visitor access"
 msgstr ""
 
 #: src/Infrastructure/WordPress/HelpAdminPage.php:1
-msgid "Open the full ADS Tourism shortcode and builder documentation on GitHub."
+msgid "Open a detailed guide on GitHub for step-by-step help."
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Open the full shortcode guide on GitHub."
 msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
@@ -1602,6 +1626,10 @@ msgstr ""
 msgid "Record components"
 msgstr ""
 
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Record editing and workflow"
+msgstr ""
+
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
 msgid "Record type"
 msgstr ""
@@ -1612,6 +1640,10 @@ msgstr ""
 
 #: src/Infrastructure/WordPress/Presentation/FrontendRenderer.php:1
 msgid "Related tourism"
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Relationships between records"
 msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
@@ -1806,6 +1838,10 @@ msgstr ""
 msgid "SEO schema override"
 msgstr ""
 
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "SEO, maps, and languages"
+msgstr ""
+
 #: src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
 msgid "Separate %s with commas"
 msgstr ""
@@ -1844,6 +1880,10 @@ msgstr ""
 
 #: src/Infrastructure/WordPress/Presentation/PresentationSettings.php:1
 msgid "Shortcode widgets"
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Shortcodes and interactive listings"
 msgstr ""
 
 #: src/Infrastructure/WordPress/HelpAdminPage.php:1
@@ -1988,6 +2028,10 @@ msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
 msgid "Telephone"
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Templates and page builders"
 msgstr ""
 
 #: src/Infrastructure/WordPress/ImportExport/ImportExportAdminPage.php:1
@@ -2182,6 +2226,10 @@ msgstr ""
 msgid "Traveller Types"
 msgstr ""
 
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "Troubleshooting"
+msgstr ""
+
 #: templates/components/no-results.php:1
 msgid "Try another archive or check back after more records are published."
 msgstr ""
@@ -2328,6 +2376,10 @@ msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1 src/Infrastructure/WordPress/Integration/WooCommerce/CommerceSettings.php:1
 msgid "WooCommerce"
+msgstr ""
+
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "WooCommerce for Packages"
 msgstr ""
 
 #: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1

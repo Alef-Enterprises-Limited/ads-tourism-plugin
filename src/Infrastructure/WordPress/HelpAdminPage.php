@@ -8,6 +8,9 @@ final readonly class HelpAdminPage
 {
     public const SLUG = 'ads-tourism-help';
 
+    private const DOCUMENTATION_BASE_URL =
+        'https://github.com/Alef-Enterprises-Limited/ads-tourism-plugin/blob/main/docs/';
+
     public function registerMenu(): void
     {
         add_submenu_page(
@@ -32,6 +35,7 @@ final readonly class HelpAdminPage
             'ads-tourism',
         ) . '</p>';
         $this->renderQuickStart();
+        $this->renderDocumentationLinks();
         $this->renderShortcodeReference();
         $this->renderLocationAndGalleryHelp();
         $this->renderAdminReferences();
@@ -72,6 +76,35 @@ final readonly class HelpAdminPage
         ) . '</p>';
     }
 
+    private function renderDocumentationLinks(): void
+    {
+        echo '<h2>' . esc_html__('Documentation and guides', 'ads-tourism') . '</h2>';
+        echo '<p>' . esc_html__(
+            'Open a detailed guide on GitHub for step-by-step help.',
+            'ads-tourism',
+        ) . '</p><ul>';
+
+        foreach ([
+            [__('Documentation home', 'ads-tourism'), 'README.md'],
+            [__('Five-minute setup', 'ads-tourism'), 'user/getting-started.md'],
+            [__('Record editing and workflow', 'ads-tourism'), 'user/record-workflow.md'],
+            [__('Relationships between records', 'ads-tourism'), 'user/relationships.md'],
+            [__('Media, galleries, and permalinks', 'ads-tourism'), 'user/media-and-permalinks.md'],
+            [__('CSV Import/Export', 'ads-tourism'), 'user/csv-import-export.md'],
+            [__('Templates and page builders', 'ads-tourism'), 'user/templates-and-builders.md'],
+            [__('Shortcodes and interactive listings', 'ads-tourism'), 'user/shortcodes.md'],
+            [__('SEO, maps, and languages', 'ads-tourism'), 'user/seo-maps-and-languages.md'],
+            [__('WooCommerce for Packages', 'ads-tourism'), 'user/woocommerce.md'],
+            [__('Maintenance and privacy', 'ads-tourism'), 'user/maintenance-and-privacy.md'],
+            [__('Troubleshooting', 'ads-tourism'), 'user/troubleshooting.md'],
+        ] as [$label, $path]) {
+            echo '<li><a href="' . esc_url(self::DOCUMENTATION_BASE_URL . $path)
+                . '" target="_blank" rel="noopener noreferrer">' . esc_html($label) . '</a></li>';
+        }
+
+        echo '</ul>';
+    }
+
     private function renderShortcodeReference(): void
     {
         echo '<h2>' . esc_html__('Shortcode reference', 'ads-tourism') . '</h2>';
@@ -80,9 +113,9 @@ final readonly class HelpAdminPage
             'ads-tourism',
         ) . '</p>';
         echo '<p><a href="' . esc_url(
-            'https://github.com/Alef-Enterprises-Limited/ads-tourism-plugin/tree/main/docs/user',
+            self::DOCUMENTATION_BASE_URL . 'user/shortcodes.md',
         ) . '" target="_blank" rel="noopener noreferrer">' . esc_html__(
-            'Open the full ADS Tourism shortcode and builder documentation on GitHub.',
+            'Open the full shortcode guide on GitHub.',
             'ads-tourism',
         ) . '</a></p>';
 

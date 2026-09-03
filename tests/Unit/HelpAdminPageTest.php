@@ -62,5 +62,22 @@ final class HelpAdminPageTest extends TestCase
 
         self::assertStringContainsString('context="discover"', $markup);
         self::assertStringContainsString('Administration references', $markup);
+        self::assertStringContainsString('Documentation and guides', $markup);
+        self::assertStringContainsString(
+            'https://github.com/Alef-Enterprises-Limited/ads-tourism-plugin/blob/main/docs/README.md',
+            $markup,
+        );
+        self::assertStringContainsString(
+            'https://github.com/Alef-Enterprises-Limited/ads-tourism-plugin/blob/main/docs/user/getting-started.md',
+            $markup,
+        );
+        self::assertStringContainsString(
+            'https://github.com/Alef-Enterprises-Limited/ads-tourism-plugin/blob/main/docs/user/relationships.md',
+            $markup,
+        );
+        self::assertStringContainsString(
+            'https://github.com/Alef-Enterprises-Limited/ads-tourism-plugin/blob/main/docs/user/troubleshooting.md',
+            $markup,
+        );
     }
 }

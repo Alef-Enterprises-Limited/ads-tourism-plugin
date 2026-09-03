@@ -1,4 +1,4 @@
-# Known limitations in 1.0
+# Known limitations
 
 - ADS Tourism is not a booking engine. It does not manage room inventory, availability calendars, capacity, reservations, or booking modifications.
 - Enquiry mode renders a configured contact or external enquiry action; it does not store enquiry submissions.
