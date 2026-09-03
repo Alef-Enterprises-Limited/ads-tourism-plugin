@@ -1,3 +1,5 @@
+[![Current version](https://img.shields.io/badge/version-1.2.0-0A66C2?style=flat-square)](https://github.com/Alef-Enterprises-Limited/ads-tourism-plugin/releases/tag/v1.2.0) [![License](https://img.shields.io/badge/license-Apache--2.0-2E8B57?style=flat-square)](LICENSE) [![Developer](https://img.shields.io/badge/developer-ALEF%20DIGITAL%20SOLUTIONS-6F42C1?style=flat-square)](https://github.com/Alef-Enterprises-Limited) [![WordPress](https://img.shields.io/badge/WordPress-6.6%2B-21759B?style=flat-square&logo=wordpress&logoColor=white)](https://wordpress.org/) [![PHP](https://img.shields.io/badge/PHP-8.2%2B-777BB4?style=flat-square&logo=php&logoColor=white)](https://www.php.net/) [![Continuous integration](https://github.com/Alef-Enterprises-Limited/ads-tourism-plugin/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Alef-Enterprises-Limited/ads-tourism-plugin/actions/workflows/ci.yml)
+
 # ADS Tourism
 
 ADS Tourism is a WordPress plugin for tourism websites. It helps you manage destinations, activities, accommodation, tour operators, and packages in one connected system.
