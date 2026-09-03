@@ -1162,12 +1162,12 @@ msgstr ""
 msgid "Maximum upload size (MB)"
 msgstr ""
 
-#: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1
-msgid "Media Library image"
-msgstr ""
-
 #: src/Infrastructure/WordPress/HelpAdminPage.php:1
 msgid "Media, galleries, and permalinks"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Media/MediaLinkMetaBox.php:1
+msgid "Media Library image"
 msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
@@ -1350,12 +1350,12 @@ msgstr ""
 msgid "Oldest first"
 msgstr ""
 
-#: src/Domain/Field/RecordFieldSchema.php:1
-msgid "Opening hours or visitor access"
-msgstr ""
-
 #: src/Infrastructure/WordPress/HelpAdminPage.php:1
 msgid "Open a detailed guide on GitHub for step-by-step help."
+msgstr ""
+
+#: src/Domain/Field/RecordFieldSchema.php:1
+msgid "Opening hours or visitor access"
 msgstr ""
 
 #: src/Infrastructure/WordPress/HelpAdminPage.php:1
@@ -1830,16 +1830,16 @@ msgstr ""
 msgid "Select images from the WordPress Media Library or link to an HTTPS or site-relative image. Detaching an image never deletes the Media Library file."
 msgstr ""
 
+#: src/Infrastructure/WordPress/HelpAdminPage.php:1
+msgid "SEO, maps, and languages"
+msgstr ""
+
 #: src/Infrastructure/WordPress/Presentation/SystemStatusPage.php:1
 msgid "SEO integration"
 msgstr ""
 
 #: src/Domain/Field/RecordFieldSchema.php:1
 msgid "SEO schema override"
-msgstr ""
-
-#: src/Infrastructure/WordPress/HelpAdminPage.php:1
-msgid "SEO, maps, and languages"
 msgstr ""
 
 #: src/Infrastructure/WordPress/TaxonomyRegistrar.php:1
@@ -1878,12 +1878,12 @@ msgstr ""
 msgid "Shortcode rules and field names"
 msgstr ""
 
-#: src/Infrastructure/WordPress/Presentation/PresentationSettings.php:1
-msgid "Shortcode widgets"
-msgstr ""
-
 #: src/Infrastructure/WordPress/HelpAdminPage.php:1
 msgid "Shortcodes and interactive listings"
+msgstr ""
+
+#: src/Infrastructure/WordPress/Presentation/PresentationSettings.php:1
+msgid "Shortcode widgets"
 msgstr ""
 
 #: src/Infrastructure/WordPress/HelpAdminPage.php:1
